@@ -14,4 +14,8 @@ export class Counter {
     increase() {
         this.count+=1;
     }
+
+    getClickText() {
+        return `Clicked on ${this.count} times`;
+    }
 }

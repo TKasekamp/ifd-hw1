@@ -11,5 +11,12 @@ describe('Counter', () => {
         c.increase();
         expect(c.getCount()).to.eql(1);
     });
+
+    it('displays correct text', () => {
+        const c = new Counter();
+        expect(c.getClickText()).to.eql('Clicked on 0 times');
+        c.increase();
+        expect(c.getClickText()).to.eql('Clicked on 1 times');
+    });
 });
 
