@@ -6,10 +6,12 @@
   "devDependencies": {
     "css-loader": "^0.26.1",
     "extract-text-webpack-plugin": "^2.0.0",
-    "webpack": "^2.2.1"
+    "webpack": "^2.2.1",
+    "webpack-dev-server": "^2.4.0"
   },
   "scripts": {
     "build": "webpack --config webpack.config.js",
+    "start": "webpack-dev-server --open --config webpack.config.js",
     "test": "mocha"
   },
   "repository": {
