@@ -15,7 +15,7 @@ function addElement() {
     let text = document.createTextNode(c.getClickText());
     button.appendChild(text);
 
-    document.body.appendChild(button);
+    document.getElementById('box').appendChild(button);
 }
 
 function increment() {

@@ -1,5 +1,19 @@
+html,
 body {
-  background-color: #bada55;
-  text-align: center;
-  margin: 50px;
+    height: 100%;
+    background-color: royalblue;
+}
+
+.flexbox-container {
+    height: 100%;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+
+    align-items: center;
+    justify-content: center;
 }
