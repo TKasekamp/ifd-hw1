@@ -19,6 +19,10 @@ module.exports = {
             {
                 test: /\.css$/,
                 use: ExtractTextPlugin.extract('css-loader'),
+            },
+            {
+                test: /\.js/,
+                use: 'babel-loader'
             }
         ]
     },
