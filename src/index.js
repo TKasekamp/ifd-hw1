@@ -1,3 +1,13 @@
-document.body.innerHTML = '<h1>Title added from Javascript</h1>';
+import {Counter} from './Counter';
 
+// Setup
 document.title = 'IFD homework 1';
+const c = new Counter();
+
+
+// console.log(c.getCount());
+
+
+c.increase();
+
+// console.log(c.getCount());
