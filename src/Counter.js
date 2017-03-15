@@ -12,7 +12,7 @@ export class Counter {
     }
 
     increase() {
-        this.count+=1;
+        this.count += 1;
     }
 
     getClickText() {
