@@ -13,10 +13,6 @@ export class Game {
     }
 
     makeGuess(guess) {
-        return makeGuess(guess, this.number);
-    }
-
-    makeGuess(guess,number ) {
         let result = 'equal';
 
         if (guess > this.number) {
