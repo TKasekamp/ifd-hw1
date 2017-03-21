@@ -1,7 +1,5 @@
 import {Counter} from './Counter';
 
-// Setup
-document.title = 'IFD homework 1';
 const c = new Counter();
 
 document.body.onload = addElement;
