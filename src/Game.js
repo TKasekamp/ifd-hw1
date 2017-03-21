@@ -17,11 +17,9 @@ export class Game {
 
         if (guess > this.number) {
             result = 'greater';
-        }
-        else if (guess < this.number) {
+        } else if (guess < this.number) {
             result = 'lesser';
-        }
-        else {
+        } else {
             this.gameOver = true;
         }
         return result;

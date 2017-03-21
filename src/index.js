@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
-import {Game} from "./Game";
+import {Game} from './Game';
 /*
  Result knows how to display itself.
  */
@@ -8,11 +8,9 @@ const Result = (props) => {
     let text = null;
     if (props.result == 'greater') {
         text = <p className="fail">{props.guess}: is greater than target</p>;
-    }
-    else if (props.result == 'lesser') {
+    } else if (props.result == 'lesser') {
         text = <p className="fail">{props.guess}: is lesser than target</p>;
-    }
-    else {
+    } else if (props.result == 'equal') {
         text = <p className="win">{props.guess}: was correct</p>;
     }
 
@@ -74,9 +72,8 @@ class GuessForm extends Component {
 
     render() {
         if (this.props.gameOver) {
-            return (<div>You won!</div>)
-        }
-        else {
+            return (<div>You won!</div>);
+        } else {
             return (
                 <div >
                     <h3>Guess a number from 0 to 9</h3>
@@ -125,8 +122,7 @@ class App extends Component {
         let lastResult = this.state.results[this.state.results.length - 1];
         if (lastResult === undefined) {
             return 0;
-        }
-        else {
+        } else {
             return lastResult.id;
         }
     }
