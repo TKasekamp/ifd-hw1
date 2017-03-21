@@ -38,7 +38,7 @@ const ResultList = (props) => {
     return (
         <div>
             <h3>Previous guesses:</h3>
-            {resultElements}
+            <div className='flexbox-container result-list'>{resultElements}</div>
         </div>
     );
 };
