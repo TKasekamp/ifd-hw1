@@ -68,24 +68,31 @@ class GuessForm extends Component {
     }
 
     render() {
-        return (
-            <div>
-                <h3>Guess a number from 0 to 9</h3>
-                <input
-                    type="number"
-                    placeholder="Your guess"
-                    value={this.state.guess}
-                    onChange={this.handleAuthorChange.bind(this)}
-                />
-                <button className='comment-form' onClick={this.onSubmit.bind(this)}>
-                    Submit comment
-                </button>
-            </div>
-        );
+        if (this.props.gameOver) {
+            return (<div>Game over! You won!</div>)
+        }
+        else {
+            return (
+                <div >
+                    <h3>Guess a number from 0 to 9</h3>
+                    <input
+                        type="number"
+                        placeholder="Your guess"
+                        value={this.state.guess}
+                        onChange={this.handleAuthorChange.bind(this)}
+                    />
+                    <button className='comment-form' onClick={this.onSubmit.bind(this)}>
+                        Submit comment
+                    </button>
+
+                </div>
+            );
+        }
     }
 }
 GuessForm.propTypes = {
     onSubmit: React.PropTypes.func.isRequired,
+    gameOver: React.PropTypes.bool.isRequired
 };
 
 class App extends Component {
@@ -116,7 +123,7 @@ class App extends Component {
         return (
             <div className='app'>
                 <h1>Game lobby</h1>
-                <GuessForm onSubmit={this.handleCommentSubmit.bind(this)}/>
+                <GuessForm onSubmit={this.handleCommentSubmit.bind(this)} gameOver={this.state.gameOver}/>
                 <ResultList results={this.state.results}/>
             </div>
         );
