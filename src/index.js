@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 /*
  Result knows how to display itself.
  */
-const Comment = (props) => {
+const Result = (props) => {
     let text = null;
     if (props.result == 'greater') {
         text = <p className="fail">{props.guess}: is greater than target</p>;
@@ -16,47 +16,45 @@ const Comment = (props) => {
     }
 
     return (
-        <div >
+        <div>
             {text}
-            {props.children}
         </div>
     );
 };
 
-Comment.propTypes = {
+Result.propTypes = {
     guess: React.PropTypes.number.isRequired,
-    result: React.PropTypes.string.isRequired,
-    children: React.PropTypes.node.isRequired,
-}
+    result: React.PropTypes.string.isRequired
+};
 
-const CommentList = (props) => {
-    const commentElements = props.comments.map((comment) => {
+const ResultList = (props) => {
+    const resultElements = props.results.map((result) => {
         return (
-            <Comment guess={comment.guess} result={comment.result} key={comment.id}>
-            </Comment>
+            <Result guess={result.guess} result={result.result} key={result.id}>
+            </Result>
         );
     });
     return (
-        <div className="comment-list">
+        <div>
             <h3>Previous guesses:</h3>
-            {commentElements}
+            {resultElements}
         </div>
     );
 };
 
-CommentList.propTypes = {
-    comments: React.PropTypes.arrayOf(React.PropTypes.shape({
+ResultList.propTypes = {
+    results: React.PropTypes.arrayOf(React.PropTypes.shape({
         guess: React.PropTypes.number,
         id: React.PropTypes.number,
-        result: React.PropTypes.string.isRequired
+        result: React.PropTypes.string
     })).isRequired
 };
 
-class CommentForm extends Component {
+class GuessForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            guess: ''
+            guess: '0'
         };
     }
 
@@ -65,16 +63,16 @@ class CommentForm extends Component {
     }
 
     onSubmit() {
-        this.props.onSubmit({guess: this.state.guess});
+        this.props.onSubmit({guess: parseInt(this.state.guess,10)});
     }
 
     render() {
         return (
-            <div className='comment-form'>
+            <div>
                 <h3>Guess a number from 0 to 9</h3>
                 <input
                     type="number"
-                    placeholder="Your name"
+                    placeholder="Your guess"
                     value={this.state.guess}
                     onChange={this.handleAuthorChange.bind(this)}
                 />
@@ -85,7 +83,7 @@ class CommentForm extends Component {
         );
     }
 }
-CommentForm.propTypes = {
+GuessForm.propTypes = {
     onSubmit: React.PropTypes.func.isRequired,
 };
 
@@ -93,14 +91,15 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            comments: [{guess: 3, id: 1, result: 'equal'}]
+            results: [{guess: 3, id: 1, result: 'equal'}]
         };
     }
 
-    handleCommentSubmit({guess, text}) {
-        const lastComment = this.state.comments[this.state.comments.length - 1];
+    handleCommentSubmit({guess}) {
+        const lastComment = this.state.results[this.state.results.length - 1];
+        // Calculate game stuff here
         this.setState({
-            comments: this.state.comments.concat({guess, id: lastComment.id + 1, result: 'greater'})
+            results: this.state.results.concat({guess, id: lastComment.id + 1, result: 'greater'})
         });
     }
 
@@ -108,14 +107,14 @@ class App extends Component {
         return (
             <div className='app'>
                 <h1>Game lobby</h1>
-                <CommentForm onSubmit={this.handleCommentSubmit.bind(this)}/>
-                <CommentList comments={this.state.comments}/>
+                <GuessForm onSubmit={this.handleCommentSubmit.bind(this)}/>
+                <ResultList results={this.state.results}/>
             </div>
         );
     }
 }
 
 ReactDOM.render(
-    <App />,
+    <App/>,
     document.getElementById('root')
 );
