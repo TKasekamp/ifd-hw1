@@ -54,17 +54,16 @@ ResultList.propTypes = {
 class GuessForm extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            guess: '0'
-        };
+        this.state = {guess: ''};
     }
 
-    handleAuthorChange(event) {
+    handleGuessChange(event) {
         this.setState({guess: event.target.value});
     }
 
     onSubmit() {
         this.props.onSubmit({guess: parseInt(this.state.guess, 10)});
+        this.setState({guess: ''});
     }
 
     render() {
@@ -79,7 +78,7 @@ class GuessForm extends Component {
                         type="number"
                         placeholder="Your guess"
                         value={this.state.guess}
-                        onChange={this.handleAuthorChange.bind(this)}
+                        onChange={this.handleGuessChange.bind(this)}
                     />
                     <button onClick={this.onSubmit.bind(this)}>
                         Submit guess
