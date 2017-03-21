@@ -1,11 +1,11 @@
 /**
  * Created by Tonis on 21.03.2017.
  */
-import {Result} from './Result';
 
 export class Game {
     constructor() {
         this.generateNumber();
+        this.gameOver = false;
     }
 
     generateNumber() {
@@ -13,7 +13,11 @@ export class Game {
     }
 
     makeGuess(guess) {
-        result = 'equal';
+        return makeGuess(guess, this.number);
+    }
+
+    makeGuess(guess,number ) {
+        let result = 'equal';
 
         if (guess > this.number) {
             result = 'greater';
@@ -21,7 +25,10 @@ export class Game {
         else if (guess < this.number) {
             result = 'lesser';
         }
-        return new Result(guess, result);
+        else {
+            this.gameOver = true;
+        }
+        return result;
     }
 
     getNumber() {
@@ -30,6 +37,10 @@ export class Game {
 
     setNumber(number) {
         this.number = number;
+    }
+
+    getGameOver() {
+        return this.gameOver;
     }
 
 

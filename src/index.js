@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
+import {Game} from "./Game";
 /*
  Result knows how to display itself.
  */
@@ -63,7 +64,7 @@ class GuessForm extends Component {
     }
 
     onSubmit() {
-        this.props.onSubmit({guess: parseInt(this.state.guess,10)});
+        this.props.onSubmit({guess: parseInt(this.state.guess, 10)});
     }
 
     render() {
@@ -90,16 +91,24 @@ GuessForm.propTypes = {
 class App extends Component {
     constructor(props) {
         super(props);
+        this.game = new Game();
+
         this.state = {
-            results: [{guess: 3, id: 1, result: 'equal'}]
+            results: [{guess: 3, id: 1, result: 'equal'}],
+            gameOver: this.game.getGameOver()
         };
     }
 
     handleCommentSubmit({guess}) {
         const lastComment = this.state.results[this.state.results.length - 1];
         // Calculate game stuff here
+        const result = this.game.makeGuess(guess);
         this.setState({
-            results: this.state.results.concat({guess, id: lastComment.id + 1, result: 'greater'})
+            results: this.state.results.concat({guess, id: lastComment.id + 1, result})
+        });
+
+        this.setState({
+            gameOver: this.game.getGameOver()
         });
     }
 
