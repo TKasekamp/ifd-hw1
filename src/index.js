@@ -66,9 +66,15 @@ class GuessForm extends Component {
         this.setState({guess: ''});
     }
 
+    handleKeyPress(e) {
+        if (e.key === 'Enter' && this.state.guess != '') {
+            this.onSubmit();
+        }
+    }
+
     render() {
         if (this.props.gameOver) {
-            return (<div>Game over! You won!</div>)
+            return (<div>You won!</div>)
         }
         else {
             return (
@@ -79,11 +85,8 @@ class GuessForm extends Component {
                         placeholder="Your guess"
                         value={this.state.guess}
                         onChange={this.handleGuessChange.bind(this)}
+                        onKeyPress={this.handleKeyPress.bind(this)}
                     />
-                    <button onClick={this.onSubmit.bind(this)}>
-                        Submit guess
-                    </button>
-
                 </div>
             );
         }
