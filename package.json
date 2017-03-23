@@ -32,7 +32,8 @@
     "lint": "eslint src/",
     "lint-test": "eslint test/ -c test/.eslintrc",
     "start": "webpack-dev-server --open --config webpack.config.js",
-    "test": "mocha --compilers js:babel-register",
+
+    "test": "eslint src/ test/ && mocha --compilers js:babel-register",
     "test-watch": "mocha --watch --compilers js:babel-register"
   },
   "repository": {

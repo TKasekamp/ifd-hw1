@@ -1,7 +1,6 @@
 /**
- * Created by Tonis on 21.03.2017.
+ * Game holds the generated number and current status.
  */
-
 export class Game {
     constructor() {
         this.generateNumber();
