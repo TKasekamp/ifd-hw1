@@ -1,2 +1,2 @@
-# ifd-hw1
+# ifd-hw2
 Interactive Frontend Development
