@@ -111,9 +111,7 @@ class App extends Component {
         const result = this.game.makeGuess(guess);
 
         this.setState({
-            results: this.state.results.concat({guess, id: id + 1, result})
-        });
-        this.setState({
+            results: this.state.results.concat({guess, id: id + 1, result}),
             gameOver: this.game.getGameOver()
         });
     }
