@@ -13,12 +13,17 @@
     "babel-preset-react": "^6.23.0",
     "babel-register": "^6.24.0",
     "chai": "^3.5.0",
+    "chai-enzyme": "^0.6.1",
+    "enzyme": "^2.7.1",
     "css-loader": "^0.26.1",
     "eslint": "3.8.1",
     "eslint-config-google": "^0.7.1",
     "eslint-plugin-import": "2.0.1",
     "eslint-plugin-react": "6.4.1",
     "extract-text-webpack-plugin": "^2.0.0",
+    "react-addons-test-utils": "^15.4.2",
+    "sinon": "^2.1.0",
+    "sinon-chai": "^2.9.0",
     "mocha": "^3.2.0",
     "webpack": "^2.2.1",
     "webpack-dev-server": "^2.4.0"
@@ -32,8 +37,9 @@
     "lint": "eslint src/",
     "lint-test": "eslint test/ -c test/.eslintrc",
     "start": "webpack-dev-server --open --config webpack.config.js",
-    "test": "eslint src/ test/ && mocha --compilers js:babel-register",
-    "test-watch": "mocha --watch --compilers js:babel-register"
+    "test": "mocha --compilers js:babel-register",
+    "test-watch": "mocha --watch --compilers js:babel-register",
+    "pretest": "npm run lint && npm run lint-test"
   },
   "repository": {
     "type": "git",

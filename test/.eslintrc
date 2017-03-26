@@ -1,13 +1,23 @@
 {
   "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
   "env": {
     "browser": true,
     "node": true,
     "jasmine": true
   },
-  "plugins": ["import"],
+  "globals": {
+    "expect": true,
+    "sinon": true
+  },
+  "plugins": ["react", "import"],
   "extends": [
     "eslint:recommended",
+    "plugin:react/recommended",
     "google",
     "plugin:import/errors",
     "plugin:import/warnings"

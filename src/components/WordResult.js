@@ -5,7 +5,7 @@ import React from 'react';
 const WordResult = (props) => {
     let text = [];
     for (let i = 0, len = props.result.length; i < len; i++) {
-        text.push(<a className={(props.result[i] ? 'win' : 'fail')}>{props.guess[i]}</a>);
+        text.push(<a key={i} className={(props.result[i] ? 'win' : 'fail')}>{props.guess[i]}</a>);
     }
 
     return (
