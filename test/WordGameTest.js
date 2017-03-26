@@ -37,16 +37,16 @@ describe('WordGame', () => {
     it('guess array shorter than word', () => {
         const g = new WordGame();
         g.setWord('basil');
-        const result = g.makeGuess('tank');
-        expect(result).to.eql([false, true, false, false]);
+        const result = g.makeGuess('task');
+        expect(result).to.eql([false, true, true, false]);
         expect(g.getGameOver()).to.eql(false);
     });
 
     it('guess array longer than word', () => {
         const g = new WordGame();
         g.setWord('basil');
-        const result = g.makeGuess('tanker');
-        expect(result).to.eql([false, true, false, false, false, false]);
+        const result = g.makeGuess('banker');
+        expect(result).to.eql([true, true, false, false, false, false]);
         expect(g.getGameOver()).to.eql(false);
     });
 });

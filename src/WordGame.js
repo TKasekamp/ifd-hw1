@@ -15,7 +15,19 @@ export class WordGame {
 
     makeGuess(guess) {
         let result = [];
+        let check = true;
 
+        for (let i = 0, len = guess.length; i < len; i++) {
+            let r = guess[i] === this.word[i];
+
+            if(r) {
+                check = check && r;
+            } else {
+                check = false;
+            }
+            result.push(r);
+        }
+        this.winCheck(check);
         return result;
     }
 
@@ -29,5 +41,11 @@ export class WordGame {
 
     getGameOver() {
         return this.gameOver;
+    }
+
+    winCheck(check) {
+        if(check) {
+            this.gameOver = true;
+        }
     }
 }
