@@ -3,7 +3,7 @@
  */
 import {NumberGame} from '../src/NumberGame';
 
-describe('Game', () => {
+describe('NumberGame', () => {
     it('has some generated value on construct', () => {
         const g = new NumberGame();
         expect(g.getNumber()).to.be.within(0, 9);
