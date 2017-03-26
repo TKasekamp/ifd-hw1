@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
-import {Game} from './NumberGame';
+import {NumberGame} from './NumberGame';
 /*
  Result knows how to display itself.
  */
@@ -97,7 +97,7 @@ GuessForm.propTypes = {
 class App extends Component {
     constructor(props) {
         super(props);
-        this.game = new Game();
+        this.game = new NumberGame();
 
         this.state = {
             results: [],

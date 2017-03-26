@@ -1,7 +1,7 @@
 /**
  * Game holds the generated number and current status.
  */
-export class Game {
+export class NumberGame {
     constructor() {
         this.generateNumber();
         this.gameOver = false;
