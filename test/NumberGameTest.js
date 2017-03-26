@@ -1,7 +1,7 @@
 /**
  * Created by Tonis on 21.03.2017.
  */
-import {Game} from '../src/Game';
+import {Game} from '../src/NumberGame';
 
 describe('Game', () => {
     it('has some generated value on construct', () => {

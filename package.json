@@ -1,7 +1,7 @@
 {
-  "name": "ifd-hw2",
+  "name": "ifd-hw3",
   "version": "1.0.0",
-  "description": "Interactive Frontend Development HW2",
+  "description": "Interactive Frontend Development HW3",
   "private": true,
   "devDependencies": {
     "babel-core": "6.17.0",
@@ -32,7 +32,6 @@
     "lint": "eslint src/",
     "lint-test": "eslint test/ -c test/.eslintrc",
     "start": "webpack-dev-server --open --config webpack.config.js",
-
     "test": "eslint src/ test/ && mocha --compilers js:babel-register",
     "test-watch": "mocha --watch --compilers js:babel-register"
   },

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
-import {Game} from './Game';
+import {Game} from './NumberGame';
 /*
  Result knows how to display itself.
  */

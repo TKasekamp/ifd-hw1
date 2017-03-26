@@ -1,2 +1,4 @@
-# ifd-hw2
-Interactive Frontend Development
+# Interactive Frontend Development
+Includes 
+
+* homework 2
