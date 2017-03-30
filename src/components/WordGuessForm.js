@@ -16,7 +16,7 @@ class WordGuessForm extends Component {
     }
 
     handleKeyPress(e) {
-        if (e.key === 'Enter' && this.state.guess != '') {
+        if (e.key === 'Enter' && this.state.guess !== '') {
             this.onSubmit();
         }
     }
@@ -29,6 +29,7 @@ class WordGuessForm extends Component {
                 <div >
                     <p>Guess a 5 letter word</p>
                     <input
+                        id="word-input"
                         type="text"
                         placeholder="Your guess"
                         value={this.state.guess}

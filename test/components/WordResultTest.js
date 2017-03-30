@@ -4,7 +4,6 @@ import {shallow} from 'enzyme';
 import WordResult from '../../src/components/WordResult';
 
 describe('WordResult', () => {
-
     it('renders', () => {
         expect(shallow(<WordResult key="1" guess='ga' result={[true, false]}/>)).to.exist;
     });

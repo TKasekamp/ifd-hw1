@@ -5,12 +5,10 @@ import WordResultList from '../../src/components/WordResultList';
 import WordResult from '../../src/components/WordResult';
 
 describe('WordResultList', () => {
-
     it('renders no WordResult components without results', () => {
-        expect(shallow(<WordResultList results={[]} />))
+        expect(shallow(<WordResultList results={[]}/>))
             .to.not.contain.descendants(WordResult);
     });
-
 
     it('renders result for each guess', () => {
         const results = [
