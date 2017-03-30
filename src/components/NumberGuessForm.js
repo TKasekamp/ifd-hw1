@@ -29,6 +29,7 @@ class NumberGuessForm extends Component {
                 <div >
                     <p>Guess a number from 0 to 9</p>
                     <input
+                        id="number-input"
                         type="number"
                         placeholder="Your guess"
                         value={this.state.guess}

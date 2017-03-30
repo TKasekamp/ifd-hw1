@@ -10,7 +10,7 @@ describe('WordGuessForm', () => {
         )).to.exist;
     });
 
-    it('calls submit with author and text when submit button clicked', () => {
+    it('submits guess when enter pressed', () => {
         const onSubmit = sinon.stub();
         const form = shallow(<WordGuessForm onSubmit={onSubmit} gameOver={false}/>);
 
@@ -18,7 +18,6 @@ describe('WordGuessForm', () => {
 
         form.find('#word-input').simulate('keyPress', {key: 'Enter'});
 
-        expect(form.state()).to.eql({guess: ''});
         expect(onSubmit).to.have.been.calledWith({guess: 'thing'});
     });
 
@@ -30,7 +29,6 @@ describe('WordGuessForm', () => {
 
         form.find('#word-input').simulate('keyPress', {key: 'Enter'});
 
-        expect(form.state()).to.eql({guess: ''});
         expect(onSubmit).to.not.have.been.calledWith({guess: 'thing'});
     });
 
