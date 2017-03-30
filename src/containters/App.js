@@ -22,10 +22,10 @@ class App extends Component {
         return (
             <div className='app'>
                 <h1>Game lobby</h1>
-                <button onClick={() => this.newGame('number')}>
+                <button id='create-number' onClick={() => this.newGame('number')}>
                     Create number game
                 </button>
-                <button onClick={() => this.newGame('word')}>
+                <button id='create-word' onClick={() => this.newGame('word')}>
                     Create word game
                 </button>
 
