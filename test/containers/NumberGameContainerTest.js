@@ -35,4 +35,12 @@ describe('NumberGameContainer', () => {
             ]}/>
         );
     });
+
+    it('updates gameOver when needed', () => {
+        const app = shallow(<NumberGameContainer />);
+
+        // Simulate game over status
+        app.setState({gameOver: true});
+        expect(app.find(NumberGuessForm).props().gameOver).to.eql(true);
+    });
 });

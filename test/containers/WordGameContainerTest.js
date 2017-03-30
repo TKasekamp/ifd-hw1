@@ -34,4 +34,12 @@ describe('WordGameContainer', () => {
             ]}/>
         );
     });
+
+    it('updates gameOver when needed', () => {
+        const app = shallow(<WordGameContainer />);
+
+        // Simulate game over status
+        app.setState({gameOver: true});
+        expect(app.find(WordGuessForm).props().gameOver).to.eql(true);
+    });
 });
