@@ -2,7 +2,6 @@ import React from 'react';
 import {shallow} from 'enzyme';
 
 import App from '../../src/containters/App';
-
 import Games from '../../src/components/Games';
 
 describe('App', () => {

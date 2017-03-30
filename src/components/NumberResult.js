@@ -4,11 +4,11 @@ import React from 'react';
  */
 const NumberResult = (props) => {
     let text = null;
-    if (props.result == 'greater') {
+    if (props.result === 'greater') {
         text = <p className="fail">{props.guess}: is greater than target</p>;
-    } else if (props.result == 'lesser') {
+    } else if (props.result === 'lesser') {
         text = <p className="fail">{props.guess}: is lesser than target</p>;
-    } else if (props.result == 'equal') {
+    } else if (props.result === 'equal') {
         text = <p className="win">{props.guess}: was correct</p>;
     }
 
