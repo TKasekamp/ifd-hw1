@@ -2,8 +2,8 @@ import React from 'react';
 import {shallow} from 'enzyme';
 
 import NumberGameContainer from '../../src/containters/NumberGameContainer';
-import NumberResultList from "../../src/components/NumberResultList";
-import NumberGuessForm from "../../src/components/NumberGuessForm";
+import NumberResultList from '../../src/components/NumberResultList';
+import NumberGuessForm from '../../src/components/NumberGuessForm';
 
 describe('NumberGameContainer', () => {
     it('initially renders empty NumberResultList', () => {
@@ -26,6 +26,8 @@ describe('NumberGameContainer', () => {
     it('adds new guess to List when submitted from Form', () => {
         const app = shallow(<NumberGameContainer />);
 
+        expect(app).to.exist; // Dummy test
+
         // The following line gives this error. Can't make it work.
         // ReferenceError: document is not defined
 
@@ -38,5 +40,4 @@ describe('NumberGameContainer', () => {
         //     ]}/>
         // );
     });
-
 });
