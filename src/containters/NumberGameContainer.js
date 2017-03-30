@@ -7,31 +7,23 @@ class NumberGameContainer extends Component {
     constructor(props) {
         super(props);
         this.game = new NumberGame();
-
         this.state = {
             results: [],
-            gameOver: this.game.getGameOver()
+            gameOver: this.game.getGameOver(),
+            lastResultId: 0
         };
     }
 
     handleGuessSubmit({guess}) {
-        const id = this.getLastResultId();
+        const id = this.state.lastResultId + 1;
         // Calculate game stuff here
         const result = this.game.makeGuess(guess);
 
+
         this.setState({
-            results: this.state.results.concat({guess, id: id + 1, result}),
+            results: this.state.results.concat({guess, id, result}),
             gameOver: this.game.getGameOver()
         });
-    }
-
-    getLastResultId() {
-        let lastResult = this.state.results[this.state.results.length - 1];
-        if (lastResult === undefined) {
-            return 0;
-        } else {
-            return lastResult.id;
-        }
     }
 
     render() {
