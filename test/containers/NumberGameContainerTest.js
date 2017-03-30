@@ -26,18 +26,13 @@ describe('NumberGameContainer', () => {
     it('adds new guess to List when submitted from Form', () => {
         const app = shallow(<NumberGameContainer />);
 
-        expect(app).to.exist; // Dummy test
+        app.find(NumberGuessForm).props()
+            .onSubmit({guess: 11});
 
-        // The following line gives this error. Can't make it work.
-        // ReferenceError: document is not defined
-
-        // app.find(NumberGuessForm).props()
-        //     .onSubmit({guess: 5});
-        //
-        // expect(app).to.contain(
-        //     <NumberResultList results={[
-        //         {id: 1, guess: 5}
-        //     ]}/>
-        // );
+        expect(app).to.contain(
+            <NumberResultList results={[
+                {id: 1, guess: 11, result: 'greater'}
+            ]}/>
+        );
     });
 });
