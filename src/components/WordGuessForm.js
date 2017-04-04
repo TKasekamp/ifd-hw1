@@ -11,7 +11,7 @@ class WordGuessForm extends Component {
     }
 
     onSubmit() {
-        this.props.onSubmit({guess: this.state.guess});
+        this.props.onSubmit(this.state);
         this.setState({guess: ''});
     }
 
