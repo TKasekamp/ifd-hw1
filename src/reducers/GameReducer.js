@@ -14,6 +14,7 @@ const gameReducer = (state = initialState, action) => {
             const games = state.games.concat({
                 id: action.payload.id,
                 name : 'number'
+
             });
             return {...state, games};
         }
@@ -21,7 +22,10 @@ const gameReducer = (state = initialState, action) => {
 
             const games = state.games.concat({
                 id: action.payload.id,
-                name : 'word'
+                name : 'word',
+                gameOver : false,
+                targetWord : action.payload.targetWord,
+                results: []
             });
             return {...state, games};
         }

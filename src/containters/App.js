@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Games from '../components/Games';
 import ButtonContainer from './ButtonContainer';
+import GamesContainer from './GamesContainer';
 
 class App extends Component {
     constructor(props) {
@@ -24,8 +25,7 @@ class App extends Component {
             <div className='app'>
                 <h1>Game lobby</h1>
                 <ButtonContainer />
-
-                <Games games={this.state.games}/>
+                <GamesContainer />
             </div>
         );
     }
