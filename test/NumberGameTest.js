@@ -5,32 +5,24 @@ import {NumberGame} from '../src/NumberGame';
 
 describe('NumberGame', () => {
     it('has some generated value on construct', () => {
-        const g = new NumberGame();
-        expect(g.getNumber()).to.be.within(0, 9);
-        expect(g.getGameOver()).to.eql(false);
+        expect(NumberGame.generateNumber()).to.be.within(0, 9);
     });
 
     it('should return lesser', () => {
-        const g = new NumberGame();
-        g.setNumber(5);
-        const result = g.makeGuess(4);
-        expect(result).to.eql('lesser');
-        expect(g.getGameOver()).to.eql(false);
+        const result = NumberGame.makeGuess(5, 4);
+        expect(result.result).to.eql('lesser');
+        expect(result.gameOver).to.eql(false);
     });
 
     it('should return greater', () => {
-        const g = new NumberGame();
-        g.setNumber(5);
-        const result = g.makeGuess(6);
-        expect(result).to.eql('greater');
-        expect(g.getGameOver()).to.eql(false);
+        const result = NumberGame.makeGuess(5, 6);
+        expect(result.result).to.eql('greater');
+        expect(result.gameOver).to.eql(false);
     });
 
     it('should return equal and game is over', () => {
-        const g = new NumberGame();
-        g.setNumber(5);
-        const result = g.makeGuess(5);
-        expect(result).to.eql('equal');
-        expect(g.getGameOver()).to.eql(true);
+        const result = NumberGame.makeGuess(5, 5);
+        expect(result.result).to.eql('equal');
+        expect(result.gameOver).to.eql(true);
     });
 });

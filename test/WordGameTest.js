@@ -4,57 +4,40 @@
 import {WordGame} from '../src/WordGame';
 
 describe('WordGame', () => {
-    it('has some generated value on construct', () => {
-        const g = new WordGame();
-        expect(g.getWord()).to.be.oneOf(['paper', 'grill', 'basil', 'hinge', 'ruler']);
-        expect(g.getGameOver()).to.eql(false);
-    });
 
     it('false if completely wrong', () => {
-        const g = new WordGame();
-        g.setWord('basil');
-        const result = g.makeGuess('hinge');
-        expect(result).to.eql([false, false, false, false, false]);
-        expect(g.getGameOver()).to.eql(false);
+        const result = WordGame.makeGuess('basil', 'hinge');
+        expect(result.result).to.eql([false, false, false, false, false]);
+        expect(result.gameOver).to.eql(false);
     });
 
     it('true on one letter', () => {
-        const g = new WordGame();
-        g.setWord('basil');
-        const result = g.makeGuess('paper');
-        expect(result).to.eql([false, true, false, false, false]);
-        expect(g.getGameOver()).to.eql(false);
+        const result = WordGame.makeGuess('basil', 'paper');
+        expect(result.result).to.eql([false, true, false, false, false]);
+        expect(result.gameOver).to.eql(false);
     });
 
     it('true all if equal', () => {
-        const g = new WordGame();
-        g.setWord('basil');
-        const result = g.makeGuess('basil');
-        expect(result).to.eql([true, true, true, true, true]);
-        expect(g.getGameOver()).to.eql(true);
+        const result = WordGame.makeGuess('basil', 'basil');
+        expect(result.result).to.eql([true, true, true, true, true]);
+        expect(result.gameOver).to.eql(true);
     });
 
     it('guess array shorter than word', () => {
-        // const g = new WordGame();
-        // g.setWord('basil');
         const result = WordGame.makeGuess('basil', 'task');
         expect(result.result).to.eql([false, true, true, false]);
         expect(result.gameOver).to.eql(false);
     });
 
     it('game not over if partial match', () => {
-        // const g = new WordGame();
-        // g.setWord('basil');
         const result = WordGame.makeGuess('hello', 'hel');
         expect(result.result).to.eql([true, true, true]);
         expect(result.gameOver).to.eql(false);
     });
 
     it('guess array longer than word', () => {
-        const g = new WordGame();
-        g.setWord('basil');
-        const result = g.makeGuess('banker');
-        expect(result).to.eql([true, true, false, false, false, false]);
-        expect(g.getGameOver()).to.eql(false);
+        const result = WordGame.makeGuess('basil', 'banker');
+        expect(result.result).to.eql([true, true, false, false, false, false]);
+        expect(result.gameOver).to.eql(false);
     });
 });
