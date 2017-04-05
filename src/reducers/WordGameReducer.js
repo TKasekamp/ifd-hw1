@@ -28,10 +28,3 @@ const wordReducer = (state = initialState, action) => {
 
 export default wordReducer;
 
-// Selector functions are usually specified close to reducers as they must be
-// pure functions that operator on state (similar to reducers).
-export const filterComments = ({comments, filterText}) => {
-    return comments.filter((comment) =>
-        comment.author.match(filterText) || comment.text.match(filterText)
-    );
-};
