@@ -4,7 +4,6 @@
 import {WordGame} from '../src/WordGame';
 
 describe('WordGame', () => {
-
     it('false if completely wrong', () => {
         const result = WordGame.makeGuess('basil', 'hinge');
         expect(result.result).to.eql([false, false, false, false, false]);
