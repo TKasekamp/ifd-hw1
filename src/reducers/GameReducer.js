@@ -34,6 +34,8 @@ const gameReducer = (state = initialState, action) => {
         }
 
         case WORD_GUESS_SUBMITTED:
+            // Find game by index, calculate the result with Game
+            // Add to results, replace gameOver
             return Object.assign([], state,
                 state.map((game, index) => {
                     if (index === action.payload.index) {
@@ -56,6 +58,8 @@ const gameReducer = (state = initialState, action) => {
             );
 
         case NUMBER_GUESS_SUBMITTED:
+            // Find game by index, calculate the result with Game
+            // Add to results, replace gameOver
             return Object.assign([], state,
                 state.map((game, index) => {
                     if (index === action.payload.index) {

@@ -13,13 +13,13 @@ describe('Gamereducer', () => {
         const stateAfterSecondGame = gameReducer(stateAfterFirstGame, newWordGameCreated());
         expect(stateAfterSecondGame.length).to.eq(2);
 
-        expect(stateAfterSecondGame[0].id).to.eq(0);
+        expect(stateAfterSecondGame[0].id).to.exist;
         expect(stateAfterSecondGame[0].name).to.eq('number');
         expect(stateAfterSecondGame[0].gameOver).to.eq(false);
         expect(stateAfterSecondGame[0].results).to.eql([]);
         expect(stateAfterSecondGame[0].targetNumber).to.exist;
 
-        expect(stateAfterSecondGame[1].id).to.eq(1);
+        expect(stateAfterSecondGame[1].id).to.exist;
         expect(stateAfterSecondGame[1].name).to.eq('word');
         expect(stateAfterSecondGame[1].gameOver).to.eq(false);
         expect(stateAfterSecondGame[1].results).to.eql([]);
@@ -33,8 +33,8 @@ describe('Gamereducer', () => {
         expect(stateAfter.length).to.eq(1);
 
         expect(stateAfter[0].gameOver).to.eq(false);
-        expect(stateAfter[0].results).to.eql([{guess: 'yyyyy', id: 0, result: [false, false, false, false, false]}]);
-
+        expect(stateAfter[0].results.length).to.eq(1);
+        expect(stateAfter[0].results[0].guess).to.eq('yyyyy');
     });
 
     it('adds a guess to number game', () => {
@@ -44,8 +44,8 @@ describe('Gamereducer', () => {
         expect(stateAfter.length).to.eq(1);
 
         expect(stateAfter[0].gameOver).to.eq(false);
-        expect(stateAfter[0].results).to.eql([{guess: -8, id: 0, result: 'lesser'}]);
-
+        expect(stateAfter[0].results.length).to.eq(1);
+        expect(stateAfter[0].results[0].guess).to.eq(-8);
     });
 
     it('word changes to gameOver when needed', () => {
@@ -57,8 +57,8 @@ describe('Gamereducer', () => {
         expect(stateAfter.length).to.eq(1);
 
         expect(stateAfter[0].gameOver).to.eq(true);
-        expect(stateAfter[0].results).to.eql([{guess: 'yyyyy', id: 1, result: [true, true, true, true, true]}]);
-
+        expect(stateAfter[0].results.length).to.eq(1);
+        expect(stateAfter[0].results[0].guess).to.eq('yyyyy');
     });
 
     it('number changes to gameOver when needed', () => {
@@ -69,9 +69,7 @@ describe('Gamereducer', () => {
         expect(stateAfter.length).to.eq(1);
 
         expect(stateAfter[0].gameOver).to.eq(true);
-        expect(stateAfter[0].results).to.eql([{guess: 3, id: 1, result: 'equal'}]);
-
+        expect(stateAfter[0].results.length).to.eq(1);
+        expect(stateAfter[0].results[0].guess).to.eq(3);
     });
-
 });
-
