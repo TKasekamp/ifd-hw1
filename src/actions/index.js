@@ -1,8 +1,8 @@
 // Action creators can have side-effects
 import {WordGame} from '../WordGame';
-let nextGameId = 1;
-let wordGuessId = 1;
-let numberGuessId = 1;
+let nextGameId = 0;
+let wordGuessId = 0;
+let numberGuessId = 0;
 let words = ['paper', 'grill', 'basil', 'hinge', 'ruler'];
 
 export const NEW_NUMBER_GAME_CREATED = 'NEW_NUMBER_GAME_CREATED';
@@ -32,7 +32,8 @@ export const wordGuessSubmitted = (guess) => (
         type: WORD_GUESS_SUBMITTED,
         payload:  {
             guess: guess.guess,
-            id: wordGuessId++
+            id: wordGuessId++,
+            index: guess.id
         }
     }
 );

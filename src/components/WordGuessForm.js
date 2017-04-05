@@ -3,7 +3,11 @@ import React, {Component} from 'react';
 class WordGuessForm extends Component {
     constructor(props) {
         super(props);
-        this.state = {guess: ''};
+
+        this.state = {
+            guess: '',
+            id: this.props.id
+        };
     }
 
     handleGuessChange(event) {
@@ -43,7 +47,8 @@ class WordGuessForm extends Component {
 }
 WordGuessForm.propTypes = {
     onSubmit: React.PropTypes.func.isRequired,
-    gameOver: React.PropTypes.bool.isRequired
+    gameOver: React.PropTypes.bool.isRequired,
+    id: React.PropTypes.number.isRequired
 };
 
 export default WordGuessForm;

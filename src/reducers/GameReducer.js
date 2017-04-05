@@ -1,35 +1,22 @@
 import {
     NEW_NUMBER_GAME_CREATED,
-    NEW_WORD_GAME_CREATED
+    NEW_WORD_GAME_CREATED,
+    WORD_GUESS_SUBMITTED
 } from '../actions/index.js';
-import wordReducer from './WordGameReducer';
-import numberReducer from './NumberGameReducer';
+import {WordGame} from '../WordGame';
+
 
 
 const initialState = [];
 
 const gameReducer = (state = initialState, action) => {
-    if (action.type.startsWith('word/')) {
-        return [
-            ...state.slice(0, action.index),
-            wordReducer(state[action.index], action),
-            ...state.slice(action.index + 1)
-        ]
-    }
-    else if (action.type.startsWith('number/')) {
-        return [
-            ...state.slice(0, action.index),
-            numberReducer(state[action.index], action),
-            ...state.slice(action.index + 1)
-        ]
-    }
 
     switch (action.type) {
         case NEW_NUMBER_GAME_CREATED: {
 
             const games = state.concat({
                 id: action.payload.id,
-                name : 'number'
+                name: 'number'
 
             });
             return games;
@@ -38,13 +25,36 @@ const gameReducer = (state = initialState, action) => {
 
             const games = state.concat({
                 id: action.payload.id,
-                name : 'word',
-                gameOver : false,
-                targetWord : action.payload.targetWord,
+                name: 'word',
+                gameOver: false,
+                targetWord: action.payload.targetWord,
                 results: []
             });
             return games;
         }
+
+        case WORD_GUESS_SUBMITTED:
+            return Object.assign([], state,
+                state.map((game, index) => {
+                    console.log(action.payload);
+                    if (index === action.payload.index) {
+                        const r = WordGame.makeGuess(game.targetWord, action.payload.guess);
+
+                        const wordGuesses = game.results.concat({
+                            id: action.payload.id,
+                            guess: action.payload.guess,
+                            result: r.result
+                        });
+
+                        return Object.assign({}, game, {
+                            results: wordGuesses,
+                            gameOver: r.gameOver
+
+                        })
+                    }
+                    return game;
+                })
+            )
 
         default:
             return state;

@@ -1,16 +1,6 @@
 import React from 'react';
 import NumberGameContainer from '../containters/NumberGameContainer';
 import WordGameContainer from '../containters/WordGameContainer';
-import bindIndexToActionCreators from '../reducers/bindIndexToActionCreators';
-import {NUMBER_GUESS_SUBMITTED, WORD_GUESS_SUBMITTED} from '../actions/index';
-import {bindActionCreators} from 'redux'
-
-
-const gameDispatchProperties =
-    index =>
-        dispatch => bindActionCreators(
-            bindIndexToActionCreators({WORD_GUESS_SUBMITTED, NUMBER_GUESS_SUBMITTED}, index),
-            dispatch)
 
 
 const Games = (props) => {
@@ -18,9 +8,9 @@ const Games = (props) => {
     const resultElements = props.games.map((game, index) => {
         if (game.name === 'number') {
             return (
-                <NumberGameContainer id={game.id} game={game} key={game.id}  {...gameDispatchProperties(index)(props.dispatch)}/>);
+                <NumberGameContainer game={game} key={index}/>);
         } else if (game.name === 'word') {
-            return (<WordGameContainer id={game.id} game={game} key={game.id}  {...gameDispatchProperties(index)(props.dispatch)}/>);
+            return (<WordGameContainer game={game} key={index}/>);
         }
     });
     return (
