@@ -35,11 +35,19 @@ describe('WordGame', () => {
     });
 
     it('guess array shorter than word', () => {
-        const g = new WordGame();
-        g.setWord('basil');
-        const result = g.makeGuess('task');
-        expect(result).to.eql([false, true, true, false]);
-        expect(g.getGameOver()).to.eql(false);
+        // const g = new WordGame();
+        // g.setWord('basil');
+        const result = WordGame.makeGuess('basil', 'task');
+        expect(result.result).to.eql([false, true, true, false]);
+        expect(result.gameOver).to.eql(false);
+    });
+
+    it('game not over if partial match', () => {
+        // const g = new WordGame();
+        // g.setWord('basil');
+        const result = WordGame.makeGuess('hello', 'hel');
+        expect(result.result).to.eql([true, true, true]);
+        expect(result.gameOver).to.eql(false);
     });
 
     it('guess array longer than word', () => {

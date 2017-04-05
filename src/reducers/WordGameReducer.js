@@ -1,9 +1,10 @@
 import {
     WORD_GUESS_SUBMITTED,
 } from '../actions/index.js';
+import {WordGame} from '../WordGame';
 
 const initialState = {
-    targetWord : '',
+    targetWord : 'hello',
     gameOver: false,
     results: []
 };
@@ -11,12 +12,14 @@ const initialState = {
 const wordReducer = (state = initialState, action) => {
     switch (action.type) {
         case WORD_GUESS_SUBMITTED: {
+            const r = WordGame.makeGuess(state.targetWord, action.payload.guess);
+
             const wordGuesses = state.results.concat({
                 id: action.payload.id,
                 guess : action.payload.guess,
-                result : [false, false, false, false, false]
+                result : r.result
             });
-            return {...state, results: wordGuesses};
+            return {...state, results: wordGuesses, gameOver: r.gameOver};
         }
         default:
             return state;

@@ -1,6 +1,8 @@
 // Action creators can have side-effects
+import {WordGame} from '../WordGame';
 let nextGameId = 1;
 let wordGuessId = 1;
+let words = ['paper', 'grill', 'basil', 'hinge', 'ruler'];
 
 export const NEW_GAME_CREATED = 'NEW_GAME_CREATED';
 export const newGameCreated = (name) => (
@@ -9,6 +11,16 @@ export const newGameCreated = (name) => (
         payload:  {
             name: name,
             id: nextGameId++
+        }
+    }
+);
+
+export const NEW_WORD_GAME_CREATED = 'NEW_WORD_GAME_CREATED';
+export const newWordGameCreated = (name) => (
+    {
+        type: NEW_WORD_GAME_CREATED,
+        payload:  {
+            targetWord: WordGame.selectWord(words)
         }
     }
 );
