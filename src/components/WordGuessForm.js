@@ -5,8 +5,7 @@ class WordGuessForm extends Component {
         super(props);
 
         this.state = {
-            guess: '',
-            id: this.props.id
+            guess: ''
         };
     }
 
@@ -15,7 +14,7 @@ class WordGuessForm extends Component {
     }
 
     onSubmit() {
-        this.props.onSubmit(this.state);
+        this.props.onSubmit({guess: this.state.guess, id: this.props.id});
         this.setState({guess: ''});
     }
 

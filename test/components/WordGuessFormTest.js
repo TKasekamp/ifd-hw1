@@ -6,24 +6,24 @@ import WordGuessForm from '../../src/components/WordGuessForm';
 describe('WordGuessForm', () => {
     it('renders', () => {
         expect(shallow(
-            <WordGuessForm onSubmit={sinon.stub()} gameOver={false}/>
+            <WordGuessForm id={3} onSubmit={sinon.stub()} gameOver={false}/>
         )).to.exist;
     });
 
     it('submits guess when enter pressed', () => {
         const onSubmit = sinon.stub();
-        const form = shallow(<WordGuessForm onSubmit={onSubmit} gameOver={false}/>);
+        const form = shallow(<WordGuessForm id={3} onSubmit={onSubmit} gameOver={false}/>);
 
         form.setState({guess: 'thing'});
 
         form.find('#word-input').simulate('keyPress', {key: 'Enter'});
 
-        expect(onSubmit).to.have.been.calledWith({guess: 'thing'});
+        expect(onSubmit).to.have.been.calledWith({guess: 'thing', id: 3});
     });
 
     it('no call when no input', () => {
         const onSubmit = sinon.stub();
-        const form = shallow(<WordGuessForm onSubmit={onSubmit} gameOver={false}/>);
+        const form = shallow(<WordGuessForm id={3} onSubmit={onSubmit} gameOver={false}/>);
 
         form.setState({guess: ''});
 
@@ -33,7 +33,7 @@ describe('WordGuessForm', () => {
     });
 
     it('clears state when submit button clicked', () => {
-        const form = shallow(<WordGuessForm onSubmit={sinon.stub()} gameOver={false}/>);
+        const form = shallow(<WordGuessForm id={3} onSubmit={sinon.stub()} gameOver={false}/>);
 
         form.setState({guess: 'thing'});
         form.find('#word-input').simulate('keyPress', {key: 'Enter'});
@@ -41,7 +41,7 @@ describe('WordGuessForm', () => {
     });
 
     it('no input when game won', () => {
-        const form = shallow(<WordGuessForm onSubmit={sinon.stub()} gameOver={true}/>);
+        const form = shallow(<WordGuessForm id={3} onSubmit={sinon.stub()} gameOver={true}/>);
 
         expect(form).to.include.text('You won!');
         expect(form).to.not.have.descendants('input');
