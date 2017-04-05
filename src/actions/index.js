@@ -16,7 +16,7 @@ export const newNumberGameCreated = () => (
 );
 
 export const NEW_WORD_GAME_CREATED = 'NEW_WORD_GAME_CREATED';
-export const newWordGameCreated = (name) => (
+export const newWordGameCreated = () => (
     {
         type: NEW_WORD_GAME_CREATED,
         payload:  {
@@ -44,7 +44,8 @@ export const numberGuessSubmitted = (guess) => (
         type: WORD_GUESS_SUBMITTED,
         payload:  {
             guess: guess.guess,
-            id: numberGuessId++
+            id: numberGuessId++,
+            index: guess.id
         }
     }
 );
