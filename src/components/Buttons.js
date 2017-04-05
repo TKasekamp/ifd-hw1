@@ -13,7 +13,7 @@ class Buttons extends Component {
     }
 
     newWordGame() {
-        this.props.newNumberGame();
+        this.props.newWordGame();
     }
 
 
