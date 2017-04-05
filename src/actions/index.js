@@ -4,12 +4,11 @@ let nextGameId = 1;
 let wordGuessId = 1;
 let words = ['paper', 'grill', 'basil', 'hinge', 'ruler'];
 
-export const NEW_GAME_CREATED = 'NEW_GAME_CREATED';
-export const newGameCreated = (name) => (
+export const NEW_NUMBER_GAME_CREATED = 'NEW_NUMBER_GAME_CREATED';
+export const newNumberGameCreated = () => (
     {
-        type: NEW_GAME_CREATED,
+        type: NEW_NUMBER_GAME_CREATED,
         payload:  {
-            name: name,
             id: nextGameId++
         }
     }
@@ -20,6 +19,7 @@ export const newWordGameCreated = (name) => (
     {
         type: NEW_WORD_GAME_CREATED,
         payload:  {
+            id: nextGameId++,
             targetWord: WordGame.selectWord(words)
         }
     }

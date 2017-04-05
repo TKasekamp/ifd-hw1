@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Games from '../components/Games';
+import ButtonContainer from './ButtonContainer';
 
 class App extends Component {
     constructor(props) {
@@ -22,12 +23,7 @@ class App extends Component {
         return (
             <div className='app'>
                 <h1>Game lobby</h1>
-                <button id='create-number' onClick={() => this.newGame('number')}>
-                    Create number game
-                </button>
-                <button id='create-word' onClick={() => this.newGame('word')}>
-                    Create word game
-                </button>
+                <ButtonContainer />
 
                 <Games games={this.state.games}/>
             </div>
