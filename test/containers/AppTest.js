@@ -2,7 +2,8 @@ import React from 'react';
 import {shallow} from 'enzyme';
 
 import App from '../../src/containters/App';
-import Games from '../../src/components/Games';
+import GamesContainer from '../../src/containters/GamesContainer';
+import ButtonContainer from '../../src/containters/ButtonContainer';
 
 describe('App', () => {
     it('initially renders empty GamesList', () => {
@@ -10,39 +11,15 @@ describe('App', () => {
         expect(
             shallow(<App />)
         ).to.contain(
-            <Games games={[]}/>
+            <GamesContainer />
         );
     });
 
     it('renders buttons', () => {
         expect(
             shallow(<App />)
-        ).to.contain.exactly(2).descendants(
-            'button'
-        );
-    });
-
-    it('creates new word game when button clicked', () => {
-        const app = shallow(<App />);
-
-        app.find('#create-word').simulate('click');
-
-        expect(app).to.contain(
-            <Games games={[
-                {id: 1, name: 'word'}
-            ]}/>
-        );
-    });
-
-    it('creates new number game when button clicked', () => {
-        const app = shallow(<App />);
-
-        app.find('#create-number').simulate('click');
-
-        expect(app).to.contain(
-            <Games games={[
-                {id: 1, name: 'number'}
-            ]}/>
+        ).to.contain(
+            <ButtonContainer />
         );
     });
 });
