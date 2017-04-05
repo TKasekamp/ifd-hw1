@@ -3,7 +3,9 @@ import React, {Component} from 'react';
 class NumberGuessForm extends Component {
     constructor(props) {
         super(props);
-        this.state = {guess: ''};
+        this.state = {
+            guess: ''
+        };
     }
 
     handleGuessChange(event) {
@@ -11,7 +13,7 @@ class NumberGuessForm extends Component {
     }
 
     onSubmit() {
-        this.props.onSubmit({guess: parseInt(this.state.guess, 10)});
+        this.props.onSubmit({guess: parseInt(this.state.guess, 10), id: this.props.id});
         this.setState({guess: ''});
     }
 
@@ -43,7 +45,8 @@ class NumberGuessForm extends Component {
 }
 NumberGuessForm.propTypes = {
     onSubmit: React.PropTypes.func.isRequired,
-    gameOver: React.PropTypes.bool.isRequired
+    gameOver: React.PropTypes.bool.isRequired,
+    id: React.PropTypes.number.isRequired,
 };
 
 export default NumberGuessForm;

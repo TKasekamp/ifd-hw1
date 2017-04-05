@@ -2,39 +2,22 @@
  * Game holds the generated number and current status.
  */
 export class NumberGame {
-    constructor() {
-        this.generateNumber();
-        this.gameOver = false;
+
+    static generateNumber() {
+        return Math.floor(Math.random() * (9));
     }
 
-    generateNumber() {
-        this.number = Math.floor(Math.random() * (9));
-    }
-
-    makeGuess(guess) {
+    static makeGuess(target, guess) {
         let result = 'equal';
+        let gameOver = false;
 
-        if (guess > this.number) {
+        if (guess > target) {
             result = 'greater';
-        } else if (guess < this.number) {
+        } else if (guess < target) {
             result = 'lesser';
         } else {
-            this.gameOver = true;
+            gameOver = true;
         }
-        return result;
+        return {result, gameOver};
     }
-
-    getNumber() {
-        return this.number;
-    }
-
-    setNumber(number) {
-        this.number = number;
-    }
-
-    getGameOver() {
-        return this.gameOver;
-    }
-
-
 }
