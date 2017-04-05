@@ -6,10 +6,11 @@ const mapDispatchToProps = (dispatch) => ({
     onSubmit: ({guess, index}) => dispatch(wordGuessSubmitted({guess, index}))
 });
 
-const mapStateToProps = (state) => ({
-    gameOver: state.gameReducer.games[id].gameOver
-});
+// const mapStateToProps = (state) => ({
+//     gameOver: state.gameOver
+//
+// });
 
 // If there are no props to create from state, `mapStateToProps` can be
 // omitted.
-export default connect(mapStateToProps, mapDispatchToProps)(WordGuessForm);
+export default connect(undefined, mapDispatchToProps)(WordGuessForm);

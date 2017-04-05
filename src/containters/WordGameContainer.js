@@ -34,8 +34,8 @@ class WordGameContainer extends Component {
         return (
             <div className='app'>
                 <h3>Word game</h3>
-                <WordGuessFormContainer id={this.props.id} />
-                <WordListContainer />
+                <WordGuessFormContainer  />
+                <WordListContainer results={this.props.results}/>
 
             </div>
         );

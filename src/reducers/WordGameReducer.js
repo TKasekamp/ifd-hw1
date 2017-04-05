@@ -3,13 +3,7 @@ import {
 } from '../actions/index.js';
 import {WordGame} from '../WordGame';
 
-const initialState = {
-    targetWord : 'hello',
-    gameOver: false,
-    results: []
-};
-
-const wordReducer = (state = initialState, action) => {
+const wordReducer = (state = {}, action) => {
     switch (action.type) {
         case WORD_GUESS_SUBMITTED: {
             const r = WordGame.makeGuess(state.targetWord, action.payload.guess);

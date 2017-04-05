@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import WordResultList from '../components/WordResultList';
 
 const mapStateToProps = (state) => ({
-    results : state.wordReducer.results
+    results : state.results
 
 });
 
