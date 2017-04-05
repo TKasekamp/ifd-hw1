@@ -19,4 +19,14 @@ class WordGameContainer extends Component {
     }
 }
 
+WordGameContainer.propTypes = {
+    game: React.PropTypes.shape({
+        id: React.PropTypes.number,
+        name: React.PropTypes.string,
+        gameOver: React.PropTypes.bool,
+        results: React.PropTypes.array,
+        targetWord: React.PropTypes.string
+    }).isRequired
+};
+
 export default WordGameContainer;

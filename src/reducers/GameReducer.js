@@ -11,22 +11,18 @@ import {NumberGame} from '../NumberGame';
 const initialState = [];
 
 const gameReducer = (state = initialState, action) => {
-
     switch (action.type) {
         case NEW_NUMBER_GAME_CREATED: {
-
             const games = state.concat({
                 id: action.payload.id,
                 name: 'number',
                 gameOver: false,
                 targetNumber: action.payload.targetNumber,
                 results: []
-
             });
             return games;
         }
         case NEW_WORD_GAME_CREATED: {
-
             const games = state.concat({
                 id: action.payload.id,
                 name: 'word',
@@ -53,7 +49,7 @@ const gameReducer = (state = initialState, action) => {
                             results: wordGuesses,
                             gameOver: r.gameOver
 
-                        })
+                        });
                     }
                     return game;
                 })
@@ -75,7 +71,7 @@ const gameReducer = (state = initialState, action) => {
                             results: numberGuesses,
                             gameOver: r.gameOver
 
-                        })
+                        });
                     }
                     return game;
                 })

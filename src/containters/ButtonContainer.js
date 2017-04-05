@@ -1,8 +1,6 @@
-
 import {connect} from 'react-redux';
-import {newNumberGameCreated} from '../actions';
+import {newNumberGameCreated, newWordGameCreated} from '../actions';
 import Buttons from '../components/Buttons';
-import {newWordGameCreated} from '../actions/index';
 
 const mapDispatchToProps = (dispatch) => ({
     newNumberGame: () => dispatch(newNumberGameCreated()),

@@ -1,7 +1,4 @@
 import React, {Component} from 'react';
-import {NumberGame} from '../NumberGame';
-import NumberGuessForm from '../components/NumberGuessForm';
-import NumberResultList from '../components/NumberResultList';
 import NumberGuessFormContainer from './NumberGuessFormContainer';
 import NumberListContainer from './NumberListContainer';
 
@@ -20,5 +17,15 @@ class NumberGameContainer extends Component {
         );
     }
 }
+
+NumberGameContainer.propTypes = {
+    game: React.PropTypes.shape({
+        id: React.PropTypes.number,
+        name: React.PropTypes.string,
+        gameOver: React.PropTypes.bool,
+        results: React.PropTypes.array,
+        targetNumber: React.PropTypes.number
+    }).isRequired
+};
 
 export default NumberGameContainer;

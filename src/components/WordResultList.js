@@ -2,7 +2,6 @@ import React from 'react';
 import WordResult from './WordResult';
 
 const WordResultList = (props) => {
-    console.log(props);
     const resultElements = props.results.map((result) => {
         return (
             <WordResult guess={result.guess} result={result.result} key={result.id}>

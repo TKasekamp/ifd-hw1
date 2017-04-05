@@ -4,7 +4,6 @@ import WordGameContainer from '../containters/WordGameContainer';
 
 
 const Games = (props) => {
-    console.log(props);
     const resultElements = props.games.map((game, index) => {
         if (game.name === 'number') {
             return (
@@ -21,11 +20,15 @@ const Games = (props) => {
     );
 };
 
-// Games.propTypes = {
-//     games: React.PropTypes.arrayOf(React.PropTypes.shape({
-//         id: React.PropTypes.number,
-//         name: React.PropTypes.string,
-//     })).isRequired
-// };
+Games.propTypes = {
+    games: React.PropTypes.arrayOf(React.PropTypes.shape({
+        id: React.PropTypes.number,
+        name: React.PropTypes.string,
+        gameOver: React.PropTypes.bool,
+        results: React.PropTypes.array,
+        targetWord: React.PropTypes.string,
+        targetNumber: React.PropTypes.number
+    })).isRequired
+};
 
 export default Games;
