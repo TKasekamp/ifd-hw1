@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import WordGuessFormContainer from './WordGuessFormContainer';
-import WordListContainer from './WordListContainer';
+import WordResultList from '../components/WordResultList';
 
 class WordGameContainer extends Component {
     constructor(props) {
@@ -12,7 +12,7 @@ class WordGameContainer extends Component {
             <div className='app'>
                 <h3>Word game</h3>
                 <WordGuessFormContainer id={this.props.game.id} gameOver={this.props.game.gameOver}/>
-                <WordListContainer results={this.props.game.results}/>
+                <WordResultList results={this.props.game.results}/>
 
             </div>
         );

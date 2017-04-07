@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import NumberGuessFormContainer from './NumberGuessFormContainer';
-import NumberListContainer from './NumberListContainer';
+import NumberResultList from '../components/NumberResultList';
 
 class NumberGameContainer extends Component {
     constructor(props) {
@@ -12,7 +12,7 @@ class NumberGameContainer extends Component {
             <div className='app'>
                 <h3>Number game</h3>
                 <NumberGuessFormContainer id={this.props.game.id} gameOver={this.props.game.gameOver}/>
-                <NumberListContainer results={this.props.game.results}/>
+                <NumberResultList results={this.props.game.results}/>
             </div>
         );
     }
