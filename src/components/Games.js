@@ -1,6 +1,6 @@
 import React from 'react';
-import NumberGameContainer from '../containters/NumberGameContainer';
-import WordGameContainer from '../containters/WordGameContainer';
+import NumberGameContainer from '../containers/NumberGameContainer';
+import WordGameContainer from '../containers/WordGameContainer';
 
 
 const Games = (props) => {

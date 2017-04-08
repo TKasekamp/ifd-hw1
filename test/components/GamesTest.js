@@ -2,8 +2,8 @@ import React from 'react';
 import {shallow} from 'enzyme';
 
 import Games from '../../src/components/Games';
-import NumberGameContainer from '../../src/containters/NumberGameContainer';
-import WordGameContainer from '../../src/containters/WordGameContainer';
+import NumberGameContainer from '../../src/containers/NumberGameContainer';
+import WordGameContainer from '../../src/containers/WordGameContainer';
 
 describe('Games', () => {
     it('renders with no input', () => {

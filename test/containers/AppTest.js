@@ -1,9 +1,9 @@
 import React from 'react';
 import {shallow} from 'enzyme';
 
-import App from '../../src/containters/App';
-import GamesContainer from '../../src/containters/GamesContainer';
-import ButtonContainer from '../../src/containters/ButtonContainer';
+import App from '../../src/containers/App';
+import GamesContainer from '../../src/containers/GamesContainer';
+import ButtonContainer from '../../src/containers/ButtonContainer';
 
 describe('App', () => {
     it('initially renders empty GamesList', () => {
