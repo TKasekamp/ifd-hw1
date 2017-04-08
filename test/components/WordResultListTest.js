@@ -19,8 +19,7 @@ describe('WordResultList', () => {
         const resultList = shallow(<WordResultList results={results}/>);
 
         expect(resultList).to.have.exactly(2).descendants(WordResult);
-        // Tests against pure HTML for some reason
-        // expect(resultList).to.contain(<WordResult result={[false, false]} guess='ab'/>);
-        // expect(resultList).to.contain(<WordResult result={[true, false]} guess='se'/>);
+        expect(resultList).to.contain(<WordResult result={[false, false]} guess='ab'/>);
+        expect(resultList).to.contain(<WordResult result={[true, true]} guess='se'/>);
     });
 });
