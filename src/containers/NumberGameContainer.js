@@ -11,8 +11,8 @@ class NumberGameContainer extends Component {
         return (
             <div className='app'>
                 <h3>Number game</h3>
-                <NumberGuessFormContainer id={this.props.game.id} gameOver={this.props.game.gameOver}/>
-                <NumberResultList results={this.props.game.results}/>
+                <NumberGuessFormContainer id={this.props.game.id} status={this.props.game.status}/>
+                <NumberResultList moves={this.props.game.moves}/>
             </div>
         );
     }
@@ -22,8 +22,8 @@ NumberGameContainer.propTypes = {
     game: React.PropTypes.shape({
         id: React.PropTypes.number,
         name: React.PropTypes.string,
-        gameOver: React.PropTypes.bool,
-        results: React.PropTypes.array,
+        status: React.PropTypes.string,
+        moves: React.PropTypes.array,
         targetNumber: React.PropTypes.number
     }).isRequired
 };

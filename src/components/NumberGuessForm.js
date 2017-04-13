@@ -24,7 +24,7 @@ class NumberGuessForm extends Component {
     }
 
     render() {
-        if (this.props.gameOver) {
+        if (this.props.status === 'finished') {
             return (<div>You won!</div>);
         } else {
             return (
@@ -45,7 +45,7 @@ class NumberGuessForm extends Component {
 }
 NumberGuessForm.propTypes = {
     onSubmit: React.PropTypes.func.isRequired,
-    gameOver: React.PropTypes.bool.isRequired,
+    status: React.PropTypes.string.isRequired,
     id: React.PropTypes.number.isRequired,
 };
 

@@ -9,15 +9,15 @@ export class NumberGame {
 
     static makeGuess(target, guess) {
         let comparedToAnswer = 'EQ';
-        let gameOver = false;
+        let status = 'waiting_for_move';
 
         if (guess > target) {
             comparedToAnswer = 'GT';
         } else if (guess < target) {
             comparedToAnswer = 'LT';
         } else {
-            gameOver = true;
+            status = 'finished';
         }
-        return {comparedToAnswer, gameOver};
+        return {comparedToAnswer, status};
     }
 }

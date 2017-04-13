@@ -11,18 +11,18 @@ describe('NumberGame', () => {
     it('should return lesser', () => {
         const result = NumberGame.makeGuess(5, 4);
         expect(result.comparedToAnswer).to.eql('LT');
-        expect(result.gameOver).to.eql(false);
+        expect(result.status).to.eql('waiting_for_move');
     });
 
     it('should return greater', () => {
         const result = NumberGame.makeGuess(5, 6);
         expect(result.comparedToAnswer).to.eql('GT');
-        expect(result.gameOver).to.eql(false);
+        expect(result.status).to.eql('waiting_for_move');
     });
 
     it('should return equal and game is over', () => {
         const result = NumberGame.makeGuess(5, 5);
         expect(result.comparedToAnswer).to.eql('EQ');
-        expect(result.gameOver).to.eql(true);
+        expect(result.status).to.eql('finished');
     });
 });

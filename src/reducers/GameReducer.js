@@ -16,9 +16,9 @@ const gameReducer = (state = initialState, action) => {
             const games = state.concat({
                 id: action.payload.id,
                 name: 'number',
-                gameOver: false,
+                status: 'waiting_for_move',
                 targetNumber: action.payload.targetNumber,
-                results: []
+                moves: []
             });
             return games;
         }
@@ -65,15 +65,15 @@ const gameReducer = (state = initialState, action) => {
                     if (index === action.payload.index) {
                         const r = NumberGame.makeGuess(game.targetNumber, action.payload.guess);
 
-                        const numberGuesses = game.results.concat({
+                        const numberGuesses = game.moves.concat({
                             id: action.payload.id,
                             guess: action.payload.guess,
-                            result: r.result
+                            comparedToAnswer: r.comparedToAnswer
                         });
 
                         return Object.assign({}, game, {
-                            results: numberGuesses,
-                            gameOver: r.gameOver
+                            moves: numberGuesses,
+                            status: r.status
 
                         });
                     }
