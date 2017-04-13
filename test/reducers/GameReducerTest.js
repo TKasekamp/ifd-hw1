@@ -14,13 +14,13 @@ describe('Gamereducer', () => {
         expect(stateAfterSecondGame.length).to.eq(2);
 
         expect(stateAfterSecondGame[0].id).to.exist;
-        expect(stateAfterSecondGame[0].name).to.eq('number');
+        expect(stateAfterSecondGame[0].type).to.eq('guess_number');
         expect(stateAfterSecondGame[0].status).to.eq('waiting_for_move');
-        expect(stateAfterSecondGame[0].results).to.eql([]);
+        expect(stateAfterSecondGame[0].moves).to.eql([]);
         expect(stateAfterSecondGame[0].targetNumber).to.exist;
 
         expect(stateAfterSecondGame[1].id).to.exist;
-        expect(stateAfterSecondGame[1].name).to.eq('word');
+        expect(stateAfterSecondGame[1].type).to.eq('guess_word');
         expect(stateAfterSecondGame[1].gameOver).to.eq(false);
         expect(stateAfterSecondGame[1].results).to.eql([]);
         expect(stateAfterSecondGame[1].targetWord).to.exist;
@@ -44,8 +44,8 @@ describe('Gamereducer', () => {
         expect(stateAfter.length).to.eq(1);
 
         expect(stateAfter[0].status).to.eq('waiting_for_move');
-        expect(stateAfter[0].results.length).to.eq(1);
-        expect(stateAfter[0].results[0].guess).to.eq(-8);
+        expect(stateAfter[0].moves.length).to.eq(1);
+        expect(stateAfter[0].moves[0].guess).to.eq(-8);
     });
 
     it('word changes to gameOver when needed', () => {
@@ -69,7 +69,7 @@ describe('Gamereducer', () => {
         expect(stateAfter.length).to.eq(1);
 
         expect(stateAfter[0].status).to.eq('finished');
-        expect(stateAfter[0].results.length).to.eq(1);
-        expect(stateAfter[0].results[0].guess).to.eq(3);
+        expect(stateAfter[0].moves.length).to.eq(1);
+        expect(stateAfter[0].moves[0].guess).to.eq(3);
     });
 });

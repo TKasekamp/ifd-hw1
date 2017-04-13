@@ -15,7 +15,7 @@ const gameReducer = (state = initialState, action) => {
         case NEW_NUMBER_GAME_CREATED: {
             const games = state.concat({
                 id: action.payload.id,
-                name: 'number',
+                type: 'guess_number',
                 status: 'waiting_for_move',
                 targetNumber: action.payload.targetNumber,
                 moves: []
@@ -25,7 +25,7 @@ const gameReducer = (state = initialState, action) => {
         case NEW_WORD_GAME_CREATED: {
             const games = state.concat({
                 id: action.payload.id,
-                name: 'word',
+                type: 'guess_word',
                 gameOver: false,
                 targetWord: action.payload.targetWord,
                 results: []

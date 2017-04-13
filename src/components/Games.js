@@ -5,10 +5,10 @@ import WordGameContainer from '../containers/WordGameContainer';
 
 const Games = (props) => {
     const resultElements = props.games.map((game, index) => {
-        if (game.name === 'number') {
+        if (game.type === 'guess_number') {
             return (
                 <NumberGameContainer game={game} key={index}/>);
-        } else if (game.name === 'word') {
+        } else if (game.type === 'guess_word') {
             return (<WordGameContainer game={game} key={index}/>);
         }
     });
@@ -23,7 +23,7 @@ const Games = (props) => {
 Games.propTypes = {
     games: React.PropTypes.arrayOf(React.PropTypes.shape({
         id: React.PropTypes.number,
-        name: React.PropTypes.string,
+        type: React.PropTypes.string,
         gameOver: React.PropTypes.bool,
         results: React.PropTypes.array,
         targetWord: React.PropTypes.string,

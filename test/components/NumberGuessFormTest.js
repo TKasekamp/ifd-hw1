@@ -6,13 +6,13 @@ import NumberGuessForm from '../../src/components/NumberGuessForm';
 describe('NumberGuessForm', () => {
     it('renders', () => {
         expect(shallow(
-            <NumberGuessForm id={3} onSubmit={sinon.stub()} gameOver={false}/>
+            <NumberGuessForm id={3} onSubmit={sinon.stub()} status='waiting_for_move'/>
         )).to.exist;
     });
 
     it('submits guess when enter pressed', () => {
         const onSubmit = sinon.stub();
-        const form = shallow(<NumberGuessForm id={3} onSubmit={onSubmit} gameOver={false}/>);
+        const form = shallow(<NumberGuessForm id={3} onSubmit={onSubmit} status='waiting_for_move'/>);
 
         form.setState({guess: '4'});
 
@@ -23,7 +23,7 @@ describe('NumberGuessForm', () => {
 
     it('no call when no input', () => {
         const onSubmit = sinon.stub();
-        const form = shallow(<NumberGuessForm id={3} onSubmit={onSubmit} gameOver={false}/>);
+        const form = shallow(<NumberGuessForm id={3} onSubmit={onSubmit} status='waiting_for_move'/>);
 
         form.setState({guess: ''});
 
@@ -33,7 +33,7 @@ describe('NumberGuessForm', () => {
     });
 
     it('clears state when submit button clicked', () => {
-        const form = shallow(<NumberGuessForm id={3} onSubmit={sinon.stub()} gameOver={false}/>);
+        const form = shallow(<NumberGuessForm id={3} onSubmit={sinon.stub()} status='waiting_for_move'/>);
 
         form.setState({guess: '2'});
         form.find('#number-input').simulate('keyPress', {key: 'Enter'});
@@ -41,7 +41,7 @@ describe('NumberGuessForm', () => {
     });
 
     it('no input when game won', () => {
-        const form = shallow(<NumberGuessForm id={3} onSubmit={sinon.stub()} gameOver={true}/>);
+        const form = shallow(<NumberGuessForm id={3} onSubmit={sinon.stub()} status='finished'/>);
 
         expect(form).to.include.text('You won!');
         expect(form).to.not.have.descendants('input');

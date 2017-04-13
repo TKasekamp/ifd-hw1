@@ -15,9 +15,9 @@ describe('Games', () => {
 
     it('renders game for each input', () => {
         const games = [
-            {id: 1, name: 'number'},
-            {id: 2, name: 'word'},
-            {id: 3, name: 'word'}
+            {id: 1, type: 'guess_number'},
+            {id: 2, type: 'guess_word'},
+            {id: 3, type: 'guess_word'}
         ];
 
         const gameList = shallow(<Games games={games}/>);
