@@ -13,25 +13,30 @@ describe('WordGame', () => {
     it('true on one letter', () => {
         const result = WordGame.makeGuess('basil', 'paper');
         expect(result.letterMatches).to.eql([false, true, false, false, false]);
-        expect(result.status).to.eql('waiting_for_move');    });
+        expect(result.status).to.eql('waiting_for_move');
+    });
 
     it('true all if equal', () => {
         const result = WordGame.makeGuess('basil', 'basil');
         expect(result.letterMatches).to.eql([true, true, true, true, true]);
-        expect(result.status).to.eql('finished');    });
+        expect(result.status).to.eql('finished');
+    });
 
     it('guess array shorter than word', () => {
         const result = WordGame.makeGuess('basil', 'task');
         expect(result.letterMatches).to.eql([false, true, true, false]);
-        expect(result.status).to.eql('waiting_for_move');    });
+        expect(result.status).to.eql('waiting_for_move');
+    });
 
     it('game not over if partial match', () => {
         const result = WordGame.makeGuess('hello', 'hel');
         expect(result.letterMatches).to.eql([true, true, true]);
-        expect(result.status).to.eql('waiting_for_move');    });
+        expect(result.status).to.eql('waiting_for_move');
+    });
 
     it('guess array longer than word', () => {
         const result = WordGame.makeGuess('basil', 'banker');
         expect(result.letterMatches).to.eql([true, true, false, false, false, false]);
-        expect(result.status).to.eql('waiting_for_move');    });
+        expect(result.status).to.eql('waiting_for_move');
+    });
 });
