@@ -8,36 +8,39 @@ import {WordGame} from '../WordGame';
 import {NumberGame} from '../NumberGame';
 
 
-const initialState = [];
+const initialState = {
+    games: []
+};
 
 const gameReducer = (state = initialState, action) => {
     switch (action.type) {
         case NEW_NUMBER_GAME_CREATED: {
-            const games = state.concat({
+            const games = state.games.concat({
                 id: action.payload.id,
                 type: 'guess_number',
                 status: 'waiting_for_move',
                 targetNumber: action.payload.targetNumber,
                 moves: []
             });
-            return games;
+            return {...state, games};
         }
         case NEW_WORD_GAME_CREATED: {
-            const games = state.concat({
+            const games = state.games.concat({
                 id: action.payload.id,
                 type: 'guess_word',
                 status: 'waiting_for_move',
                 targetWord: action.payload.targetWord,
                 moves: []
             });
-            return games;
+            return {...state, games};
         }
 
         case WORD_GUESS_SUBMITTED:
             // Find game by index, calculate the result with Game
             // Add to results, replace gameOver
-            return Object.assign([], state,
-                state.map((game, index) => {
+            return {
+                ...state,
+                games: state.games.map((game, index) => {
                     if (index === action.payload.index) {
                         const r = WordGame.makeGuess(game.targetWord, action.payload.guess);
 
@@ -55,13 +58,14 @@ const gameReducer = (state = initialState, action) => {
                     }
                     return game;
                 })
-            );
+            };
 
         case NUMBER_GUESS_SUBMITTED:
             // Find game by index, calculate the result with Game
             // Add to results, replace gameOver
-            return Object.assign([], state,
-                state.map((game, index) => {
+            return {
+                ...state,
+                games: state.games.map((game, index) => {
                     if (index === action.payload.index) {
                         const r = NumberGame.makeGuess(game.targetNumber, action.payload.guess);
 
@@ -79,7 +83,7 @@ const gameReducer = (state = initialState, action) => {
                     }
                     return game;
                 })
-            );
+            };
 
         default:
             return state;
