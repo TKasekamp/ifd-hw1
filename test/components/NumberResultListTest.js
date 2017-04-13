@@ -12,14 +12,14 @@ describe('NumberResultList', () => {
 
     it('renders result for each guess', () => {
         const results = [
-            {id: 1, guess: 4, result: 'greater'},
-            {id: 2, guess: 8, result: 'lesser'}
+            {id: 1, guess: 4, comparedToAnswer: 'GT'},
+            {id: 2, guess: 8, comparedToAnswer: 'LT'}
         ];
 
         const resultList = shallow(<NumberResultList results={results}/>);
 
         expect(resultList).to.have.exactly(2).descendants(NumberResult);
-        expect(resultList).to.contain(<NumberResult result='greater' guess={4}/>);
-        expect(resultList).to.contain(<NumberResult result='lesser' guess={8}/>);
+        expect(resultList).to.contain(<NumberResult comparedToAnswer='GT' guess={4}/>);
+        expect(resultList).to.contain(<NumberResult comparedToAnswer='LT' guess={8}/>);
     });
 });

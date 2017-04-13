@@ -8,16 +8,16 @@ export class NumberGame {
     }
 
     static makeGuess(target, guess) {
-        let result = 'equal';
+        let comparedToAnswer = 'EQ';
         let gameOver = false;
 
         if (guess > target) {
-            result = 'greater';
+            comparedToAnswer = 'GT';
         } else if (guess < target) {
-            result = 'lesser';
+            comparedToAnswer = 'LT';
         } else {
             gameOver = true;
         }
-        return {result, gameOver};
+        return {comparedToAnswer, gameOver};
     }
 }

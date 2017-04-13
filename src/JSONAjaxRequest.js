@@ -1,7 +1,7 @@
 export default (url, method, data, onSuccess, onFailure) => {
   const request = new XMLHttpRequest();
   request.onreadystatechange = () => {
-    if (request.readyState == XMLHttpRequest.DONE) {
+    if (request.readyState === XMLHttpRequest.DONE) {
         let response;
         try {
           response = JSON.parse(request.responseText);

@@ -4,7 +4,7 @@ import NumberResult from './NumberResult';
 const NumberResultList = (props) => {
     const resultElements = props.results.map((result) => {
         return (
-            <NumberResult guess={result.guess} result={result.result} key={result.id}>
+            <NumberResult guess={result.guess} comparedToAnswer={result.comparedToAnswer} key={result.id}>
             </NumberResult>
         );
     });
@@ -20,7 +20,7 @@ NumberResultList.propTypes = {
     results: React.PropTypes.arrayOf(React.PropTypes.shape({
         guess: React.PropTypes.number,
         id: React.PropTypes.number,
-        result: React.PropTypes.string
+        comparedToAnswer: React.PropTypes.string
     })).isRequired
 };
 

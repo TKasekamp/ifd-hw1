@@ -4,11 +4,11 @@ import React from 'react';
  */
 const NumberResult = (props) => {
     let text = null;
-    if (props.result === 'greater') {
+    if (props.comparedToAnswer === 'GT') {
         text = <p className="fail">{props.guess}: is greater than target</p>;
-    } else if (props.result === 'lesser') {
+    } else if (props.comparedToAnswer === 'LT') {
         text = <p className="fail">{props.guess}: is lesser than target</p>;
-    } else if (props.result === 'equal') {
+    } else if (props.comparedToAnswer === 'EQ') {
         text = <p className="win">{props.guess}: was correct</p>;
     }
 
@@ -20,7 +20,7 @@ const NumberResult = (props) => {
 };
 NumberResult.propTypes = {
     guess: React.PropTypes.number.isRequired,
-    result: React.PropTypes.string.isRequired
+    comparedToAnswer: React.PropTypes.string.isRequired
 };
 
 export default NumberResult;
