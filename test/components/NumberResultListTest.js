@@ -6,7 +6,7 @@ import NumberResult from '../../src/components/NumberResult';
 
 describe('NumberResultList', () => {
     it('renders no NumberResult components without results', () => {
-        expect(shallow(<NumberResultList results={[]}/>))
+        expect(shallow(<NumberResultList moves={[]}/>))
             .to.not.contain.descendants(NumberResult);
     });
 
@@ -16,7 +16,7 @@ describe('NumberResultList', () => {
             {id: 2, guess: 8, comparedToAnswer: 'LT'}
         ];
 
-        const resultList = shallow(<NumberResultList results={results}/>);
+        const resultList = shallow(<NumberResultList moves={results}/>);
 
         expect(resultList).to.have.exactly(2).descendants(NumberResult);
         expect(resultList).to.contain(<NumberResult comparedToAnswer='GT' guess={4}/>);
