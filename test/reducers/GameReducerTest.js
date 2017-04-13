@@ -22,7 +22,7 @@ describe('Gamereducer', () => {
         expect(stateAfterSecondGame[1].id).to.exist;
         expect(stateAfterSecondGame[1].type).to.eq('guess_word');
         expect(stateAfterSecondGame[1].status).to.eq('waiting_for_move');
-        expect(stateAfterSecondGame[1].results).to.eql([]);
+        expect(stateAfterSecondGame[1].moves).to.eql([]);
         expect(stateAfterSecondGame[1].targetWord).to.exist;
     });
 

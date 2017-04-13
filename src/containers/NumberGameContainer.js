@@ -20,11 +20,11 @@ class NumberGameContainer extends Component {
 
 NumberGameContainer.propTypes = {
     game: React.PropTypes.shape({
-        id: React.PropTypes.number,
-        name: React.PropTypes.string,
-        status: React.PropTypes.string,
-        moves: React.PropTypes.array,
-        targetNumber: React.PropTypes.number
+        id: React.PropTypes.number.isRequired,
+        type: React.PropTypes.string.isRequired,
+        status: React.PropTypes.string.isRequired,
+        moves: React.PropTypes.array.isRequired,
+        targetNumber: React.PropTypes.number.isRequired
     }).isRequired
 };
 

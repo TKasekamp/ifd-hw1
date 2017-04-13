@@ -12,7 +12,7 @@ class WordGameContainer extends Component {
             <div className='app'>
                 <h3>Word game</h3>
                 <WordGuessFormContainer id={this.props.game.id} status={this.props.game.status}/>
-                <WordResultList results={this.props.game.results}/>
+                <WordResultList moves={this.props.game.moves}/>
 
             </div>
         );
@@ -24,7 +24,7 @@ WordGameContainer.propTypes = {
         id: React.PropTypes.number.isRequired,
         type: React.PropTypes.string.isRequired,
         status: React.PropTypes.string.isRequired,
-        results: React.PropTypes.array.isRequired,
+        moves: React.PropTypes.array.isRequired,
         targetWord: React.PropTypes.string.isRequired
     }).isRequired
 };

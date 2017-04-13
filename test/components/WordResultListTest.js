@@ -6,7 +6,7 @@ import WordResult from '../../src/components/WordResult';
 
 describe('WordResultList', () => {
     it('renders no WordResult components without results', () => {
-        expect(shallow(<WordResultList results={[]}/>))
+        expect(shallow(<WordResultList moves={[]}/>))
             .to.not.contain.descendants(WordResult);
     });
 
@@ -16,7 +16,7 @@ describe('WordResultList', () => {
             {id: 2, guess: 'se', result: [true, true]}
         ];
 
-        const resultList = shallow(<WordResultList results={results}/>);
+        const resultList = shallow(<WordResultList moves={results}/>);
 
         expect(resultList).to.have.exactly(2).descendants(WordResult);
         expect(resultList).to.contain(<WordResult result={[false, false]} guess='ab'/>);

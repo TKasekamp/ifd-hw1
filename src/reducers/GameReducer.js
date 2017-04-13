@@ -28,7 +28,7 @@ const gameReducer = (state = initialState, action) => {
                 type: 'guess_word',
                 status: 'waiting_for_move',
                 targetWord: action.payload.targetWord,
-                results: []
+                moves: []
             });
             return games;
         }
@@ -41,7 +41,7 @@ const gameReducer = (state = initialState, action) => {
                     if (index === action.payload.index) {
                         const r = WordGame.makeGuess(game.targetWord, action.payload.guess);
 
-                        const wordGuesses = game.results.concat({
+                        const wordGuesses = game.moves.concat({
                             id: action.payload.id,
                             guess: action.payload.guess,
                             result: r.result

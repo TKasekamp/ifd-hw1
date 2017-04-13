@@ -22,10 +22,10 @@ const Games = (props) => {
 
 Games.propTypes = {
     games: React.PropTypes.arrayOf(React.PropTypes.shape({
-        id: React.PropTypes.number,
-        type: React.PropTypes.string,
-        gameOver: React.PropTypes.bool,
-        results: React.PropTypes.array,
+        id: React.PropTypes.number.isRequired,
+        type: React.PropTypes.string.isRequired,
+        status: React.PropTypes.string.isRequired,
+        moves: React.PropTypes.array.isRequired,
         targetWord: React.PropTypes.string,
         targetNumber: React.PropTypes.number
     })).isRequired

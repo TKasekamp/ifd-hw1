@@ -2,7 +2,7 @@ import React from 'react';
 import WordResult from './WordResult';
 
 const WordResultList = (props) => {
-    const resultElements = props.results.map((result) => {
+    const resultElements = props.moves.map((result) => {
         return (
             <WordResult guess={result.guess} result={result.result} key={result.id}>
             </WordResult>
@@ -17,7 +17,7 @@ const WordResultList = (props) => {
 };
 
 WordResultList.propTypes = {
-    results: React.PropTypes.arrayOf(React.PropTypes.shape({
+    moves: React.PropTypes.arrayOf(React.PropTypes.shape({
         guess: React.PropTypes.string,
         id: React.PropTypes.number,
         result: React.PropTypes.arrayOf(React.PropTypes.bool)
