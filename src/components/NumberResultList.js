@@ -18,9 +18,9 @@ const NumberResultList = (props) => {
 
 NumberResultList.propTypes = {
     moves: React.PropTypes.arrayOf(React.PropTypes.shape({
-        guess: React.PropTypes.number,
-        id: React.PropTypes.number,
-        comparedToAnswer: React.PropTypes.string
+        guess: React.PropTypes.number.isRequired,
+        id: React.PropTypes.number.isRequired,
+        comparedToAnswer: React.PropTypes.string.isRequired
     })).isRequired
 };
 

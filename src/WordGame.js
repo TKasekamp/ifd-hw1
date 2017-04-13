@@ -9,7 +9,7 @@ export class WordGame {
     }
 
     static makeGuess(target, guess) {
-        let result = [];
+        let letterMatches = [];
         let check = true;
         let status = 'waiting_for_move';
 
@@ -21,13 +21,13 @@ export class WordGame {
             } else {
                 check = false;
             }
-            result.push(r);
+            letterMatches.push(r);
         }
 
         if(target === guess) {
             status = 'finished';
         }
-        return {result, status};
+        return {letterMatches, status};
     }
 
 }

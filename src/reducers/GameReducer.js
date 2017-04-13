@@ -44,11 +44,11 @@ const gameReducer = (state = initialState, action) => {
                         const wordGuesses = game.moves.concat({
                             id: action.payload.id,
                             guess: action.payload.guess,
-                            result: r.result
+                            letterMatches: r.letterMatches
                         });
 
                         return Object.assign({}, game, {
-                            results: wordGuesses,
+                            moves: wordGuesses,
                             status: r.status
 
                         });

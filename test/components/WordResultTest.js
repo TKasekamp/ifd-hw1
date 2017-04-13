@@ -5,16 +5,16 @@ import WordResult from '../../src/components/WordResult';
 
 describe('WordResult', () => {
     it('renders', () => {
-        expect(shallow(<WordResult key="1" guess='ga' result={[true, false]}/>)).to.exist;
+        expect(shallow(<WordResult key="1" guess='ga' letterMatches={[true, false]}/>)).to.exist;
     });
 
     it('renders no WordResult components without result', () => {
-        expect(shallow(<WordResult key="1" guess='ga' result={[]}/>))
+        expect(shallow(<WordResult key="1" guess='ga' letterMatches={[]}/>))
             .to.not.contain(<a></a>);
     });
 
     it('renders with correct class', () => {
-        const result = shallow(<WordResult key="1" guess='ga' result={[true, false]}/>);
+        const result = shallow(<WordResult key="1" guess='ga' letterMatches={[true, false]}/>);
         expect(result).to.include.text('ga');
         expect(result).to.have.exactly(2).descendants('a');
         // Testing render paths

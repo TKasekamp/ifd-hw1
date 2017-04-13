@@ -33,8 +33,8 @@ describe('Gamereducer', () => {
         expect(stateAfter.length).to.eq(1);
 
         expect(stateAfter[0].status).to.eq('waiting_for_move');
-        expect(stateAfter[0].results.length).to.eq(1);
-        expect(stateAfter[0].results[0].guess).to.eq('yyyyy');
+        expect(stateAfter[0].moves.length).to.eq(1);
+        expect(stateAfter[0].moves[0].guess).to.eq('yyyyy');
     });
 
     it('adds a guess to number game', () => {
@@ -57,8 +57,8 @@ describe('Gamereducer', () => {
         expect(stateAfter.length).to.eq(1);
 
         expect(stateAfter[0].status).to.eq('finished');
-        expect(stateAfter[0].results.length).to.eq(1);
-        expect(stateAfter[0].results[0].guess).to.eq('yyyyy');
+        expect(stateAfter[0].moves.length).to.eq(1);
+        expect(stateAfter[0].moves[0].guess).to.eq('yyyyy');
     });
 
     it('number changes to gameOver when needed', () => {
