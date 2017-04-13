@@ -11,7 +11,7 @@ class WordGameContainer extends Component {
         return (
             <div className='app'>
                 <h3>Word game</h3>
-                <WordGuessFormContainer id={this.props.game.id} gameOver={this.props.game.gameOver}/>
+                <WordGuessFormContainer id={this.props.game.id} status={this.props.game.status}/>
                 <WordResultList results={this.props.game.results}/>
 
             </div>
@@ -21,11 +21,11 @@ class WordGameContainer extends Component {
 
 WordGameContainer.propTypes = {
     game: React.PropTypes.shape({
-        id: React.PropTypes.number,
-        name: React.PropTypes.string,
-        gameOver: React.PropTypes.bool,
-        results: React.PropTypes.array,
-        targetWord: React.PropTypes.string
+        id: React.PropTypes.number.isRequired,
+        type: React.PropTypes.string.isRequired,
+        status: React.PropTypes.string.isRequired,
+        results: React.PropTypes.array.isRequired,
+        targetWord: React.PropTypes.string.isRequired
     }).isRequired
 };
 

@@ -11,6 +11,7 @@ export class WordGame {
     static makeGuess(target, guess) {
         let result = [];
         let check = true;
+        let status = 'waiting_for_move';
 
         for (let i = 0, len = guess.length; i < len; i++) {
             let r = guess[i] === target[i];
@@ -23,8 +24,10 @@ export class WordGame {
             result.push(r);
         }
 
-        let gameOver = target === guess;
-        return {result, gameOver};
+        if(target === guess) {
+            status = 'finished';
+        }
+        return {result, status};
     }
 
 }

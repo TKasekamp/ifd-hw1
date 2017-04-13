@@ -21,7 +21,7 @@ describe('Gamereducer', () => {
 
         expect(stateAfterSecondGame[1].id).to.exist;
         expect(stateAfterSecondGame[1].type).to.eq('guess_word');
-        expect(stateAfterSecondGame[1].gameOver).to.eq(false);
+        expect(stateAfterSecondGame[1].status).to.eq('waiting_for_move');
         expect(stateAfterSecondGame[1].results).to.eql([]);
         expect(stateAfterSecondGame[1].targetWord).to.exist;
     });
@@ -32,7 +32,7 @@ describe('Gamereducer', () => {
         const stateAfter = gameReducer(state, wordGuessSubmitted({guess: 'yyyyy', id: 0}));
         expect(stateAfter.length).to.eq(1);
 
-        expect(stateAfter[0].gameOver).to.eq(false);
+        expect(stateAfter[0].status).to.eq('waiting_for_move');
         expect(stateAfter[0].results.length).to.eq(1);
         expect(stateAfter[0].results[0].guess).to.eq('yyyyy');
     });
@@ -56,7 +56,7 @@ describe('Gamereducer', () => {
         const stateAfter = gameReducer(state, wordGuessSubmitted({guess: 'yyyyy', id: 0}));
         expect(stateAfter.length).to.eq(1);
 
-        expect(stateAfter[0].gameOver).to.eq(true);
+        expect(stateAfter[0].status).to.eq('finished');
         expect(stateAfter[0].results.length).to.eq(1);
         expect(stateAfter[0].results[0].guess).to.eq('yyyyy');
     });

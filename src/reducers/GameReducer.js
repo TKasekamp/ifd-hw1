@@ -26,7 +26,7 @@ const gameReducer = (state = initialState, action) => {
             const games = state.concat({
                 id: action.payload.id,
                 type: 'guess_word',
-                gameOver: false,
+                status: 'waiting_for_move',
                 targetWord: action.payload.targetWord,
                 results: []
             });
@@ -49,7 +49,7 @@ const gameReducer = (state = initialState, action) => {
 
                         return Object.assign({}, game, {
                             results: wordGuesses,
-                            gameOver: r.gameOver
+                            status: r.status
 
                         });
                     }
