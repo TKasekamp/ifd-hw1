@@ -2,7 +2,6 @@ import {
     NEW_NUMBER_GAME_REQUESTED,
     NEW_WORD_GAME_REQUESTED,
     newNumberGameRequested,
-    newWordGameCreated,
     newWordGameRequested,
     NUMBER_GUESS_SUBMITTED,
     numberGuessSubmitted,

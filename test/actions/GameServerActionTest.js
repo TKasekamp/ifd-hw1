@@ -29,9 +29,7 @@ describe('gameServerActions', () => {
         xhr.restore();
     });
 
-    context('when number game created', () => {
-
-
+    describe('when number game created', () => {
         it('dispatches new number game requested', () => {
             createNumberGame({localId: 'localId', type: 'guess_number'})(dispatch);
 
@@ -58,12 +56,9 @@ describe('gameServerActions', () => {
                 payload: {localId: 'localId', error: 'error'}
             });
         });
-
     });
 
-    context('when number game guess made', () => {
-
-
+    describe('when number game guess made', () => {
         it('dispatches number game guess succeeded', () => {
             makeNumberGuess({id: 42, guess: 8, gameId: 'game-id'})(dispatch);
 
@@ -92,12 +87,9 @@ describe('gameServerActions', () => {
                 payload: {id: 42, error: 'error'}
             });
         });
-
     });
 
-    context('when word game created', () => {
-
-
+    describe('when word game created', () => {
         it('dispatches new word game requested', () => {
             createWordGame({localId: 'localId', type: 'guess_word'})(dispatch);
 
@@ -124,12 +116,9 @@ describe('gameServerActions', () => {
                 payload: {localId: 'localId', error: 'error'}
             });
         });
-
     });
 
-    context('when word game guess made', () => {
-
-
+    describe('when word game guess made', () => {
         it('dispatches word game guess succeeded', () => {
             makeWordGuess({id: 42, guess: 'yyyyy', gameId: 'game-id'})(dispatch);
 
@@ -167,6 +156,5 @@ describe('gameServerActions', () => {
                 payload: {id: 42, error: 'error'}
             });
         });
-
     });
 });

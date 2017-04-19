@@ -38,7 +38,7 @@ describe('Gamereducer', () => {
         expect(stateAfterSecondGame.games[1].moves).to.eql([]);
     });
 
-    context('numberGame', () => {
+    describe('numberGame', () => {
         it('adds a new number game when requested', () => {
             const stateAfterFirstGame = games(undefined, newNumberGameRequested());
             expect(stateAfterFirstGame.games.length).to.eq(1);
@@ -87,7 +87,6 @@ describe('Gamereducer', () => {
 
 
         it('adds a guess to number game when submitted', () => {
-
             const stateAfter = games({
                     games: [{
                         id: 'id',
@@ -156,11 +155,9 @@ describe('Gamereducer', () => {
             expect(stateAfter.games[0].moves[0].inFlight).to.eq('failed');
             expect(stateAfter.games[0].moves[0].comparedToAnswer).to.eq('');
         });
-
-
     });
 
-    context('wordGame', () => {
+    describe('wordGame', () => {
         it('adds a new word game when requested', () => {
             const stateAfterFirstGame = games(undefined, newWordGameRequested());
             expect(stateAfterFirstGame.games.length).to.eq(1);
@@ -209,7 +206,6 @@ describe('Gamereducer', () => {
 
 
         it('adds a guess to word game when submitted', () => {
-
             const stateAfter = games({
                     games: [{
                         id: 'id',
@@ -285,9 +281,5 @@ describe('Gamereducer', () => {
             expect(stateAfter.games[0].moves[0].correct).to.eq(false);
             expect(stateAfter.games[0].moves[0].letterMatches).to.eql([]);
         });
-
-
     });
-
-
 });
