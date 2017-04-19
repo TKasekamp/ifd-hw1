@@ -1,5 +1,4 @@
 import {connect} from 'react-redux';
-import {newWordGameCreated} from '../actions';
 import Buttons from '../components/Buttons';
 import {newNumberGameRequested, newWordGameRequested} from '../actions/index';
 
