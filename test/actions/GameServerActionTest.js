@@ -1,14 +1,12 @@
 import {
-    NEW_NUMBER_GAME_CREATED,
-    NEW_NUMBER_GAME_FAILED,
-    NEW_WORD_GAME_CREATED,
-    NEW_WORD_GAME_FAILED,
+    NEW_GAME_CREATED,
+    NEW_GAME_FAILED,
     NUMBER_GUESS_FAILED,
     NUMBER_GUESS_SUCCEEDED,
     WORD_GUESS_FAILED,
     WORD_GUESS_SUCCEEDED
 } from '../../src/actions/index';
-import {createNumberGame, createWordGame, makeNumberGuess, makeWordGuess} from '../../src/actions/GameServerActions';
+import {createGame, makeNumberGuess, makeWordGuess} from '../../src/actions/GameServerActions';
 
 describe('gameServerActions', () => {
     let xhr;
@@ -31,7 +29,7 @@ describe('gameServerActions', () => {
 
     describe('when number game created', () => {
         it('dispatches new number game requested', () => {
-            createNumberGame({localId: 'localId', type: 'guess_number'})(dispatch);
+            createGame({localId: 'localId', type: 'guess_number'})(dispatch);
 
             requests[0].respond(201, {}, JSON.stringify({
                 id: 'game-id',
@@ -40,19 +38,19 @@ describe('gameServerActions', () => {
             }));
 
             expect(dispatch).to.have.been.calledWith({
-                type: NEW_NUMBER_GAME_CREATED,
+                type: NEW_GAME_CREATED,
                 payload: {localId: 'localId', id: 'game-id', type: 'guess_number', status: 'waiting_for_move'}
             });
         });
 
         it('dispatches new number game failed when xhr fails', () => {
-            createNumberGame({localId: 'localId', type: 'guess_number'})(dispatch);
+            createGame({localId: 'localId', type: 'guess_number'})(dispatch);
 
             // Fails the pending request
             requests[0].respond(503, {}, JSON.stringify({error: 'error'}));
 
             expect(dispatch).to.have.been.calledWith({
-                type: NEW_NUMBER_GAME_FAILED,
+                type: NEW_GAME_FAILED,
                 payload: {localId: 'localId', error: 'error'}
             });
         });
@@ -91,7 +89,7 @@ describe('gameServerActions', () => {
 
     describe('when word game created', () => {
         it('dispatches new word game requested', () => {
-            createWordGame({localId: 'localId', type: 'guess_word'})(dispatch);
+            createGame({localId: 'localId', type: 'guess_word'})(dispatch);
 
             requests[0].respond(201, {}, JSON.stringify({
                 id: 'game-id',
@@ -100,19 +98,19 @@ describe('gameServerActions', () => {
             }));
 
             expect(dispatch).to.have.been.calledWith({
-                type: NEW_WORD_GAME_CREATED,
+                type: NEW_GAME_CREATED,
                 payload: {localId: 'localId', id: 'game-id', type: 'guess_word', status: 'waiting_for_move'}
             });
         });
 
         it('dispatches new word game failed when xhr fails', () => {
-            createWordGame({localId: 'localId', type: 'guess_word'})(dispatch);
+            createGame({localId: 'localId', type: 'guess_word'})(dispatch);
 
             // Fails the pending request
             requests[0].respond(503, {}, JSON.stringify({error: 'error'}));
 
             expect(dispatch).to.have.been.calledWith({
-                type: NEW_WORD_GAME_FAILED,
+                type: NEW_GAME_FAILED,
                 payload: {localId: 'localId', error: 'error'}
             });
         });

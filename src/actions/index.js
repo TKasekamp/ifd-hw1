@@ -4,24 +4,23 @@ let guessId = 0;
 const createPayloadForwardingAction = (type) => (payload) =>
     ({type: type, payload: payload});
 
-// NUMBER GAME
-
-export const NEW_NUMBER_GAME_REQUESTED = 'NEW_NUMBER_GAME_REQUESTED';
-export const newNumberGameRequested = () => (
+// COMMON GAME CREATION
+export const NEW_GAME_REQUESTED = 'NEW_GAME_REQUESTED';
+export const newGameRequested = (type) => (
     {
-        type: NEW_NUMBER_GAME_REQUESTED,
+        type: NEW_GAME_REQUESTED,
         payload: {
             localId: (nextGameId++).toString(),
-            type: 'guess_number'
+            type: type
         }
     }
 );
 
-export const NEW_NUMBER_GAME_CREATED = 'NEW_NUMBER_GAME_CREATED';
-export const newNumberGameCreated = createPayloadForwardingAction(NEW_NUMBER_GAME_CREATED);
+export const NEW_GAME_CREATED = 'NEW_GAME_CREATED';
+export const newGameCreated = createPayloadForwardingAction(NEW_GAME_CREATED);
 
-export const NEW_NUMBER_GAME_FAILED = 'NEW_NUMBER_GAME_FAILED';
-export const newNumberGameFailed = createPayloadForwardingAction(NEW_NUMBER_GAME_FAILED);
+export const NEW_GAME_FAILED = 'NEW_GAME_FAILED';
+export const newGameFailed = createPayloadForwardingAction(NEW_GAME_FAILED);
 
 // NUMBER GAME GUESS
 
@@ -42,25 +41,6 @@ export const numberGuessSucceeded = createPayloadForwardingAction(NUMBER_GUESS_S
 
 export const NUMBER_GUESS_FAILED = 'NUMBER_GAME_FAILED';
 export const numberGuessFailed = createPayloadForwardingAction(NUMBER_GUESS_FAILED);
-
-// WORD GAME
-
-export const NEW_WORD_GAME_REQUESTED = 'NEW_WORD_GAME_REQUESTED';
-export const newWordGameRequested = () => (
-    {
-        type: NEW_WORD_GAME_REQUESTED,
-        payload: {
-            localId: (nextGameId++).toString(),
-            type: 'guess_word'
-        }
-    }
-);
-
-export const NEW_WORD_GAME_CREATED = 'NEW_WORD_GAME_CREATED';
-export const newWordGameCreated = createPayloadForwardingAction(NEW_WORD_GAME_CREATED);
-
-export const NEW_WORD_GAME_FAILED = 'NEW_WORD_GAME_FAILED';
-export const newWordGameFailed = createPayloadForwardingAction(NEW_WORD_GAME_FAILED);
 
 // WORD GAME GUESS
 

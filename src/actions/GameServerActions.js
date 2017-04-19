@@ -3,19 +3,21 @@
  */
 import jsonAjax from '../JSONAjaxRequest';
 import {
-    newNumberGameCreated, newNumberGameFailed, newWordGameCreated, newWordGameFailed, numberGuessFailed,
-    numberGuessSucceeded, wordGuessFailed, wordGuessSucceeded
+    newGameCreated,
+    newGameFailed, numberGuessFailed, numberGuessSucceeded,
+    wordGuessFailed,
+    wordGuessSucceeded
 } from './index';
 
 const SERVER_ADDRESS = 'http://localhost:8081';
 
-export const createNumberGame = ({localId, type}) => (dispatch) => {
+export const createGame = ({localId, type}) => (dispatch) => {
     jsonAjax(
         SERVER_ADDRESS + '/games',
         'POST',
         {type},
-        ({id, type, status}) => dispatch(newNumberGameCreated({localId, id, type, status})),
-        ({error} = {}) => dispatch(newNumberGameFailed({localId, error}))
+        ({id, type, status}) => dispatch(newGameCreated({localId, id, type, status})),
+        ({error} = {}) => dispatch(newGameFailed({localId, error}))
     );
 };
 
@@ -26,16 +28,6 @@ export const makeNumberGuess = ({id, guess, gameId}) => (dispatch) => {
         {guess},
         ({move, game}) => dispatch(numberGuessSucceeded({id, move, game})),
         ({error} = {}) => dispatch(numberGuessFailed({id, error}))
-    );
-};
-
-export const createWordGame = ({localId, type}) => (dispatch) => {
-    jsonAjax(
-        SERVER_ADDRESS + '/games',
-        'POST',
-        {type},
-        ({id, type, status}) => dispatch(newWordGameCreated({localId, id, type, status})),
-        ({error} = {}) => dispatch(newWordGameFailed({localId, error}))
     );
 };
 

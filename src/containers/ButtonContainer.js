@@ -1,10 +1,10 @@
 import {connect} from 'react-redux';
 import Buttons from '../components/Buttons';
-import {newNumberGameRequested, newWordGameRequested} from '../actions/index';
+import {newGameRequested} from '../actions/index';
 
 const mapDispatchToProps = (dispatch) => ({
-    newNumberGame: () => dispatch(newNumberGameRequested()),
-    newWordGame: () => dispatch(newWordGameRequested()),
+    newNumberGame: () => dispatch(newGameRequested('guess_number')),
+    newWordGame: () => dispatch(newGameRequested('guess_word')),
 });
 
 export default connect(undefined, mapDispatchToProps)(Buttons);

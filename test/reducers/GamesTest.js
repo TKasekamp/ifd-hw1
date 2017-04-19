@@ -1,11 +1,8 @@
 import games from '../../src/reducers/Games';
 import {
-    newNumberGameCreated,
-    newNumberGameFailed,
-    newNumberGameRequested,
-    newWordGameCreated,
-    newWordGameFailed,
-    newWordGameRequested,
+    newGameCreated,
+    newGameFailed,
+    newGameRequested,
     numberGuessFailed,
     numberGuessSubmitted,
     numberGuessSucceeded,
@@ -21,8 +18,8 @@ describe('Gamereducer', () => {
 
 
     it('adds a new game when game requested', () => {
-        const stateAfterFirstGame = games(undefined, newNumberGameRequested());
-        const stateAfterSecondGame = games(stateAfterFirstGame, newWordGameRequested());
+        const stateAfterFirstGame = games(undefined, newGameRequested('guess_number'));
+        const stateAfterSecondGame = games(stateAfterFirstGame, newGameRequested('guess_word'));
         expect(stateAfterSecondGame.games.length).to.eq(2);
 
         expect(stateAfterSecondGame.games[0].id).to.exist;
@@ -40,7 +37,7 @@ describe('Gamereducer', () => {
 
     describe('numberGame', () => {
         it('adds a new number game when requested', () => {
-            const stateAfterFirstGame = games(undefined, newNumberGameRequested());
+            const stateAfterFirstGame = games(undefined, newGameRequested('guess_number'));
             expect(stateAfterFirstGame.games.length).to.eq(1);
 
             expect(stateAfterFirstGame.games[0].id).to.exist;
@@ -52,8 +49,8 @@ describe('Gamereducer', () => {
 
 
         it('sets number game as not in flight when succeeds', () => {
-            const state = games(undefined, newNumberGameRequested());
-            const stateAfterFirstGame = games(state, newNumberGameCreated({
+            const state = games(undefined, newGameRequested('guess_number'));
+            const stateAfterFirstGame = games(state, newGameCreated({
                 localId: state.games[0].id,
                 id: 'id',
                 type: 'guess_number',
@@ -70,8 +67,8 @@ describe('Gamereducer', () => {
         });
 
         it('sets number game as failed when server error', () => {
-            const state = games(undefined, newNumberGameRequested());
-            const stateAfterFirstGame = games(state, newNumberGameFailed({
+            const state = games(undefined, newGameRequested('guess_number'));
+            const stateAfterFirstGame = games(state, newGameFailed({
                 localId: state.games[0].id,
                 error: 'Error'
             }));
@@ -159,7 +156,7 @@ describe('Gamereducer', () => {
 
     describe('wordGame', () => {
         it('adds a new word game when requested', () => {
-            const stateAfterFirstGame = games(undefined, newWordGameRequested());
+            const stateAfterFirstGame = games(undefined, newGameRequested('guess_word'));
             expect(stateAfterFirstGame.games.length).to.eq(1);
 
             expect(stateAfterFirstGame.games[0].id).to.exist;
@@ -171,8 +168,8 @@ describe('Gamereducer', () => {
 
 
         it('sets word game as not in flight when succeeds', () => {
-            const state = games(undefined, newWordGameRequested());
-            const stateAfterFirstGame = games(state, newWordGameCreated({
+            const state = games(undefined, newGameRequested('guess_word'));
+            const stateAfterFirstGame = games(state, newGameCreated({
                 localId: state.games[0].id,
                 id: 'id',
                 type: 'guess_word',
@@ -189,8 +186,8 @@ describe('Gamereducer', () => {
         });
 
         it('sets word game as failed when server error', () => {
-            const state = games(undefined, newWordGameRequested());
-            const stateAfterFirstGame = games(state, newWordGameFailed({
+            const state = games(undefined, newGameRequested('guess_word'));
+            const stateAfterFirstGame = games(state, newGameFailed({
                 localId: state.games[0].id,
                 error: 'Error'
             }));

@@ -1,8 +1,6 @@
 import {
-    NEW_NUMBER_GAME_REQUESTED,
-    NEW_WORD_GAME_REQUESTED,
-    newNumberGameRequested,
-    newWordGameRequested,
+    NEW_GAME_REQUESTED,
+    newGameRequested,
     NUMBER_GUESS_SUBMITTED,
     numberGuessSubmitted,
     WORD_GUESS_SUBMITTED,
@@ -12,8 +10,8 @@ import {
 describe('newNumberGameRequested', () => {
     it('has increasing game index', () => {
         const submissions = [
-            newNumberGameRequested(),
-            newNumberGameRequested()
+            newGameRequested('guess_number'),
+            newGameRequested('guess_number')
         ];
         expect(parseInt(submissions[1].payload.localId)).to.eq(
             parseInt(submissions[0].payload.localId) + 1
@@ -21,14 +19,14 @@ describe('newNumberGameRequested', () => {
     });
 
     it('has correct game type', () => {
-        expect(newNumberGameRequested().payload.type).to.eq('guess_number');
+        expect(newGameRequested('guess_number').payload.type).to.eq('guess_number');
     });
 
     it('both games increment with the same number', () => {
         const submissions = [
-            newNumberGameRequested(),
-            newNumberGameRequested(),
-            newWordGameRequested()
+            newGameRequested('guess_number'),
+            newGameRequested('guess_number'),
+            newGameRequested('guess_word')
         ];
         expect(parseInt(submissions[2].payload.localId)).to.eq(
             parseInt(submissions[0].payload.localId) + 2
@@ -36,15 +34,15 @@ describe('newNumberGameRequested', () => {
     });
 
     it('has correct payload type', () => {
-        expect(newNumberGameRequested().type).to.eq(NEW_NUMBER_GAME_REQUESTED);
+        expect(newGameRequested('guess_number').type).to.eq(NEW_GAME_REQUESTED);
     });
 });
 
 describe('newWordGameCreated', () => {
     it('has increasing game index', () => {
         const submissions = [
-            newWordGameRequested(),
-            newWordGameRequested()
+            newGameRequested('guess_word'),
+            newGameRequested('guess_word')
         ];
         expect(parseInt(submissions[1].payload.localId)).to.eq(
             parseInt(submissions[0].payload.localId) + 1
@@ -52,11 +50,11 @@ describe('newWordGameCreated', () => {
     });
 
     it('has correct game type', () => {
-        expect(newWordGameRequested().payload.type).to.eq('guess_word');
+        expect(newGameRequested('guess_word').payload.type).to.eq('guess_word');
     });
 
     it('has correct payload type', () => {
-        expect(newWordGameRequested().type).to.eq(NEW_WORD_GAME_REQUESTED);
+        expect(newGameRequested('guess_word').type).to.eq(NEW_GAME_REQUESTED);
     });
 });
 

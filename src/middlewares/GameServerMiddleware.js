@@ -1,19 +1,8 @@
-import {
-    NEW_NUMBER_GAME_REQUESTED,
-    NEW_WORD_GAME_REQUESTED,
-    NUMBER_GUESS_SUBMITTED,
-    WORD_GUESS_SUBMITTED
-} from '../actions/index';
-import {
-    createNumberGame,
-    createWordGame,
-    makeNumberGuess,
-    makeWordGuess
-} from '../actions/GameServerActions';
+import {NEW_GAME_REQUESTED, NUMBER_GUESS_SUBMITTED, WORD_GUESS_SUBMITTED} from '../actions/index';
+import {createGame, makeNumberGuess, makeWordGuess} from '../actions/GameServerActions';
 
 const ACTION_TYPE_TO_SERVER_ACTION = {
-        [NEW_NUMBER_GAME_REQUESTED]: createNumberGame,
-        [NEW_WORD_GAME_REQUESTED]: createWordGame,
+        [NEW_GAME_REQUESTED]: createGame,
         [NUMBER_GUESS_SUBMITTED]: makeNumberGuess,
         [WORD_GUESS_SUBMITTED]: makeWordGuess
     }

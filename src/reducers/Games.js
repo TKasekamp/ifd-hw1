@@ -1,10 +1,7 @@
 import {
-    NEW_NUMBER_GAME_CREATED,
-    NEW_NUMBER_GAME_FAILED,
-    NEW_NUMBER_GAME_REQUESTED,
-    NEW_WORD_GAME_CREATED,
-    NEW_WORD_GAME_FAILED,
-    NEW_WORD_GAME_REQUESTED,
+    NEW_GAME_CREATED,
+    NEW_GAME_FAILED,
+    NEW_GAME_REQUESTED,
     NUMBER_GUESS_FAILED,
     NUMBER_GUESS_SUBMITTED,
     NUMBER_GUESS_SUCCEEDED,
@@ -25,7 +22,7 @@ export const FAILED = 'failed';
 
 const games = (state = initialState, action) => {
     switch (action.type) {
-        case NEW_NUMBER_GAME_REQUESTED: {
+        case NEW_GAME_REQUESTED: {
             return {
                 ...state,
                 games: state.games.concat({
@@ -38,7 +35,7 @@ const games = (state = initialState, action) => {
             };
         }
 
-        case NEW_NUMBER_GAME_CREATED: {
+        case NEW_GAME_CREATED: {
             const games = state.games.map((game) => {
                 if (game.id === action.payload.localId) {
                     return {
@@ -56,51 +53,7 @@ const games = (state = initialState, action) => {
             return {...state, games};
         }
 
-        case NEW_NUMBER_GAME_FAILED: {
-            return {
-                ...state,
-                games: state.games.map((game) => {
-                    if (game.id === action.payload.localId) {
-                        return {...game, inFlight: FAILED};
-                    } else {
-                        return game;
-                    }
-                })
-            };
-        }
-
-        case NEW_WORD_GAME_REQUESTED: {
-            return {
-                ...state,
-                games: state.games.concat({
-                    id: action.payload.localId,
-                    inFlight: IN_FLIGHT,
-                    type: action.payload.type,
-                    status: '',
-                    moves: []
-                })
-            };
-        }
-
-        case NEW_WORD_GAME_CREATED: {
-            const games = state.games.map((game) => {
-                if (game.id === action.payload.localId) {
-                    return {
-                        ...game,
-                        id: action.payload.id,
-                        inFlight: CREATED,
-                        type: action.payload.type,
-                        status: action.payload.status
-                    };
-                } else {
-                    return game;
-                }
-            });
-
-            return {...state, games};
-        }
-
-        case NEW_WORD_GAME_FAILED: {
+        case NEW_GAME_FAILED: {
             return {
                 ...state,
                 games: state.games.map((game) => {
