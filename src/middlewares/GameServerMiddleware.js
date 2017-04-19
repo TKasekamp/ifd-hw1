@@ -1,8 +1,8 @@
 import {NEW_NUMBER_GAME_REQUESTED, NUMBER_GUESS_SUBMITTED} from '../actions/index';
-import {createNewGame, makeNumberGuess} from '../actions/GameServerActions';
+import {createNewGame, createNumberGame, makeNumberGuess} from '../actions/GameServerActions';
 
 const ACTION_TYPE_TO_SERVER_ACTION = {
-    [NEW_NUMBER_GAME_REQUESTED]: createNewGame,
+    [NEW_NUMBER_GAME_REQUESTED]: createNumberGame,
     [NUMBER_GUESS_SUBMITTED]: makeNumberGuess
 };
 

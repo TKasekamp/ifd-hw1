@@ -6,7 +6,7 @@ import {newNumberGameCreated, newNumberGameFailed, numberGuessFailed, numberGues
 
 const SERVER_ADDRESS = 'http://localhost:8081';
 
-export const createNewGame = ({localId, type}) => (dispatch) => {
+export const createNumberGame = ({localId, type}) => (dispatch) => {
     jsonAjax(
         SERVER_ADDRESS + '/games',
         'POST',
