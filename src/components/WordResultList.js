@@ -4,7 +4,7 @@ import WordResult from './WordResult';
 const WordResultList = (props) => {
     const resultElements = props.moves.map((move) => {
         return (
-            <WordResult guess={move.guess} letterMatches={move.letterMatches} key={move.id}>
+            <WordResult move={move} key={move.id}>
             </WordResult>
         );
     });
@@ -20,7 +20,9 @@ WordResultList.propTypes = {
     moves: React.PropTypes.arrayOf(React.PropTypes.shape({
         guess: React.PropTypes.string.isRequired,
         id: React.PropTypes.number.isRequired,
-        letterMatches: React.PropTypes.arrayOf(React.PropTypes.bool).isRequired
+        letterMatches: React.PropTypes.arrayOf(React.PropTypes.bool).isRequired,
+        inFlight: React.PropTypes.string.isRequired,
+        correct: React.PropTypes.bool.isRequired
     })).isRequired
 };
 

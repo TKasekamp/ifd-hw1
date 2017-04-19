@@ -15,9 +15,9 @@ describe('Games', () => {
 
     it('renders game for each input', () => {
         const games = [
-            {id: 1, type: 'guess_number', status: 'waiting_for_move', moves: [], targetNumber: 0},
-            {id: 2, type: 'guess_word', status: 'waiting_for_move', moves: [], targetWord: 'e'},
-            {id: 3, type: 'guess_word', status: 'waiting_for_move', moves: [], targetWord: 'e'}
+            {id: '1', type: 'guess_number', status: 'waiting_for_move', moves: [], inFlight: 'created'},
+            {id: '2', type: 'guess_word', status: 'waiting_for_move', moves: [], inFlight: 'created'},
+            {id: '3', type: 'guess_word', status: 'waiting_for_move', moves: [], inFlight: 'created'}
         ];
 
         const gameList = shallow(<Games games={games}/>);

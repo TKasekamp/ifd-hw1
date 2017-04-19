@@ -4,8 +4,16 @@ import React from 'react';
  */
 const WordResult = (props) => {
     let text = [];
-    for (let i = 0, len = props.letterMatches.length; i < len; i++) {
-        text.push(<a key={i} className={(props.letterMatches[i] ? 'win' : 'fail')}>{props.guess[i]}</a>);
+    if (props.move.inFlight === 'inFlight') {
+        text = <p>Submitting guess {props.move.guess}</p>;
+    }
+    else if (props.move.inFlight === 'failed') {
+        text = <p className="fail">Failed to submit guess {props.move.guess}. Server error :(</p>;
+    }
+    else if (props.move.inFlight === 'created') {
+        for (let i = 0, len = props.move.letterMatches.length; i < len; i++) {
+            text.push(<a key={i} className={(props.move.letterMatches[i] ? 'win' : 'fail')}>{props.move.guess[i]}</a>);
+        }
     }
 
     return (
@@ -15,8 +23,10 @@ const WordResult = (props) => {
     );
 };
 WordResult.propTypes = {
-    guess: React.PropTypes.string.isRequired,
-    letterMatches: React.PropTypes.arrayOf(React.PropTypes.bool).isRequired
+    move: React.PropTypes.shape({
+        guess: React.PropTypes.string.isRequired,
+        letterMatches: React.PropTypes.arrayOf(React.PropTypes.bool).isRequired
+    }).isRequired
 };
 
 export default WordResult;

@@ -1,8 +1,9 @@
 import {
-    NEW_NUMBER_GAME_CREATED, NEW_NUMBER_GAME_REQUESTED,
-    NEW_WORD_GAME_CREATED,
-    newNumberGameCreated, newNumberGameRequested,
+    NEW_NUMBER_GAME_REQUESTED,
+    NEW_WORD_GAME_REQUESTED,
+    newNumberGameRequested,
     newWordGameCreated,
+    newWordGameRequested,
     NUMBER_GUESS_SUBMITTED,
     numberGuessSubmitted,
     WORD_GUESS_SUBMITTED,
@@ -26,9 +27,9 @@ describe('newNumberGameRequested', () => {
 
     it('both games increment with the same number', () => {
         const submissions = [
-            newNumberGameCreated(),
-            newNumberGameCreated(),
-            newWordGameCreated()
+            newNumberGameRequested(),
+            newNumberGameRequested(),
+            newWordGameRequested()
         ];
         expect(parseInt(submissions[2].payload.localId)).to.eq(
             parseInt(submissions[0].payload.localId) + 2
@@ -43,20 +44,20 @@ describe('newNumberGameRequested', () => {
 describe('newWordGameCreated', () => {
     it('has increasing game index', () => {
         const submissions = [
-            newWordGameCreated(),
-            newWordGameCreated()
+            newWordGameRequested(),
+            newWordGameRequested()
         ];
-        expect(submissions[1].payload.id).to.eq(
-            submissions[0].payload.id + 1
+        expect(parseInt(submissions[1].payload.localId)).to.eq(
+            parseInt(submissions[0].payload.localId) + 1
         );
     });
 
-    it('has generated number', () => {
-        expect(newWordGameCreated().payload.targetWord).to.exist;
+    it('has correct game type', () => {
+        expect(newWordGameRequested().payload.type).to.eq('guess_word');
     });
 
     it('has correct payload type', () => {
-        expect(newWordGameCreated().type).to.eq(NEW_WORD_GAME_CREATED);
+        expect(newWordGameRequested().type).to.eq(NEW_WORD_GAME_REQUESTED);
     });
 });
 
@@ -92,7 +93,7 @@ describe('word guess', () => {
     });
 
     it('has correct id', () => {
-        expect(wordGuessSubmitted({guess: 'hello', id: 5}).payload.index).to.eq(5);
+        expect(wordGuessSubmitted({guess: 'hello', id: 5}).payload.gameId).to.eq(5);
     });
 
     it('has correct payload type', () => {

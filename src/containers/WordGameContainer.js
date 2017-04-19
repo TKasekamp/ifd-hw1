@@ -21,11 +21,10 @@ class WordGameContainer extends Component {
 
 WordGameContainer.propTypes = {
     game: React.PropTypes.shape({
-        id: React.PropTypes.number.isRequired,
+        id: React.PropTypes.string.isRequired,
         type: React.PropTypes.string.isRequired,
         status: React.PropTypes.string.isRequired,
-        moves: React.PropTypes.array.isRequired,
-        targetWord: React.PropTypes.string.isRequired
+        moves: React.PropTypes.array.isRequired
     }).isRequired
 };
 
