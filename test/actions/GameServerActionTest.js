@@ -135,7 +135,6 @@ describe('gameServerActions', () => {
 
             requests[0].respond(201, {}, JSON.stringify({
                 move: {
-                    comparedToAnswer: 'EQ',
                     guess: 'yyyyy',
                     correct: false,
                     letterMatches: [false, false, false, false, false]
@@ -148,7 +147,6 @@ describe('gameServerActions', () => {
                 payload: {
                     id: 42,
                     move: {
-                        comparedToAnswer: 'EQ',
                         guess: 'yyyyy',
                         correct: false,
                         letterMatches: [false, false, false, false, false]
