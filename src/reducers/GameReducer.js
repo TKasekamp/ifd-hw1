@@ -6,7 +6,10 @@ import {
 } from '../actions/index.js';
 import {WordGame} from '../WordGame';
 import {NumberGame} from '../NumberGame';
-import {NEW_NUMBER_GAME_FAILED, NEW_NUMBER_GAME_REQUESTED} from '../actions/index';
+import {
+    NEW_NUMBER_GAME_FAILED, NEW_NUMBER_GAME_REQUESTED, NUMBER_GUESS_FAILED,
+    NUMBER_GUESS_SUCCEEDED
+} from '../actions/index';
 
 
 const initialState = {
@@ -56,7 +59,7 @@ const gameReducer = (state = initialState, action) => {
                     ...state,
                     games: state.games.map((game) => {
                         if (game.id === action.payload.localId) {
-                            return {...game,  inFlight: FAILED};
+                            return {...game, inFlight: FAILED};
                         } else {
                             return game;
                         }
@@ -64,8 +67,7 @@ const gameReducer = (state = initialState, action) => {
                 }
             }
 
-            case
-            NEW_WORD_GAME_CREATED: {
+            case NEW_WORD_GAME_CREATED: {
                 const games = state.games.concat({
                     id: action.payload.id,
                     type: 'guess_word',
@@ -102,32 +104,80 @@ const gameReducer = (state = initialState, action) => {
                     })
                 };
 
-            case
-            NUMBER_GUESS_SUBMITTED:
-                // Find game by index, calculate the result with Game
-                // Add to results, replace gameOver
+            case NUMBER_GUESS_SUBMITTED:
                 return {
                     ...state,
-                    games: state.games.map((game, index) => {
-                        if (index === action.payload.index) {
-                            const r = NumberGame.makeGuess(game.targetNumber, action.payload.guess);
+                    games: state.games.map((game) => {
+                        if (game.id === action.payload.gameId) {
 
                             const numberGuesses = game.moves.concat({
                                 id: action.payload.id,
                                 guess: action.payload.guess,
-                                comparedToAnswer: r.comparedToAnswer
+                                comparedToAnswer: '',
+                                inFlight: IN_FLIGHT
                             });
 
                             return Object.assign({}, game, {
-                                moves: numberGuesses,
-                                status: r.status
-
+                                moves: numberGuesses
                             });
                         }
                         return game;
                     })
                 };
 
+
+            case NUMBER_GUESS_SUCCEEDED: {
+                // Find game, find move, update stuff
+                const games = state.games.map((game) => {
+                    if (game.id === action.payload.game.id) {
+                        const moves = game.moves.map((move) => {
+                                if (move.id === action.payload.id) {
+                                    return {
+                                        ...move,
+                                        guess: action.payload.move.guess,
+                                        comparedToAnswer: action.payload.move.comparedToAnswer,
+                                        inFlight: CREATED
+                                    }
+                                }
+                                else {
+                                    return move;
+                                }
+                            }
+                        );
+                        return {
+                            ...game,
+                            moves: moves,
+                            status: action.payload.game.status
+                        };
+                    } else {
+                        return game;
+                    }
+                });
+                return {...state, games};
+            }
+
+            case NUMBER_GUESS_FAILED: {
+                // Have to go through all games because no game id
+                const games = state.games.map((game) => {
+                    const moves = game.moves.map((move) => {
+                            if (move.id === action.payload.id) {
+                                return {
+                                    ...move,
+                                    inFlight: FAILED
+                                }
+                            }
+                            else {
+                                return move;
+                            }
+                        }
+                    );
+                    return {
+                        ...game,
+                        moves: moves
+                    };
+                });
+                return {...state, games};
+            }
             default:
                 return state;
         }
