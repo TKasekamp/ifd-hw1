@@ -4,6 +4,7 @@ import {
     newNumberGameFailed,
     newNumberGameRequested,
     newWordGameCreated,
+    newWordGameFailed,
     newWordGameRequested,
     numberGuessFailed,
     numberGuessSubmitted,
@@ -32,7 +33,7 @@ describe('Gamereducer', () => {
 
         expect(stateAfterSecondGame.games[1].id).to.exist;
         expect(stateAfterSecondGame.games[1].type).to.eq('guess_word');
-        expect(stateAfterSecondGame.games[1].status).to.eq('waiting_for_move');
+        expect(stateAfterSecondGame.games[1].status).to.eq('');
         expect(stateAfterSecondGame.games[0].inFlight).to.eq('inFlight');
         expect(stateAfterSecondGame.games[1].moves).to.eql([]);
     });
@@ -225,7 +226,7 @@ describe('Gamereducer', () => {
             expect(stateAfter.games[0].moves[0].guess).to.eq('yyyyy');
             expect(stateAfter.games[0].moves[0].inFlight).to.eq('inFlight');
             expect(stateAfter.games[0].moves[0].correct).to.eq(false);
-            expect(stateAfter.games[0].moves[0].letterMatches).to.eq([]);
+            expect(stateAfter.games[0].moves[0].letterMatches).to.eql([]);
         });
 
         it('word game guess submission succeeds', () => {
@@ -256,7 +257,7 @@ describe('Gamereducer', () => {
             expect(stateAfter.games[0].moves[0].guess).to.eq('yyyyy');
             expect(stateAfter.games[0].moves[0].inFlight).to.eq('created');
             expect(stateAfter.games[0].moves[0].correct).to.eq(true);
-            expect(stateAfter.games[0].moves[0].letterMatches).to.eq([true, true, true, true, true]);
+            expect(stateAfter.games[0].moves[0].letterMatches).to.eql([true, true, true, true, true]);
         });
 
         it('word game guess submission fails', () => {
@@ -282,7 +283,7 @@ describe('Gamereducer', () => {
             expect(stateAfter.games[0].moves[0].guess).to.eq('yyyyy');
             expect(stateAfter.games[0].moves[0].inFlight).to.eq('failed');
             expect(stateAfter.games[0].moves[0].correct).to.eq(false);
-            expect(stateAfter.games[0].moves[0].letterMatches).to.eq([]);
+            expect(stateAfter.games[0].moves[0].letterMatches).to.eql([]);
         });
 
 

@@ -71,7 +71,7 @@ export const wordGuessSubmitted = (guess) => (
         payload: {
             guess: guess.guess,
             id: guessId++,
-            index: guess.id
+            gameId: guess.id
         }
     }
 );
