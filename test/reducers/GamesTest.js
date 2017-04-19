@@ -1,4 +1,4 @@
-import gameReducer from '../../src/reducers/GameReducer';
+import games from '../../src/reducers/Games';
 import {
     newNumberGameCreated,
     newNumberGameFailed,
@@ -16,13 +16,13 @@ import {
 
 describe('Gamereducer', () => {
     it('has nothing initially', () => {
-        expect(gameReducer(undefined, {})).to.eql({games: []});
+        expect(games(undefined, {})).to.eql({games: []});
     });
 
 
     it('adds a new game when game requested', () => {
-        const stateAfterFirstGame = gameReducer(undefined, newNumberGameRequested());
-        const stateAfterSecondGame = gameReducer(stateAfterFirstGame, newWordGameRequested());
+        const stateAfterFirstGame = games(undefined, newNumberGameRequested());
+        const stateAfterSecondGame = games(stateAfterFirstGame, newWordGameRequested());
         expect(stateAfterSecondGame.games.length).to.eq(2);
 
         expect(stateAfterSecondGame.games[0].id).to.exist;
@@ -40,7 +40,7 @@ describe('Gamereducer', () => {
 
     context('numberGame', () => {
         it('adds a new number game when requested', () => {
-            const stateAfterFirstGame = gameReducer(undefined, newNumberGameRequested());
+            const stateAfterFirstGame = games(undefined, newNumberGameRequested());
             expect(stateAfterFirstGame.games.length).to.eq(1);
 
             expect(stateAfterFirstGame.games[0].id).to.exist;
@@ -52,8 +52,8 @@ describe('Gamereducer', () => {
 
 
         it('sets number game as not in flight when succeeds', () => {
-            const state = gameReducer(undefined, newNumberGameRequested());
-            const stateAfterFirstGame = gameReducer(state, newNumberGameCreated({
+            const state = games(undefined, newNumberGameRequested());
+            const stateAfterFirstGame = games(state, newNumberGameCreated({
                 localId: state.games[0].id,
                 id: 'id',
                 type: 'guess_number',
@@ -70,8 +70,8 @@ describe('Gamereducer', () => {
         });
 
         it('sets number game as failed when server error', () => {
-            const state = gameReducer(undefined, newNumberGameRequested());
-            const stateAfterFirstGame = gameReducer(state, newNumberGameFailed({
+            const state = games(undefined, newNumberGameRequested());
+            const stateAfterFirstGame = games(state, newNumberGameFailed({
                 localId: state.games[0].id,
                 error: 'Error'
             }));
@@ -88,7 +88,7 @@ describe('Gamereducer', () => {
 
         it('adds a guess to number game when submitted', () => {
 
-            const stateAfter = gameReducer({
+            const stateAfter = games({
                     games: [{
                         id: 'id',
                         type: 'guess_number',
@@ -107,7 +107,7 @@ describe('Gamereducer', () => {
         });
 
         it('number game guess submission succeeds', () => {
-            const state = gameReducer({
+            const state = games({
                     games: [{
                         id: 'id',
                         type: 'guess_number',
@@ -118,7 +118,7 @@ describe('Gamereducer', () => {
                 },
                 numberGuessSubmitted({guess: -8, id: 'id'}));
 
-            const stateAfter = gameReducer(state,
+            const stateAfter = games(state,
                 numberGuessSucceeded({
                     id: state.games[0].moves[0].id,
                     move: {guess: -8, comparedToAnswer: 'EQ'},
@@ -133,7 +133,7 @@ describe('Gamereducer', () => {
         });
 
         it('number game guess submission fails', () => {
-            const state = gameReducer({
+            const state = games({
                     games: [{
                         id: 'id',
                         type: 'guess_number',
@@ -144,7 +144,7 @@ describe('Gamereducer', () => {
                 },
                 numberGuessSubmitted({guess: -8, id: 'id'}));
 
-            const stateAfter = gameReducer(state,
+            const stateAfter = games(state,
                 numberGuessFailed({
                     id: state.games[0].moves[0].id,
                     error: 'Error'
@@ -162,7 +162,7 @@ describe('Gamereducer', () => {
 
     context('wordGame', () => {
         it('adds a new word game when requested', () => {
-            const stateAfterFirstGame = gameReducer(undefined, newWordGameRequested());
+            const stateAfterFirstGame = games(undefined, newWordGameRequested());
             expect(stateAfterFirstGame.games.length).to.eq(1);
 
             expect(stateAfterFirstGame.games[0].id).to.exist;
@@ -174,8 +174,8 @@ describe('Gamereducer', () => {
 
 
         it('sets word game as not in flight when succeeds', () => {
-            const state = gameReducer(undefined, newWordGameRequested());
-            const stateAfterFirstGame = gameReducer(state, newWordGameCreated({
+            const state = games(undefined, newWordGameRequested());
+            const stateAfterFirstGame = games(state, newWordGameCreated({
                 localId: state.games[0].id,
                 id: 'id',
                 type: 'guess_word',
@@ -192,8 +192,8 @@ describe('Gamereducer', () => {
         });
 
         it('sets word game as failed when server error', () => {
-            const state = gameReducer(undefined, newWordGameRequested());
-            const stateAfterFirstGame = gameReducer(state, newWordGameFailed({
+            const state = games(undefined, newWordGameRequested());
+            const stateAfterFirstGame = games(state, newWordGameFailed({
                 localId: state.games[0].id,
                 error: 'Error'
             }));
@@ -210,7 +210,7 @@ describe('Gamereducer', () => {
 
         it('adds a guess to word game when submitted', () => {
 
-            const stateAfter = gameReducer({
+            const stateAfter = games({
                     games: [{
                         id: 'id',
                         type: 'guess_word',
@@ -230,7 +230,7 @@ describe('Gamereducer', () => {
         });
 
         it('word game guess submission succeeds', () => {
-            const state = gameReducer({
+            const state = games({
                     games: [{
                         id: 'id',
                         type: 'guess_word',
@@ -241,7 +241,7 @@ describe('Gamereducer', () => {
                 },
                 wordGuessSubmitted({guess: 'yyyyy', id: 'id'}));
 
-            const stateAfter = gameReducer(state,
+            const stateAfter = games(state,
                 wordGuessSucceeded({
                     id: state.games[0].moves[0].id,
                     move: {
@@ -261,7 +261,7 @@ describe('Gamereducer', () => {
         });
 
         it('word game guess submission fails', () => {
-            const state = gameReducer({
+            const state = games({
                     games: [{
                         id: 'id',
                         type: 'guess_word',
@@ -272,7 +272,7 @@ describe('Gamereducer', () => {
                 },
                 wordGuessSubmitted({guess: 'yyyyy', id: 'id'}));
 
-            const stateAfter = gameReducer(state,
+            const stateAfter = games(state,
                 wordGuessFailed({
                     id: state.games[0].moves[0].id,
                     error: 'Error'

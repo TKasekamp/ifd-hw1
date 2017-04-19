@@ -25,7 +25,7 @@ export const CREATED = 'created';
 export const FAILED = 'failed';
 
 
-const gameReducer = (state = initialState, action) => {
+const games = (state = initialState, action) => {
         switch (action.type) {
             case NEW_NUMBER_GAME_REQUESTED: {
                 return {
@@ -114,32 +114,6 @@ const gameReducer = (state = initialState, action) => {
                     })
                 }
             }
-
-            /*            case
-             WORD_GUESS_SUBMITTED:
-             // Find game by index, calculate the result with Game
-             // Add to results, replace gameOver
-             return {
-             ...state,
-             games: state.games.map((game, index) => {
-             if (index === action.payload.index) {
-             const r = WordGame.makeGuess(game.targetWord, action.payload.guess);
-
-             const wordGuesses = game.moves.concat({
-             id: action.payload.id,
-             guess: action.payload.guess,
-             letterMatches: r.letterMatches
-             });
-
-             return Object.assign({}, game, {
-             moves: wordGuesses,
-             status: r.status
-
-             });
-             }
-             return game;
-             })
-             };*/
 
             case NUMBER_GUESS_SUBMITTED:
                 return {
@@ -296,4 +270,4 @@ const gameReducer = (state = initialState, action) => {
     }
 ;
 
-export default gameReducer;
+export default games;
