@@ -5,10 +5,10 @@ import React from 'react';
 const NumberResult = (props) => {
     let text = null;
     if (props.move.inFlight === 'inFlight') {
-        text = <span>Submitting guess...</span>;
+        text = <p>Submitting guess {props.move.guess}</p>;
     }
     else if (props.move.inFlight === 'failed') {
-        text = <span className="fail">Failed to submit guess. Server error :(</span>;
+        text = <p className="fail">Failed to submit guess {props.move.guess}. Server error :(</p>;
     }
     else if (props.move.comparedToAnswer === 'GT') {
         text = <p className="fail">{props.move.guess}: is greater than target</p>;

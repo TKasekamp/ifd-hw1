@@ -1,7 +1,7 @@
 import {
-    NEW_NUMBER_GAME_CREATED,
+    NEW_NUMBER_GAME_CREATED, NEW_NUMBER_GAME_REQUESTED,
     NEW_WORD_GAME_CREATED,
-    newNumberGameCreated,
+    newNumberGameCreated, newNumberGameRequested,
     newWordGameCreated,
     NUMBER_GUESS_SUBMITTED,
     numberGuessSubmitted,
@@ -9,19 +9,19 @@ import {
     wordGuessSubmitted
 } from '../../src/actions/index';
 
-describe('newNumberGameCreated', () => {
+describe('newNumberGameRequested', () => {
     it('has increasing game index', () => {
         const submissions = [
-            newNumberGameCreated(),
-            newNumberGameCreated()
+            newNumberGameRequested(),
+            newNumberGameRequested()
         ];
-        expect(submissions[1].payload.id).to.eq(
-            submissions[0].payload.id + 1
+        expect(parseInt(submissions[1].payload.localId)).to.eq(
+            parseInt(submissions[0].payload.localId) + 1
         );
     });
 
-    it('has generated number', () => {
-        expect(newNumberGameCreated().payload.targetNumber).to.exist;
+    it('has correct game type', () => {
+        expect(newNumberGameRequested().payload.type).to.eq('guess_number');
     });
 
     it('both games increment with the same number', () => {
@@ -30,13 +30,13 @@ describe('newNumberGameCreated', () => {
             newNumberGameCreated(),
             newWordGameCreated()
         ];
-        expect(submissions[2].payload.id).to.eq(
-            submissions[0].payload.id + 2
+        expect(parseInt(submissions[2].payload.localId)).to.eq(
+            parseInt(submissions[0].payload.localId) + 2
         );
     });
 
     it('has correct payload type', () => {
-        expect(newNumberGameCreated().type).to.eq(NEW_NUMBER_GAME_CREATED);
+        expect(newNumberGameRequested().type).to.eq(NEW_NUMBER_GAME_REQUESTED);
     });
 });
 
@@ -72,7 +72,7 @@ describe('number guess', () => {
     });
 
     it('has correct id', () => {
-        expect(numberGuessSubmitted({guess: 3, id: 5}).payload.index).to.eq(5);
+        expect(numberGuessSubmitted({guess: 3, id: 5}).payload.gameId).to.eq(5);
     });
 
     it('has correct payload type', () => {
