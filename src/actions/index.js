@@ -5,16 +5,27 @@ let wordGuessId = 0;
 let numberGuessId = 0;
 let words = ['paper', 'grill', 'basil', 'hinge', 'ruler'];
 
-export const NEW_NUMBER_GAME_CREATED = 'NEW_NUMBER_GAME_CREATED';
-export const newNumberGameCreated = () => (
+const createPayloadForwardingAction = (type) => (payload) =>
+    ({type: type, payload: payload});
+
+export const NEW_NUMBER_GAME_REQUESTED = 'NEW_NUMBER_GAME_REQUESTED';
+export const newNumberGameRequested = () => (
     {
-        type: NEW_NUMBER_GAME_CREATED,
+        type: NEW_NUMBER_GAME_REQUESTED,
         payload: {
-            id: nextGameId++,
-            targetNumber: NumberGame.generateNumber()
+            localId: (nextGameId++).toString(),
+            type: 'guess_number'
         }
     }
 );
+
+
+export const NEW_NUMBER_GAME_CREATED = 'NEW_NUMBER_GAME_CREATED';
+export const newNumberGameCreated = createPayloadForwardingAction(NEW_NUMBER_GAME_CREATED);
+
+export const NEW_NUMBER_GAME_FAILED = 'NEW_NUMBER_GAME_FAILED';
+export const newNumberGameFailed = createPayloadForwardingAction(NEW_NUMBER_GAME_FAILED);
+
 
 export const NEW_WORD_GAME_CREATED = 'NEW_WORD_GAME_CREATED';
 export const newWordGameCreated = () => (

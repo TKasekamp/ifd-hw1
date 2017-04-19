@@ -46,7 +46,7 @@ class NumberGuessForm extends Component {
 NumberGuessForm.propTypes = {
     onSubmit: React.PropTypes.func.isRequired,
     status: React.PropTypes.string.isRequired,
-    id: React.PropTypes.number.isRequired,
+    id: React.PropTypes.string.isRequired,
 };
 
 export default NumberGuessForm;
