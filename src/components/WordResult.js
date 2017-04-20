@@ -5,9 +5,9 @@ import React from 'react';
 const WordResult = (props) => {
     let text = [];
     if (props.move.inFlight === 'inFlight') {
-        text = <p>Submitting guess {props.move.guess}</p>;
+        text = <div>Submitting guess {props.move.guess}</div>;
     } else if (props.move.inFlight === 'failed') {
-        text = <p className="fail">Failed to submit guess {props.move.guess}. Server error :(</p>;
+        text = <div className="fail">Failed to submit guess {props.move.guess}. Server error :(</div>;
     } else if (props.move.inFlight === 'created') {
         for (let i = 0, len = props.move.letterMatches.length; i < len; i++) {
             text.push(<a key={i} className={(props.move.letterMatches[i] ? 'win' : 'fail')}>{props.move.guess[i]}</a>);

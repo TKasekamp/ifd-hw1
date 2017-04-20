@@ -9,7 +9,7 @@ class WordGameContainer extends Component {
 
     render() {
         if (this.props.game.inFlight === 'inFlight') {
-            return (<h3>Number game being created...</h3>);
+            return (<h3>Word game being created...</h3>);
         } else if (this.props.game.inFlight === 'failed') {
             return (<h3>Game creation failed. Server error :(</h3>);
         } else {

@@ -5,15 +5,15 @@ import React from 'react';
 const NumberResult = (props) => {
     let text = null;
     if (props.move.inFlight === 'inFlight') {
-        text = <p>Submitting guess {props.move.guess}</p>;
+        text = <div>Submitting guess {props.move.guess}</div>;
     } else if (props.move.inFlight === 'failed') {
-        text = <p className="fail">Failed to submit guess {props.move.guess}. Server error :(</p>;
+        text = <div className="fail">Failed to submit guess {props.move.guess}. Server error :(</div>;
     } else if (props.move.comparedToAnswer === 'GT') {
-        text = <p className="fail">{props.move.guess}: is greater than target</p>;
+        text = <div className="fail">{props.move.guess}: is greater than target</div>;
     } else if (props.move.comparedToAnswer === 'LT') {
-        text = <p className="fail">{props.move.guess}: is lesser than target</p>;
+        text = <div className="fail">{props.move.guess}: is lesser than target</div>;
     } else if (props.move.comparedToAnswer === 'EQ') {
-        text = <p className="win">{props.move.guess}: was correct</p>;
+        text = <div className="win">{props.move.guess}: was correct</div>;
     }
 
     return (
