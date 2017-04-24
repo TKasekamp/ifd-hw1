@@ -5,6 +5,7 @@ import {applyMiddleware, compose, createStore} from 'redux';
 import thunk from 'redux-thunk';
 
 import gameServerMiddleware from './middlewares/GameServerMiddleware';
+import webSocketMiddleware from './middlewares/WebSocketMiddleware';
 import App from './containers/App';
 import reducer from './reducers';
 
@@ -15,7 +16,8 @@ let store = createStore(
     composeStoreEnhancers(
         applyMiddleware(
             thunk,
-            gameServerMiddleware
+            gameServerMiddleware,
+            webSocketMiddleware
         )
     )
 );
