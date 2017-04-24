@@ -6,7 +6,7 @@ const OnlinePlayer = (props) => {
     let text = <div>{props.name}</div>;
 
     if (props.isPlayer) {
-        text = <div>{props.name} (you)</div>
+        text = <div>{props.name} (you)</div>;
     }
 
     return (

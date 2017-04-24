@@ -1,4 +1,10 @@
-import {CONNECT_REQUESTED, connected, connectRefused, DISCONNECT_REQUESTED, messageReceived} from '../actions/PlayerActions';
+import {
+    CONNECT_REQUESTED,
+    connected,
+    connectRefused,
+    DISCONNECT_REQUESTED,
+    messageReceived
+} from '../actions/PlayerActions';
 import {connect} from '../WebSocket';
 
 // Using WebSocket abstraction from basic websocket example

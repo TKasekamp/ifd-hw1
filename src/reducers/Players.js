@@ -19,7 +19,7 @@ const players = (state = initialState, action) => {
             };
 
         case CONNECT_REFUSED:
-            if(action.payload.reason === 'player-name-taken') {
+            if (action.payload.reason === 'player-name-taken') {
                 return {
                     ...state,
                     message: 'This name is taken. Choose another one!'
@@ -30,8 +30,7 @@ const players = (state = initialState, action) => {
         case MESSAGE_RECEIVED:
             if (action.payload.eventName === CONNECTION_ACCEPTED) {
                 return connectionAccepted(state, action);
-            }
-            else if (action.payload.eventName === ONLINE_PLAYERS) {
+            } else if (action.payload.eventName === ONLINE_PLAYERS) {
                 return onlinePlayers(state, action);
             }
             return state;

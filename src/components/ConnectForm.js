@@ -24,8 +24,7 @@ class ConnectForm extends Component {
             return <button type='submit' onClick={this.props.onDisconnect}>
                 Disconnect
             </button>;
-        }
-        else {
+        } else {
             return (
                 <div >
                     <input

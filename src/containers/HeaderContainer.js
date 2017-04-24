@@ -1,5 +1,4 @@
 import {connect} from 'react-redux';
-import ConnectForm from '../components/ConnectForm';
 import {connectRequested, disconnectRequested} from '../actions/PlayerActions';
 import Header from '../components/Header';
 
@@ -11,7 +10,7 @@ const mapDispatchToProps = (dispatch) => ({
 const mapStateToProps = (state) => ({
     connected: state.players.connected,
     playerId: state.players.playerId,
-    onlinePlayers : state.players.onlinePlayers,
+    onlinePlayers: state.players.onlinePlayers,
     message: state.players.message
 });
 

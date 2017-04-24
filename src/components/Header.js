@@ -1,6 +1,4 @@
 import React from 'react';
-import NumberResult from './NumberResult';
-import OnlinePlayer from './OnlinePlayer';
 import ConnectForm from './ConnectForm';
 import OnlinePlayerList from './OnlinePlayerList';
 
@@ -9,7 +7,7 @@ const Header = (props) => {
 
     let playerList = '';
     if (props.connected) {
-        playerList = <OnlinePlayerList onlinePlayers={props.onlinePlayers} playerId={props.playerId}/>
+        playerList = <OnlinePlayerList onlinePlayers={props.onlinePlayers} playerId={props.playerId}/>;
     }
 
     return (

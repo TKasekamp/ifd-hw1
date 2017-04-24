@@ -1,9 +1,5 @@
 import React from 'react';
 import {shallow} from 'enzyme';
-
-import App from '../../src/containers/App';
-import GamesContainer from '../../src/containers/GamesContainer';
-import ButtonContainer from '../../src/containers/ButtonContainer';
 import Header from '../../src/components/Header';
 import ConnectForm from '../../src/components/ConnectForm';
 import OnlinePlayerList from '../../src/components/OnlinePlayerList';
@@ -36,6 +32,5 @@ describe('Header', () => {
                                        onlinePlayers={[]} playerId={'4'} message={'asdf'}/>);
 
         expect(header).to.contain('asdf');
-
     });
 });

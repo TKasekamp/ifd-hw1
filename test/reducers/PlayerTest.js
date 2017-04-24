@@ -56,5 +56,4 @@ describe('PlayerReducer', () => {
         expect(state3.playerId).to.eq('');
         expect(state.onlinePlayers).to.eql([]);
     });
-
 });
