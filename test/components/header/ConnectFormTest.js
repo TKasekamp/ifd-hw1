@@ -1,6 +1,6 @@
 import React from 'react';
 import {shallow} from 'enzyme';
-import ConnectForm from '../../src/components/ConnectForm';
+import ConnectForm from '../../../src/components/header/ConnectForm';
 
 describe('ConnectForm', () => {
     it('renders', () => {

@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import {connectRequested, disconnectRequested} from '../actions/PlayerActions';
-import Header from '../components/Header';
+import Header from '../components/header/Header';
 
 const mapDispatchToProps = (dispatch) => ({
     onConnect: ({playerName}) => dispatch(connectRequested({playerName})),

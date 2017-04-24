@@ -1,7 +1,7 @@
 import React from 'react';
 import {shallow} from 'enzyme';
-import OnlinePlayerList from '../../src/components/OnlinePlayerList';
-import OnlinePlayer from '../../src/components/OnlinePlayer';
+import OnlinePlayerList from '../../../src/components/header/OnlinePlayerList';
+import OnlinePlayer from '../../../src/components/header/OnlinePlayer';
 
 describe('OnlinePlayerList', () => {
     it('renders item for each player', () => {

@@ -1,6 +1,6 @@
 import React from 'react';
 import {shallow} from 'enzyme';
-import OnlinePlayer from '../../src/components/OnlinePlayer';
+import OnlinePlayer from '../../../src/components/header/OnlinePlayer';
 
 describe('OnlinePlayer', () => {
     it('renders with you if is player', () => {

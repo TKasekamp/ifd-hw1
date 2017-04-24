@@ -1,8 +1,8 @@
 import React from 'react';
 import {shallow} from 'enzyme';
-import Header from '../../src/components/Header';
-import ConnectForm from '../../src/components/ConnectForm';
-import OnlinePlayerList from '../../src/components/OnlinePlayerList';
+import Header from '../../../src/components/header/Header';
+import ConnectForm from '../../../src/components/header/ConnectForm';
+import OnlinePlayerList from '../../../src/components/header/OnlinePlayerList';
 
 describe('Header', () => {
     it('initially renders only connect form', () => {
