@@ -12,8 +12,7 @@ import {
 
 
 const initialState = {
-    games: [],
-    connected: false
+    games: []
 };
 
 export const IN_FLIGHT = 'inFlight';
