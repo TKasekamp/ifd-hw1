@@ -24,30 +24,23 @@ class ConnectForm extends Component {
     }
 
     render() {
-        if (this.props.connected) {
-            return (<button type='submit' onClick={props.onDisconnect}>
-                Disconnect
-            </button>);
-        } else {
-            return (
-                <div >
-                    <input
-                        id="name-input"
-                        type="text"
-                        placeholder="Enter name"
-                        value={this.state.playerName}
-                        onChange={this.handleNameChange.bind(this)}
-                        onKeyPress={this.handleKeyPress.bind(this)}
-                    />
-                </div>
-            );
-        }
+        return (
+            <div >
+                <input
+                    id="name-input"
+                    type="text"
+                    placeholder="Enter name"
+                    value={this.state.playerName}
+                    onChange={this.handleNameChange.bind(this)}
+                    onKeyPress={this.handleKeyPress.bind(this)}
+                />
+            </div>
+        );
+
     }
 }
 ConnectForm.propTypes = {
-    onConnect: React.PropTypes.func.isRequired,
-    onDisconnect: React.PropTypes.func.isRequired,
-    connected: React.PropTypes.bool.isRequired
+    onConnect: React.PropTypes.func.isRequired
 };
 
 export default ConnectForm;

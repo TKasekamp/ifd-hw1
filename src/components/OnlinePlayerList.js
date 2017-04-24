@@ -21,7 +21,7 @@ OnlinePlayerList.propTypes = {
     playerId: React.PropTypes.string.isRequired,
     onlinePlayers: React.PropTypes.arrayOf(React.PropTypes.shape({
         name: React.PropTypes.string.isRequired,
-        id: React.PropTypes.number.isRequired,
+        id: React.PropTypes.string.isRequired,
     }).isRequired).isRequired
 };
 
