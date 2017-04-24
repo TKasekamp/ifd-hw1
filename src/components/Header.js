@@ -5,17 +5,8 @@ import ConnectForm from './ConnectForm';
 import OnlinePlayerList from './OnlinePlayerList';
 
 const Header = (props) => {
-    let form = '';
-    if (props.connected) {
-        form = <button type='submit' onClick={props.onDisconnect}>
-            Disconnect
-        </button>;
+    let form = <ConnectForm onConnect={props.onConnect} onDisconnect={props.onDisconnect} connected={props.connected}/>;
 
-    }
-    else {
-        form = <ConnectForm onConnect={props.onConnect}/>;
-
-    }
     let playerList = '';
     if (props.connected) {
         playerList = <OnlinePlayerList onlinePlayers={props.onlinePlayers} playerId={props.playerId}/>
