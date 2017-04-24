@@ -1,7 +1,7 @@
 import React from 'react';
 import NumberGameContainer from '../containers/NumberGameContainer';
 import WordGameContainer from '../containers/WordGameContainer';
-import ButtonContainer from '../containers/ButtonContainer';
+import Buttons from './Buttons';
 
 
 const Games = (props) => {
@@ -18,7 +18,7 @@ const Games = (props) => {
     });
     return (
         <div>
-            <ButtonContainer />
+            <Buttons newWordGame={props.newWordGame} newNumberGame={props.newNumberGame}/>
             <h2>Games</h2>
             <div className='flexbox-container result-list'>{resultElements}</div>
         </div>
@@ -33,7 +33,9 @@ Games.propTypes = {
         moves: React.PropTypes.array.isRequired,
         inFlight: React.PropTypes.string.isRequired,
     })).isRequired,
-    connected: React.PropTypes.bool.isRequired
+    connected: React.PropTypes.bool.isRequired,
+    newNumberGame: React.PropTypes.func.isRequired,
+    newWordGame: React.PropTypes.func.isRequired,
 };
 
 export default Games;
