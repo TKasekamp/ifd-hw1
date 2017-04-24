@@ -1,4 +1,4 @@
-import {MESSAGE_RECEIVED} from '../actions/PlayerActions';
+import {DISCONNECT_REQUESTED, MESSAGE_RECEIVED} from '../actions/PlayerActions';
 
 const initialState = {
     connected: false,
@@ -19,6 +19,13 @@ const players = (state = initialState, action) => {
                 return onlinePlayers(state, action);
             }
             return state;
+
+        case DISCONNECT_REQUESTED:
+            return {
+                connected: false,
+                playerId: '',
+                onlinePlayers: []
+            };
         default:
             return state;
     }
