@@ -8,7 +8,7 @@ const webSocketMiddleware = (store) => (next) => {
         if (action.type === CONNECT_REQUESTED) {
             connection = connect({
                 onOpen: () => store.dispatch(connected()),
-                onClose: ({reason}) => store.dispatch(connectRefused({reason})),
+                onClose: ({code, reason}) => store.dispatch(connectRefused({code, reason})),
                 parameters: {playerName: action.payload.playerName},
                 onMessage: ({eventName, payload}) => store.dispatch(messageReceived({eventName, payload}))
             });

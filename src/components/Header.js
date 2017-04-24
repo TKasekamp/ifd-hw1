@@ -23,6 +23,7 @@ const Header = (props) => {
 
     return (
         <div>
+            <div>{props.message}</div>
             {form} {playerList}
         </div>
     );
@@ -37,6 +38,7 @@ Header.propTypes = {
     connected: React.PropTypes.bool.isRequired,
     onConnect: React.PropTypes.func.isRequired,
     onDisconnect: React.PropTypes.func.isRequired,
+    message: React.PropTypes.string.isRequired
 };
 
 export default Header;

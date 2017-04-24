@@ -11,7 +11,8 @@ const mapDispatchToProps = (dispatch) => ({
 const mapStateToProps = (state) => ({
     connected: state.players.connected,
     playerId: state.players.playerId,
-    onlinePlayers : state.players.onlinePlayers
+    onlinePlayers : state.players.onlinePlayers,
+    message: state.players.message
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
