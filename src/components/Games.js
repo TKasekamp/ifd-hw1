@@ -12,7 +12,7 @@ const Games = (props) => {
             return (
                 <NumberGameContainer game={game} key={index} numberGuess={props.numberGuess}/>);
         } else if (game.type === 'guess_word') {
-            return (<WordGameContainer game={game} key={index}/>);
+            return (<WordGameContainer game={game} key={index} wordGuess={props.wordGuess}/>);
         }
     });
     return (
@@ -35,7 +35,8 @@ Games.propTypes = {
     connected: React.PropTypes.bool.isRequired,
     newNumberGame: React.PropTypes.func.isRequired,
     newWordGame: React.PropTypes.func.isRequired,
-    numberGuess: React.PropTypes.func.isRequired
+    numberGuess: React.PropTypes.func.isRequired,
+    wordGuess: React.PropTypes.func.isRequired
 };
 
 export default Games;

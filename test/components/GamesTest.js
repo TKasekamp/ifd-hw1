@@ -9,7 +9,7 @@ import Buttons from '../../src/components/Buttons';
 describe('Games', () => {
     it('no render if player not connected', () => {
         const games = shallow(<Games games={[]} connected={false} newNumberGame={sinon.stub()}
-                                     newWordGame={sinon.stub()}/>);
+                                     newWordGame={sinon.stub()} wordGuess={sinon.stub()} numberGuess={sinon.stub()}/>);
         expect(games).to.exist;
         expect(games).to.not.contain.descendants(Buttons);
         expect(games).to.not.contain.descendants(NumberGameContainer);
@@ -18,7 +18,7 @@ describe('Games', () => {
 
     it('renders if no games', () => {
         const games = shallow(<Games games={[]} connected={true} newNumberGame={sinon.stub()}
-                                     newWordGame={sinon.stub()}/>);
+                                     newWordGame={sinon.stub()} wordGuess={sinon.stub()} numberGuess={sinon.stub()}/>);
         expect(games).to.exist;
         expect(games).to.contain.descendants(Buttons);
         expect(games).to.not.contain.descendants(NumberGameContainer);
@@ -33,7 +33,8 @@ describe('Games', () => {
         ];
 
         const gameList = shallow(<Games games={games} connected={true} newNumberGame={sinon.stub()}
-                                        newWordGame={sinon.stub()}/>);
+                                        newWordGame={sinon.stub()} wordGuess={sinon.stub()}
+                                        numberGuess={sinon.stub()}/>);
 
         expect(gameList).to.have.exactly(1).descendants(NumberGameContainer);
         expect(gameList).to.have.exactly(2).descendants(WordGameContainer);
