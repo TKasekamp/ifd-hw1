@@ -3,7 +3,6 @@ import NumberGameContainer from '../containers/NumberGameContainer';
 import WordGameContainer from '../containers/WordGameContainer';
 import Buttons from './Buttons';
 
-
 const Games = (props) => {
     if (!props.connected) {
         return <div></div>;
@@ -11,7 +10,7 @@ const Games = (props) => {
     const resultElements = props.games.map((game, index) => {
         if (game.type === 'guess_number') {
             return (
-                <NumberGameContainer game={game} key={index}/>);
+                <NumberGameContainer game={game} key={index} numberGuess={props.numberGuess}/>);
         } else if (game.type === 'guess_word') {
             return (<WordGameContainer game={game} key={index}/>);
         }
@@ -36,6 +35,7 @@ Games.propTypes = {
     connected: React.PropTypes.bool.isRequired,
     newNumberGame: React.PropTypes.func.isRequired,
     newWordGame: React.PropTypes.func.isRequired,
+    numberGuess: React.PropTypes.func.isRequired
 };
 
 export default Games;

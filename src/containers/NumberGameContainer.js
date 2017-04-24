@@ -1,28 +1,22 @@
-import React, {Component} from 'react';
-import NumberGuessFormContainer from './NumberGuessFormContainer';
+import React from 'react';
 import NumberResultList from '../components/NumberResultList';
+import NumberGuessForm from '../components/NumberGuessForm';
 
-class NumberGameContainer extends Component {
-    constructor(props) {
-        super(props);
+const NumberGameContainer = (props) => {
+    if (props.game.inFlight === 'inFlight') {
+        return (<h3>Number game being created...</h3>);
+    } else if (props.game.inFlight === 'failed') {
+        return (<h3>Game creation failed. Server error :(</h3>);
+    } else {
+        return (
+            <div className='app'>
+                <h3>Number game</h3>
+                <NumberGuessForm id={props.game.id} status={props.game.status} onSubmit={props.numberGuess}/>
+                <NumberResultList moves={props.game.moves}/>
+            </div>
+        );
     }
-
-    render() {
-        if (this.props.game.inFlight === 'inFlight') {
-            return (<h3>Number game being created...</h3>);
-        } else if (this.props.game.inFlight === 'failed') {
-            return (<h3>Game creation failed. Server error :(</h3>);
-        } else {
-            return (
-                <div className='app'>
-                    <h3>Number game</h3>
-                    <NumberGuessFormContainer id={this.props.game.id} status={this.props.game.status}/>
-                    <NumberResultList moves={this.props.game.moves}/>
-                </div>
-            );
-        }
-    }
-}
+};
 
 NumberGameContainer.propTypes = {
     game: React.PropTypes.shape({
@@ -31,7 +25,8 @@ NumberGameContainer.propTypes = {
         status: React.PropTypes.string.isRequired,
         moves: React.PropTypes.array.isRequired,
         inFlight: React.PropTypes.string.isRequired
-    }).isRequired
+    }).isRequired,
+    numberGuess: React.PropTypes.func.isRequired,
 };
 
 export default NumberGameContainer;
