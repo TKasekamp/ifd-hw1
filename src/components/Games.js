@@ -1,7 +1,6 @@
 import React from 'react';
-import NumberGameContainer from '../containers/NumberGameContainer';
-import WordGameContainer from '../containers/WordGameContainer';
 import Buttons from './Buttons';
+import GameContainer from '../containers/GameContainer';
 
 const Games = (props) => {
     if (!props.connected) {
@@ -10,9 +9,9 @@ const Games = (props) => {
     const resultElements = props.games.map((game, index) => {
         if (game.type === 'guess_number') {
             return (
-                <NumberGameContainer game={game} key={index} numberGuess={props.numberGuess}/>);
+                <GameContainer game={game} key={index} makeGuess={props.numberGuess}/>);
         } else if (game.type === 'guess_word') {
-            return (<WordGameContainer game={game} key={index} wordGuess={props.wordGuess}/>);
+            return (<GameContainer game={game} key={index} makeGuess={props.numberGuess}/>);
         }
     });
     return (

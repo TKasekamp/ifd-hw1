@@ -2,9 +2,8 @@ import React from 'react';
 import {shallow} from 'enzyme';
 
 import Games from '../../src/components/Games';
-import NumberGameContainer from '../../src/containers/NumberGameContainer';
-import WordGameContainer from '../../src/containers/WordGameContainer';
 import Buttons from '../../src/components/Buttons';
+import GameContainer from '../../src/containers/GameContainer';
 
 describe('Games', () => {
     it('no render if player not connected', () => {
@@ -12,8 +11,7 @@ describe('Games', () => {
                                      newWordGame={sinon.stub()} wordGuess={sinon.stub()} numberGuess={sinon.stub()}/>);
         expect(games).to.exist;
         expect(games).to.not.contain.descendants(Buttons);
-        expect(games).to.not.contain.descendants(NumberGameContainer);
-        expect(games).to.not.contain.descendants(WordGameContainer);
+        expect(games).to.not.contain.descendants(GameContainer);
     });
 
     it('renders if no games', () => {
@@ -21,8 +19,7 @@ describe('Games', () => {
                                      newWordGame={sinon.stub()} wordGuess={sinon.stub()} numberGuess={sinon.stub()}/>);
         expect(games).to.exist;
         expect(games).to.contain.descendants(Buttons);
-        expect(games).to.not.contain.descendants(NumberGameContainer);
-        expect(games).to.not.contain.descendants(WordGameContainer);
+        expect(games).to.not.contain.descendants(GameContainer);
     });
 
     it('renders game for each input', () => {
@@ -36,7 +33,6 @@ describe('Games', () => {
                                         newWordGame={sinon.stub()} wordGuess={sinon.stub()}
                                         numberGuess={sinon.stub()}/>);
 
-        expect(gameList).to.have.exactly(1).descendants(NumberGameContainer);
-        expect(gameList).to.have.exactly(2).descendants(WordGameContainer);
+        expect(gameList).to.have.exactly(3).descendants(GameContainer);
     });
 });
