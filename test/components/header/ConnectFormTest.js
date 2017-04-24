@@ -13,7 +13,7 @@ describe('ConnectForm', () => {
         const onSubmit = sinon.stub();
         const form = shallow(<ConnectForm onConnect={onSubmit} onDisconnect={sinon.stub()} connected={false}/>);
 
-        form.setState({playerName: 'aaa'});
+        form.find('#name-input').simulate('change', {target: {value: 'aaa'}});
 
         form.find('button').simulate('click');
 

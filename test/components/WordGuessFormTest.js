@@ -14,7 +14,7 @@ describe('WordGuessForm', () => {
         const onSubmit = sinon.stub();
         const form = shallow(<WordGuessForm id={'3'} onSubmit={onSubmit} status='waiting_for_move'/>);
 
-        form.setState({guess: 'thing'});
+        form.find('#word-input').simulate('change', {target: {value: 'thing'}});
 
         form.find('#word-input').simulate('keyPress', {key: 'Enter'});
 

@@ -14,7 +14,7 @@ describe('NumberGuessForm', () => {
         const onSubmit = sinon.stub();
         const form = shallow(<NumberGuessForm id={'3'} onSubmit={onSubmit} status='waiting_for_move'/>);
 
-        form.setState({guess: '4'});
+        form.find('#number-input').simulate('change', {target: {value: 4}});
 
         form.find('#number-input').simulate('keyPress', {key: 'Enter'});
 
