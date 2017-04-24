@@ -1,7 +1,7 @@
 let nextGameId = 0;
 let guessId = 0;
 
-const createPayloadForwardingAction = (type) => (payload) =>
+export const createPayloadForwardingAction = (type) => (payload) =>
     ({type: type, payload: payload});
 
 // COMMON GAME CREATION

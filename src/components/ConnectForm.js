@@ -4,21 +4,21 @@ class ConnectForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            name: ''
+            playerName: ''
         };
     }
 
     handleNameChange(event) {
-        this.setState({name: event.target.value});
+        this.setState({playerName: event.target.value});
     }
 
     onConnect() {
-        this.props.onConnect({name: this.state.name});
-        this.setState({name: ''});
+        this.props.onConnect({playerName: this.state.playerName});
+        this.setState({playerName: ''});
     }
 
     handleKeyPress(e) {
-        if (e.key === 'Enter' && this.state.name != '') {
+        if (e.key === 'Enter' && this.state.playerName != '') {
             this.onConnect();
         }
     }
@@ -35,7 +35,7 @@ class ConnectForm extends Component {
                         id="name-input"
                         type="text"
                         placeholder="Enter name"
-                        value={this.state.name}
+                        value={this.state.playerName}
                         onChange={this.handleNameChange.bind(this)}
                         onKeyPress={this.handleKeyPress.bind(this)}
                     />

@@ -1,6 +1,7 @@
 import React from 'react';
 import NumberGameContainer from '../containers/NumberGameContainer';
 import WordGameContainer from '../containers/WordGameContainer';
+import ButtonContainer from '../containers/ButtonContainer';
 
 
 const Games = (props) => {
@@ -14,6 +15,7 @@ const Games = (props) => {
     });
     return (
         <div>
+            <ButtonContainer />
             <h2>Games</h2>
             <div className='flexbox-container result-list'>{resultElements}</div>
         </div>

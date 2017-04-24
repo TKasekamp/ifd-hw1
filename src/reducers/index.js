@@ -1,10 +1,9 @@
 import {combineReducers} from 'redux';
 import games from './Games';
+import players from './Players';
 
-// `combineReducers` is used to create different _slices_ of application state
-// which are managed by different reducers.
 export default combineReducers({
-    games: games
-
+    games: games,
+    players: players
 })
 ;

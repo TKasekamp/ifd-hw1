@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import ButtonContainer from './ButtonContainer';
 import GamesContainer from './GamesContainer';
+import ConnectFormContainer from './ConnectFormContainer';
 
 class App extends Component {
     constructor(props) {
@@ -11,7 +11,7 @@ class App extends Component {
         return (
             <div className='app'>
                 <h1>Game lobby</h1>
-                <ButtonContainer />
+                <ConnectFormContainer/>
                 <GamesContainer />
             </div>
         );
