@@ -1,5 +1,4 @@
 import React from 'react';
-import NumberResult from './NumberResult';
 import OnlinePlayer from './OnlinePlayer';
 
 const OnlinePlayerList = (props) => {

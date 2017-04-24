@@ -22,3 +22,7 @@ body {
     flex-direction: column-reverse;
     -webkit-flex-direction: column-reverse;
 }
+
+.buttons {
+    padding-top: 20px;
+}

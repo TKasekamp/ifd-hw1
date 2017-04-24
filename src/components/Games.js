@@ -5,6 +5,9 @@ import ButtonContainer from '../containers/ButtonContainer';
 
 
 const Games = (props) => {
+    if (!props.connected) {
+        return <div></div>;
+    }
     const resultElements = props.games.map((game, index) => {
         if (game.type === 'guess_number') {
             return (
@@ -29,7 +32,8 @@ Games.propTypes = {
         status: React.PropTypes.string.isRequired,
         moves: React.PropTypes.array.isRequired,
         inFlight: React.PropTypes.string.isRequired,
-    })).isRequired
+    })).isRequired,
+    connected: React.PropTypes.bool.isRequired
 };
 
 export default Games;
