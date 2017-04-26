@@ -11,7 +11,7 @@ const Games = (props) => {
             return (
                 <GameContainer game={game} key={index} makeGuess={props.numberGuess}/>);
         } else if (game.type === 'guess_word') {
-            return (<GameContainer game={game} key={index} makeGuess={props.numberGuess}/>);
+            return (<GameContainer game={game} key={index} makeGuess={props.wordGuess}/>);
         }
     });
     return (
