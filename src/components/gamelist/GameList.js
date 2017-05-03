@@ -4,7 +4,8 @@ import GameItem from './GameItem';
 const GameList = (props) => {
     const resultElements = props.games.map((game) => {
         return (
-            <GameItem key={game.id} status={game.status} type={game.type} inFlight={game.inFlight}>
+            <GameItem key={game.id} status={game.status} type={game.type} inFlight={game.inFlight} id={game.id}
+                      play={props.play}>
             </GameItem>
         );
     });
@@ -17,6 +18,7 @@ const GameList = (props) => {
                     <th>Type</th>
                     <th>Status</th>
                     <th>In flight</th>
+                    <th>Play</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -33,7 +35,8 @@ GameList.propTypes = {
         type: React.PropTypes.string.isRequired,
         status: React.PropTypes.string.isRequired,
         inFlight: React.PropTypes.string.isRequired,
-    })).isRequired
+    })).isRequired,
+    play: React.PropTypes.func.isRequired
 };
 
 export default GameList;

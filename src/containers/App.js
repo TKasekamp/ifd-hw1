@@ -4,6 +4,8 @@ import {Route} from 'react-router-dom';
 import CreateGameContainer from './CreateGameContainer';
 import PlayersContainer from './PlayersContainer';
 import GameListContainer from './GameListContainer';
+import GameContainer from './GameContainer';
+import NavBar from '../components/NavBar';
 
 const GamesNotFinished = () => (
     <div>
@@ -26,12 +28,13 @@ class App extends Component {
         return (
             <ConnectedRouter history={this.props.history}>
                 <div className='app'>
+                    <NavBar/>
                     <h1>Game lobby</h1>
-                    <Route path="/" component={CreateGameContainer}/>
                     <Route path="/createGame" component={CreateGameContainer}/>
                     <Route path="/players" component={PlayersContainer}/>
                     <Route path="/ongoingGames" component={GamesNotFinished}/>
                     <Route path="/finishedGames" component={GamesFinished}/>
+                    <Route path="/games/:gameId" component={GameContainer}/>
                 </div>
             </ConnectedRouter>
         );

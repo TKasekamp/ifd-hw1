@@ -1,66 +1,39 @@
-import React, {Component} from 'react';
-import NumberResultList from '../components/NumberResultList';
-import NumberGuessForm from '../components/NumberGuessForm';
-import WordGuessForm from '../components/WordGuessForm';
-import WordResultList from '../components/WordResultList';
+/**
+ * Created by Tonis on 03.05.2017.
+ */
+import React from 'react';
+import {connect} from 'react-redux';
+import {numberGuessSubmitted, wordGuessSubmitted} from '../actions/index';
+import Game from '../components/Game';
 
-class GameContainer extends Component {
-    constructor(props) {
-        super(props);
-    }
-
-    getReadableName() {
-        let gameName = 'Number';
-        if (this.props.game.type === 'guess_word') {
-            gameName = 'Word';
-        }
-        return gameName;
-    }
-
-    getForm() {
-        if (this.props.game.type === 'guess_number') {
-            return <NumberGuessForm id={this.props.game.id} status={this.props.game.status}
-                                    onSubmit={this.props.makeGuess}/>;
-        } else {
-            return <WordGuessForm id={this.props.game.id} status={this.props.game.status}
-                                  onSubmit={this.props.makeGuess}/>;
-        }
-    }
-
-    getList() {
-        if (this.props.game.type === 'guess_number') {
-            return <NumberResultList moves={this.props.game.moves}/>;
-        } else {
-            return <WordResultList moves={this.props.game.moves}/>;
-        }
-    }
-
-    render() {
-        if (this.props.game.inFlight === 'inFlight') {
-            return (<h3>{this.getReadableName()} game being created...</h3>);
-        } else if (this.props.game.inFlight === 'failed') {
-            return (<h3>Game creation failed. Server error :(</h3>);
-        } else {
+const GameOrNotFound = (props) => {
+    if (props.game) {
+        if (props.game.type === 'guess_number') {
             return (
-                <div className='app'>
-                    <h3>{this.getReadableName()} game</h3>
-                    {this.getForm()}
-                    {this.getList()}
-                </div>
-            );
+                <Game game={props.game} makeGuess={props.numberGuess}/>);
+        } else if (props.game.type === 'guess_word') {
+            return (<Game game={props.game} makeGuess={props.wordGuess}/>);
         }
+    } else {
+        return <p>Comment {props.gameId} not found</p>;
     }
-}
-
-GameContainer.propTypes = {
-    game: React.PropTypes.shape({
-        id: React.PropTypes.string.isRequired,
-        type: React.PropTypes.string.isRequired,
-        status: React.PropTypes.string.isRequired,
-        moves: React.PropTypes.array.isRequired,
-        inFlight: React.PropTypes.string.isRequired
-    }).isRequired,
-    makeGuess: React.PropTypes.func.isRequired,
+};
+GameOrNotFound.propTypes = {
+    game: React.PropTypes.object,
+    gameId: React.PropTypes.string.isRequired,
+    wordGuess: React.PropTypes.func.isRequired,
+    numberGuess: React.PropTypes.func.isRequired
 };
 
-export default GameContainer;
+const mapStateToProps = (state, ownProps) => {
+    const gameId = ownProps.match.params.gameId;
+    const game = state.games.games.find((game) => game.id === gameId);
+    return {game, gameId: gameId};
+};
+
+const mapDispatchToProps = (dispatch) => ({
+    numberGuess: ({guess, id}) => dispatch(numberGuessSubmitted({guess, id})),
+    wordGuess: ({guess, id}) => dispatch(wordGuessSubmitted({guess, id}))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(GameOrNotFound);

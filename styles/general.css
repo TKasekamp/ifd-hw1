@@ -11,9 +11,11 @@ body {
 
     justify-content: center;
 }
+
 .fail {
     color: red;
 }
+
 .win {
     color: green;
 }
@@ -25,4 +27,8 @@ body {
 
 .buttons {
     padding-top: 20px;
+}
+
+.navbar a {
+    padding-right: 20px;
 }
