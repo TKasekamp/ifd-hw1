@@ -4,6 +4,7 @@ import {shallow} from 'enzyme';
 import Games from '../../src/components/Games';
 import Buttons from '../../src/components/Buttons';
 import GameContainer from '../../src/containers/GameContainer';
+import Game from '../../src/components/Game';
 
 describe('Games', () => {
     it('no render if player not connected', () => {
@@ -33,6 +34,6 @@ describe('Games', () => {
                                         newWordGame={sinon.stub()} wordGuess={sinon.stub()}
                                         numberGuess={sinon.stub()}/>);
 
-        expect(gameList).to.have.exactly(3).descendants(GameContainer);
+        expect(gameList).to.have.exactly(3).descendants(Game);
     });
 });
