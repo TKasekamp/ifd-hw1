@@ -6,6 +6,7 @@ import PlayersContainer from './PlayersContainer';
 import GameListContainer from './GameListContainer';
 import GameContainer from './GameContainer';
 import NavBar from '../components/NavBar';
+import HomePage from '../components/HomePage';
 
 const GamesNotFinished = () => (
     <div>
@@ -29,7 +30,7 @@ class App extends Component {
             <ConnectedRouter history={this.props.history}>
                 <div className='app'>
                     <NavBar/>
-                    <h1>Game lobby</h1>
+                    <Route exact path="/" component={HomePage}/>
                     <Route path="/createGame" component={CreateGameContainer}/>
                     <Route path="/players" component={PlayersContainer}/>
                     <Route path="/ongoingGames" component={GamesNotFinished}/>

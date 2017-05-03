@@ -3,6 +3,9 @@ import {Link} from 'react-router-dom';
 const NavBar = () => {
     return <div className='navbar'>
         <ul>
+            <Link to='/'>
+                Home page
+            </Link>
             <Link to='/createGame'>
                 Create game
             </Link>

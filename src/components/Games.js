@@ -1,6 +1,7 @@
 import React from 'react';
 import Buttons from './Buttons';
 import GameContainer from '../containers/GameContainer';
+import Game from './Game';
 
 const Games = (props) => {
     if (!props.connected) {
@@ -9,9 +10,9 @@ const Games = (props) => {
     const resultElements = props.games.map((game, index) => {
         if (game.type === 'guess_number') {
             return (
-                <GameContainer game={game} key={index} makeGuess={props.numberGuess}/>);
+                <Game game={game} key={index} makeGuess={props.numberGuess}/>);
         } else if (game.type === 'guess_word') {
-            return (<GameContainer game={game} key={index} makeGuess={props.wordGuess}/>);
+            return (<Game game={game} key={index} makeGuess={props.wordGuess}/>);
         }
     });
     return (

@@ -15,7 +15,7 @@ const GameOrNotFound = (props) => {
             return (<Game game={props.game} makeGuess={props.wordGuess}/>);
         }
     } else {
-        return <p>Comment {props.gameId} not found</p>;
+        return <p>Game {props.gameId} not found</p>;
     }
 };
 GameOrNotFound.propTypes = {
