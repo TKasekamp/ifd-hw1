@@ -3,6 +3,19 @@ import {ConnectedRouter} from 'connected-react-router';
 import {Route} from 'react-router-dom';
 import CreateGameContainer from './CreateGameContainer';
 import PlayersContainer from './PlayersContainer';
+import GameListContainer from './GameListContainer';
+
+const GamesNotFinished = () => (
+    <div>
+        <GameListContainer showFinished={false}/>
+    </div>
+);
+
+const GamesFinished = () => (
+    <div>
+        <GameListContainer showFinished={true}/>
+    </div>
+);
 
 class App extends Component {
     constructor(props) {
@@ -14,8 +27,11 @@ class App extends Component {
             <ConnectedRouter history={this.props.history}>
                 <div className='app'>
                     <h1>Game lobby</h1>
+                    <Route path="/" component={CreateGameContainer}/>
                     <Route path="/createGame" component={CreateGameContainer}/>
                     <Route path="/players" component={PlayersContainer}/>
+                    <Route path="/ongoingGames" component={GamesNotFinished}/>
+                    <Route path="/finishedGames" component={GamesFinished}/>
                 </div>
             </ConnectedRouter>
         );

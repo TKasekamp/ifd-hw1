@@ -215,3 +215,17 @@ const games = (state = initialState, action) => {
 };
 
 export default games;
+
+// Could be more efficient???
+export const filterGames = ({games, showFinished}) => {
+    if (showFinished) {
+        return games.filter((game) =>
+            game.status.match(/finished/)
+        );
+    }
+    else {
+        return games.filter((game) =>
+            !game.status.match(/finished/)
+        );
+    }
+};
