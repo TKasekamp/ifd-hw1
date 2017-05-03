@@ -7,7 +7,8 @@ module.exports = {
         './styles/app.css'
     ],
     devServer: {
-        port: 8080
+        port: 8080,
+        historyApiFallback: true
     },
     devtool: "inline-source-map",
     output: {
