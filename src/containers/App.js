@@ -7,7 +7,7 @@ import GameListContainer from './GameListContainer';
 import GameContainer from './GameContainer';
 import NavBar from '../components/NavBar';
 import HomePage from '../components/HomePage';
-
+import PropTypes from 'prop-types';
 const GamesNotFinished = () => (
     <div>
         <GameListContainer showFinished={false}/>
@@ -43,7 +43,7 @@ class App extends Component {
 }
 
 App.propTypes = {
-    history: React.PropTypes.object.isRequired
+    history: PropTypes.object.isRequired
 };
 
 export default App;

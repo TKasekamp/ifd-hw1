@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 /*
  Result knows how to display itself.
  */
@@ -23,10 +24,10 @@ const NumberResult = (props) => {
     );
 };
 NumberResult.propTypes = {
-    move: React.PropTypes.shape({
-        guess: React.PropTypes.number.isRequired,
-        comparedToAnswer: React.PropTypes.string.isRequired,
-        inFlight: React.PropTypes.string.isRequired
+    move: PropTypes.shape({
+        guess: PropTypes.number.isRequired,
+        comparedToAnswer: PropTypes.string.isRequired,
+        inFlight: PropTypes.string.isRequired
     }).isRequired
 };
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import NumberResult from './NumberResult';
-
+import PropTypes from 'prop-types';
 const NumberResultList = (props) => {
     const resultElements = props.moves.map((move) => {
         return (
@@ -17,11 +17,11 @@ const NumberResultList = (props) => {
 };
 
 NumberResultList.propTypes = {
-    moves: React.PropTypes.arrayOf(React.PropTypes.shape({
-        guess: React.PropTypes.number.isRequired,
-        id: React.PropTypes.number.isRequired,
-        comparedToAnswer: React.PropTypes.string.isRequired,
-        inFlight: React.PropTypes.string.isRequired,
+    moves: PropTypes.arrayOf(PropTypes.shape({
+        guess: PropTypes.number.isRequired,
+        id: PropTypes.number.isRequired,
+        comparedToAnswer: PropTypes.string.isRequired,
+        inFlight: PropTypes.string.isRequired,
     })).isRequired
 };
 

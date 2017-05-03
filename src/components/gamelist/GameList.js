@@ -1,6 +1,6 @@
 import React from 'react';
 import GameItem from './GameItem';
-
+import PropTypes from 'prop-types';
 const GameList = (props) => {
     const resultElements = props.games.map((game) => {
         return (
@@ -30,13 +30,13 @@ const GameList = (props) => {
 };
 
 GameList.propTypes = {
-    games: React.PropTypes.arrayOf(React.PropTypes.shape({
-        id: React.PropTypes.string.isRequired,
-        type: React.PropTypes.string.isRequired,
-        status: React.PropTypes.string.isRequired,
-        inFlight: React.PropTypes.string.isRequired,
+    games: PropTypes.arrayOf(PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        type: PropTypes.string.isRequired,
+        status: PropTypes.string.isRequired,
+        inFlight: PropTypes.string.isRequired,
     })).isRequired,
-    play: React.PropTypes.func.isRequired
+    play: PropTypes.func.isRequired
 };
 
 export default GameList;

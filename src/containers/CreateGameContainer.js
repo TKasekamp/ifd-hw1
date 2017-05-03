@@ -6,6 +6,7 @@ import Buttons from '../components/Buttons';
 import {connect} from 'react-redux';
 import {newGameRequested} from '../actions/index';
 import {push} from 'connected-react-router';
+import PropTypes from 'prop-types';
 
 const CreateGame = ({newNumberGame, newWordGame}) => {
     return (<div>
@@ -14,8 +15,8 @@ const CreateGame = ({newNumberGame, newWordGame}) => {
     </div>)
 };
 CreateGame.propTypes = {
-    newNumberGame: React.PropTypes.func.isRequired,
-    newWordGame: React.PropTypes.func.isRequired,
+    newNumberGame: PropTypes.func.isRequired,
+    newWordGame: PropTypes.func.isRequired,
 };
 
 const mapDispatchToProps = (dispatch) => ({

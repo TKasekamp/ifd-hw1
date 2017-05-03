@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Buttons = (props) => {
     return (
@@ -14,8 +15,8 @@ const Buttons = (props) => {
 };
 
 Buttons.propTypes = {
-    newNumberGame: React.PropTypes.func.isRequired,
-    newWordGame: React.PropTypes.func.isRequired,
+    newNumberGame: PropTypes.func.isRequired,
+    newWordGame: PropTypes.func.isRequired,
 };
 
 export default Buttons;

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-
+import PropTypes from 'prop-types';
 class ConnectForm extends Component {
     constructor(props) {
         super(props);
@@ -43,9 +43,9 @@ class ConnectForm extends Component {
     }
 }
 ConnectForm.propTypes = {
-    onConnect: React.PropTypes.func.isRequired,
-    onDisconnect: React.PropTypes.func.isRequired,
-    connected: React.PropTypes.bool.isRequired,
+    onConnect: PropTypes.func.isRequired,
+    onDisconnect: PropTypes.func.isRequired,
+    connected: PropTypes.bool.isRequired,
 };
 
 export default ConnectForm;

@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 
 class NumberGuessForm extends Component {
     constructor(props) {
@@ -44,9 +45,9 @@ class NumberGuessForm extends Component {
     }
 }
 NumberGuessForm.propTypes = {
-    onSubmit: React.PropTypes.func.isRequired,
-    status: React.PropTypes.string.isRequired,
-    id: React.PropTypes.string.isRequired,
+    onSubmit: PropTypes.func.isRequired,
+    status: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired,
 };
 
 export default NumberGuessForm;

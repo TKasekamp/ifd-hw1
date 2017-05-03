@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 /*
  OnlinePlayer knows how to display itself.
  */
@@ -16,8 +17,8 @@ const OnlinePlayer = (props) => {
     );
 };
 OnlinePlayer.propTypes = {
-    name: React.PropTypes.string.isRequired,
-    isPlayer: React.PropTypes.bool.isRequired
+    name: PropTypes.string.isRequired,
+    isPlayer: PropTypes.bool.isRequired
 };
 
 export default OnlinePlayer;

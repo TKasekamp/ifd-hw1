@@ -1,6 +1,6 @@
 import React from 'react';
 import OnlinePlayer from './OnlinePlayer';
-
+import PropTypes from 'prop-types';
 const OnlinePlayerList = (props) => {
     const players = props.onlinePlayers.map((player) => {
         return (
@@ -17,10 +17,10 @@ const OnlinePlayerList = (props) => {
 };
 
 OnlinePlayerList.propTypes = {
-    playerId: React.PropTypes.string.isRequired,
-    onlinePlayers: React.PropTypes.arrayOf(React.PropTypes.shape({
-        name: React.PropTypes.string.isRequired,
-        id: React.PropTypes.string.isRequired,
+    playerId: PropTypes.string.isRequired,
+    onlinePlayers: PropTypes.arrayOf(PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        id: PropTypes.string.isRequired,
     }).isRequired).isRequired
 };
 

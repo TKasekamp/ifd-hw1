@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 import OnlinePlayerList from '../components/header/OnlinePlayerList';
 import * as React from 'react';
-
+import PropTypes from 'prop-types';
 
 const PlayersContainer = ({playerId, onlinePlayers}) => {
     return (<div>
@@ -9,10 +9,10 @@ const PlayersContainer = ({playerId, onlinePlayers}) => {
     </div>)
 };
 PlayersContainer.propTypes = {
-    playerId: React.PropTypes.string.isRequired,
-    onlinePlayers: React.PropTypes.arrayOf(React.PropTypes.shape({
-        name: React.PropTypes.string.isRequired,
-        id: React.PropTypes.string.isRequired,
+    playerId: PropTypes.string.isRequired,
+    onlinePlayers: PropTypes.arrayOf(PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        id: PropTypes.string.isRequired,
     }).isRequired).isRequired
 };
 

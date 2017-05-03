@@ -3,6 +3,7 @@ import NumberResultList from './NumberResultList';
 import NumberGuessForm from './NumberGuessForm';
 import WordGuessForm from './WordGuessForm';
 import WordResultList from './WordResultList';
+import PropTypes from 'prop-types';
 
 class Game extends Component {
     constructor(props) {
@@ -53,14 +54,14 @@ class Game extends Component {
 }
 
 Game.propTypes = {
-    game: React.PropTypes.shape({
-        id: React.PropTypes.string.isRequired,
-        type: React.PropTypes.string.isRequired,
-        status: React.PropTypes.string.isRequired,
-        moves: React.PropTypes.array.isRequired,
-        inFlight: React.PropTypes.string.isRequired
+    game: PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        type: PropTypes.string.isRequired,
+        status: PropTypes.string.isRequired,
+        moves: PropTypes.array.isRequired,
+        inFlight: PropTypes.string.isRequired
     }).isRequired,
-    makeGuess: React.PropTypes.func.isRequired,
+    makeGuess: PropTypes.func.isRequired,
 };
 
 export default Game;

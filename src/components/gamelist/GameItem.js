@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const GameItem = (props) => {
     let button = '';
@@ -19,11 +20,11 @@ const GameItem = (props) => {
     );
 };
 GameItem.propTypes = {
-    id: React.PropTypes.string.isRequired,
-    type: React.PropTypes.string.isRequired,
-    status: React.PropTypes.string.isRequired,
-    inFlight: React.PropTypes.string.isRequired,
-    play: React.PropTypes.func.isRequired
+    id: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
+    status: PropTypes.string.isRequired,
+    inFlight: PropTypes.string.isRequired,
+    play: PropTypes.func.isRequired
 };
 
 export default GameItem;

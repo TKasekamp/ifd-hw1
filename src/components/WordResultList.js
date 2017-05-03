@@ -1,6 +1,6 @@
 import React from 'react';
 import WordResult from './WordResult';
-
+import PropTypes from 'prop-types';
 const WordResultList = (props) => {
     const resultElements = props.moves.map((move) => {
         return (
@@ -17,12 +17,12 @@ const WordResultList = (props) => {
 };
 
 WordResultList.propTypes = {
-    moves: React.PropTypes.arrayOf(React.PropTypes.shape({
-        guess: React.PropTypes.string.isRequired,
-        id: React.PropTypes.number.isRequired,
-        letterMatches: React.PropTypes.arrayOf(React.PropTypes.bool).isRequired,
-        inFlight: React.PropTypes.string.isRequired,
-        correct: React.PropTypes.bool.isRequired
+    moves: PropTypes.arrayOf(PropTypes.shape({
+        guess: PropTypes.string.isRequired,
+        id: PropTypes.number.isRequired,
+        letterMatches: PropTypes.arrayOf(PropTypes.bool).isRequired,
+        inFlight: PropTypes.string.isRequired,
+        correct: PropTypes.bool.isRequired
     })).isRequired
 };
 

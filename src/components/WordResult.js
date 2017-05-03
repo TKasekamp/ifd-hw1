@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 /*
  Result knows how to display itself.
  */
@@ -21,10 +22,10 @@ const WordResult = (props) => {
     );
 };
 WordResult.propTypes = {
-    move: React.PropTypes.shape({
-        guess: React.PropTypes.string.isRequired,
-        letterMatches: React.PropTypes.arrayOf(React.PropTypes.bool).isRequired,
-        inFlight: React.PropTypes.string.isRequired
+    move: PropTypes.shape({
+        guess: PropTypes.string.isRequired,
+        letterMatches: PropTypes.arrayOf(PropTypes.bool).isRequired,
+        inFlight: PropTypes.string.isRequired
     }).isRequired
 };
 

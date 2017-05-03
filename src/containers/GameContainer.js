@@ -5,6 +5,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {numberGuessSubmitted, wordGuessSubmitted} from '../actions/index';
 import Game from '../components/Game';
+import PropTypes from 'prop-types';
 
 const GameOrNotFound = (props) => {
     if (props.game) {
@@ -19,10 +20,10 @@ const GameOrNotFound = (props) => {
     }
 };
 GameOrNotFound.propTypes = {
-    game: React.PropTypes.object,
-    gameId: React.PropTypes.string.isRequired,
-    wordGuess: React.PropTypes.func.isRequired,
-    numberGuess: React.PropTypes.func.isRequired
+    game: PropTypes.object,
+    gameId: PropTypes.string.isRequired,
+    wordGuess: PropTypes.func.isRequired,
+    numberGuess: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state, ownProps) => {
