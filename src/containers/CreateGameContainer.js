@@ -5,6 +5,7 @@ import React from 'react';
 import Buttons from '../components/Buttons';
 import {connect} from 'react-redux';
 import {newGameRequested} from '../actions/index';
+import {push} from 'connected-react-router';
 
 const CreateGame = ({newNumberGame, newWordGame}) => {
     return (<div>
@@ -18,8 +19,15 @@ CreateGame.propTypes = {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-    newNumberGame: () => dispatch(newGameRequested('guess_number')),
-    newWordGame: () => dispatch(newGameRequested('guess_word')),
+    newNumberGame: () => {
+        dispatch(newGameRequested('guess_number'));
+        dispatch(push('/ongoingGames'));
+    },
+
+    newWordGame: () => {
+        dispatch(newGameRequested('guess_word'));
+        dispatch(push('/ongoingGames'));
+    },
 });
 
 export default connect(undefined, mapDispatchToProps)(CreateGame);
