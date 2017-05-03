@@ -1,7 +1,7 @@
 {
-  "name": "ifd-hw6",
+  "name": "ifd-hw7",
   "version": "1.0.0",
-  "description": "Interactive Frontend Development HW6",
+  "description": "Interactive Frontend Development HW7",
   "private": true,
   "devDependencies": {
     "babel-core": "6.17.0",
