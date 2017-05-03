@@ -12,7 +12,7 @@ const CreateGame = ({newNumberGame, newWordGame}) => {
     return (<div>
         <h1>Create game page</h1>
         <Buttons newNumberGame={newNumberGame} newWordGame={newWordGame}/>
-    </div>)
+    </div>);
 };
 CreateGame.propTypes = {
     newNumberGame: PropTypes.func.isRequired,

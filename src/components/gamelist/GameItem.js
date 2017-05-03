@@ -5,7 +5,7 @@ const GameItem = (props) => {
     let button = '';
     if (props.inFlight === 'created') {
         button = <button id='play-game' onClick={() => {
-            props.play({id: props.id})
+            props.play({id: props.id});
         }}>
             Play
         </button>;

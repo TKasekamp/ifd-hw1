@@ -1,6 +1,5 @@
 import React from 'react';
 import Buttons from './Buttons';
-import GameContainer from '../containers/GameContainer';
 import Game from './Game';
 import PropTypes from 'prop-types';
 const Games = (props) => {
@@ -28,7 +27,7 @@ Games.propTypes = {
     games: PropTypes.arrayOf(PropTypes.shape({
         id: PropTypes.string.isRequired,
         type: PropTypes.string.isRequired,
-        status:PropTypes.string.isRequired,
+        status: PropTypes.string.isRequired,
         moves: PropTypes.array.isRequired,
         inFlight: PropTypes.string.isRequired,
     })).isRequired,

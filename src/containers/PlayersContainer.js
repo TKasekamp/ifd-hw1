@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 const PlayersContainer = ({playerId, onlinePlayers}) => {
     return (<div>
         <OnlinePlayerList playerId={playerId} onlinePlayers={onlinePlayers}/>
-    </div>)
+    </div>);
 };
 PlayersContainer.propTypes = {
     playerId: PropTypes.string.isRequired,

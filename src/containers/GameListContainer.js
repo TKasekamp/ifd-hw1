@@ -11,7 +11,9 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    play: ({id}) => {dispatch(push('/games/' + id))},
+    play: ({id}) => {
+        dispatch(push('/games/' + id));
+    },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(GameList);

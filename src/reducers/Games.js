@@ -222,8 +222,7 @@ export const filterGames = ({games, showFinished}) => {
         return games.filter((game) =>
             game.status.match(/finished/)
         );
-    }
-    else {
+    } else {
         return games.filter((game) =>
             !game.status.match(/finished/)
         );

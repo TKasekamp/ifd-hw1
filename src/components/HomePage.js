@@ -11,7 +11,7 @@ const HomePage = () => {
         This is the best game lobby! Details from the above menu.
         <HeaderContainer />
         <GamesContainer/>
-    </div>
+    </div>;
 };
 
 export default HomePage;
