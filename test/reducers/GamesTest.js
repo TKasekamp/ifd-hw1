@@ -1,4 +1,4 @@
-import games from '../../src/reducers/Games';
+import games, {filterGames} from '../../src/reducers/Games';
 import {
     newGameCreated,
     newGameFailed,
@@ -277,6 +277,30 @@ describe('Gamereducer', () => {
             expect(stateAfter.games[0].moves[0].inFlight).to.eq('failed');
             expect(stateAfter.games[0].moves[0].correct).to.eq(false);
             expect(stateAfter.games[0].moves[0].letterMatches).to.eql([]);
+        });
+    });
+    describe('gameFilter', () => {
+        it('shows with status finished', () => {
+            const games = [
+                {id: '1', type: 'guess_number', status: 'waiting_for_move', moves: [], inFlight: 'created'},
+                {id: '2', type: 'guess_word', status: 'finished', moves: [], inFlight: 'created'},
+                {id: '3', type: 'guess_word', status: 'waiting_for_move', moves: [], inFlight: 'created'}
+            ];
+            const result = filterGames({games: games, showFinished: true});
+            expect(result.length).to.eq(1);
+            expect(result[0].status).to.eq('finished');
+        });
+
+        it('shows with status not finished', () => {
+            const games = [
+                {id: '1', type: 'guess_number', status: 'waiting_for_move', moves: [], inFlight: 'created'},
+                {id: '2', type: 'guess_word', status: 'finished', moves: [], inFlight: 'created'},
+                {id: '3', type: 'guess_word', status: 'waiting_for_move', moves: [], inFlight: 'created'}
+            ];
+            const result = filterGames({games, false});
+            expect(result.length).to.eq(2);
+            expect(result[0].status).to.eq('waiting_for_move');
+            expect(result[1].status).to.eq('waiting_for_move');
         });
     });
 });
