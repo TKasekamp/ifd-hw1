@@ -297,7 +297,7 @@ describe('Gamereducer', () => {
                 {id: '2', type: 'guess_word', status: 'finished', moves: [], inFlight: 'created'},
                 {id: '3', type: 'guess_word', status: 'waiting_for_move', moves: [], inFlight: 'created'}
             ];
-            const result = filterGames({games, false});
+            const result = filterGames({games: games, showFinished: false});
             expect(result.length).to.eq(2);
             expect(result[0].status).to.eq('waiting_for_move');
             expect(result[1].status).to.eq('waiting_for_move');

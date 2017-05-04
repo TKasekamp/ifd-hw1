@@ -5,7 +5,6 @@ import GameItem from '../../../src/components/gamelist/GameItem';
 
 describe('GameList', () => {
     it('renders no GameItem components without results', () => {
-
         expect(shallow(<GameList play={sinon.stub()} games={[]}/>))
             .to.not.contain.descendants(GameItem);
     });
@@ -20,6 +19,5 @@ describe('GameList', () => {
         const resultList = shallow(<GameList play={sinon.stub()} games={games}/>);
 
         expect(resultList).to.have.exactly(3).descendants(GameItem);
-
     });
 });
